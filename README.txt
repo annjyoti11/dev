@@ -29,3 +29,9 @@ Before public deployment:
 
 Google Maps exact directions:
 https://maps.app.goo.gl/8uEaKcLfgH5GSyfBA
+
+Homepage v4 note:
+- index.html now loads home-v4.css after styles.css.
+- home-v4.css is fully scoped to body.home-v4, so secondary pages remain unchanged.
+- The homepage is intentionally rebuilt to match the approved black/charcoal + royal-blue mockup more faithfully.
+- Mortend and Gotham font families are referenced but font files are NOT bundled. Add your licensed webfont files later with @font-face if available.
