@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://zenithfitnesshub.in/sitemap.xml
