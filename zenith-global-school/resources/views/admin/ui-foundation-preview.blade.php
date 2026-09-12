@@ -40,7 +40,7 @@
             </div>
 
             <div class="z-form-actions">
-                <x-ui.button variant="secondary">Cancel</x-ui.button>
+                <x-ui.button variant="secondary" type="button">Cancel</x-ui.button>
                 <x-ui.submit-button>Save Record</x-ui.submit-button>
             </div>
         </x-ui.form>
