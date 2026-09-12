@@ -8,11 +8,29 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="z-app">
-    <div class="z-shell" x-data="{ sidebarOpen: true }">
+    <a class="z-skip-link" href="#main-content">Skip to content</a>
+
+    <script>
+        window.__Z_FLASH__ = @json([
+            'success' => session('success'),
+            'error' => session('error'),
+            'warning' => session('warning'),
+            'info' => session('info'),
+        ]);
+    </script>
+
+    <div
+        class="z-shell"
+        x-data="{ sidebarOpen: JSON.parse(localStorage.getItem('z-sidebar-open') ?? 'true') }"
+        x-effect="localStorage.setItem('z-sidebar-open', JSON.stringify(sidebarOpen))"
+        :class="{ 'is-sidebar-collapsed': !sidebarOpen }"
+    >
         <x-admin.sidebar />
         <div class="z-main">
             <x-admin.topbar />
-            <main class="z-content" id="main-content">{{ $slot }}</main>
+            <main class="z-content" id="main-content" tabindex="-1">
+                {{ $slot }}
+            </main>
         </div>
         <x-ui.toast-stack />
         <x-ui.confirm-modal />
