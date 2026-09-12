@@ -9,6 +9,9 @@ Route::middleware(['web', 'auth'])
     ->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard');
 
+        Route::view('/ui-foundation-preview', 'admin.ui-foundation-preview')
+            ->name('ui-foundation-preview');
+
         // Add route groups module-by-module as functionality is implemented.
         // Keep names stable so shared navigation never needs page-specific rewrites.
     });
