@@ -10,6 +10,15 @@
 <body class="z-app">
     <a class="z-skip-link" href="#main-content">Skip to content</a>
 
+    <script>
+        window.__Z_FLASH__ = @json([
+            'success' => session('success'),
+            'error' => session('error'),
+            'warning' => session('warning'),
+            'info' => session('info'),
+        ]);
+    </script>
+
     <div
         class="z-shell"
         x-data="{ sidebarOpen: JSON.parse(localStorage.getItem('z-sidebar-open') ?? 'true') }"
