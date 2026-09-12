@@ -50,12 +50,16 @@ window.zenithConfirm = () => ({
     open: false,
     title: 'Confirm action',
     message: '',
+    confirmLabel: 'Confirm',
+    tone: 'danger',
     callback: null,
     init() {
         window.addEventListener('zenith:confirm', (event) => {
             const d = event.detail || {};
             this.title = d.title || 'Confirm action';
             this.message = d.message || 'Are you sure?';
+            this.confirmLabel = d.confirmLabel || 'Confirm';
+            this.tone = d.tone || 'danger';
             this.callback = d.onConfirm || null;
             this.open = true;
         });
@@ -74,6 +78,18 @@ window.zenithConfirm = () => ({
 window.zenithToast = (type, message, title = null) => {
     window.dispatchEvent(new CustomEvent('zenith:toast', {
         detail: { type, message, title },
+    }));
+};
+
+window.zenithConfirmAction = ({
+    title = 'Confirm action',
+    message = 'Are you sure?',
+    confirmLabel = 'Confirm',
+    tone = 'danger',
+    onConfirm = null,
+} = {}) => {
+    window.dispatchEvent(new CustomEvent('zenith:confirm', {
+        detail: { title, message, confirmLabel, tone, onConfirm },
     }));
 };
 
