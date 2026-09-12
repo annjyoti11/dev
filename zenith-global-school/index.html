@@ -29,8 +29,8 @@
   <aside class="sidebar">
     <div class="brand"><div class="mark">ZG</div><div class="brand-copy"><strong>Zenith Global</strong><small>Senior Secondary School</small></div></div>
     <nav class="nav">
-      <a class="active" href="#"><span>Dashboard</span></a>
-      <a href="#"><span>Admissions</span></a><a href="#"><span>Students</span></a><a href="#"><span>Attendance</span></a><a href="#"><span>Fees & Accounts</span></a><a href="#"><span>Staff</span></a><a href="#"><span>Timetable</span></a><a href="#"><span>Notices</span></a><a href="#"><span>Reports</span></a>
+      <a class="active" href="index.html"><span>Dashboard</span></a>
+      <a href="admissions.html"><span>Admissions</span></a><a href="students.html"><span>Students</span></a><a href="#"><span>Attendance</span></a><a href="#"><span>Fees & Accounts</span></a><a href="#"><span>Staff</span></a><a href="#"><span>Timetable</span></a><a href="#"><span>Notices</span></a><a href="#"><span>Reports</span></a>
       <div class="section-label">Academic Platform</div><a href="#"><span>Examinations</span></a><a href="#"><span>Community Centre</span></a><a href="#"><span>Digital Learning</span></a>
     </nav>
   </aside>
@@ -66,5 +66,6 @@
   function closeDrawer(){document.getElementById('drawerBack').style.display='none';document.getElementById('drawer').classList.remove('open')}
   document.getElementById('demoForm').addEventListener('submit',e=>{e.preventDefault();const b=document.getElementById('saveBtn');b.disabled=true;b.innerHTML='<span class="spinner"></span>Saving…';setTimeout(()=>{b.disabled=false;b.textContent='Save Record';showToast('success','Demo form submitted successfully.')},900)})
 </script>
+<script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><script src="icons.js"></script>
 </body>
 </html>
