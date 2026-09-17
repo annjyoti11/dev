@@ -1,17 +1,23 @@
 /* Native vertical paging: keep normal scrolling and accessible overflow. */
 @media (max-width:800px) {
-  :root { --header-height:78px; --mobile-bar-height:68px; --panel-height:calc(100svh - var(--header-height) - var(--mobile-bar-height)); }
-  html { scroll-snap-type:y mandatory; scroll-padding-top:var(--header-height); scroll-padding-bottom:var(--mobile-bar-height); }
-  body { padding-top:var(--header-height); padding-bottom:var(--mobile-bar-height); }
+  :root { --header-height:78px; --mobile-bar-height:68px; --panel-height:calc(100vh - var(--header-height)); --panel-height:calc(100dvh - var(--header-height)); }
+  html { scroll-snap-type:y mandatory; scroll-padding-top:var(--header-height); scroll-padding-bottom:0; scroll-behavior:smooth; }
+  body { padding-top:var(--header-height); padding-bottom:0; }
   .site-header { padding:8px 20px; }
+  .site-header .header-cta { display:none; }
+  .site-header .brand { flex-shrink:1; }
+  .site-header .menu { flex-shrink:0; }
   .brand { width:190px; height:60px; }
-  .mobile-bar { height:var(--mobile-bar-height); padding:8px 16px; }
+  .mobile-bar { height:auto; min-height:var(--mobile-bar-height); padding:8px 16px max(10px,env(safe-area-inset-bottom)); background:transparent; pointer-events:none; }
+  .mobile-bar a { pointer-events:auto; background:#f5ead5; color:#173c2d; box-shadow:0 3px 16px #0003; border:1px solid #d9bd88; }
+  .mobile-bar a:last-child { background:#edbd61; color:#17251f; }
+  .mobile-bar a:focus-visible { outline:2px solid #173c2d; outline-offset:3px; }
   main>section:not(.destinations), .dest-head, .destination-grid article, footer {
-    min-height:var(--panel-height); scroll-snap-align:start; scroll-snap-stop:always;
+    min-height:var(--panel-height); scroll-snap-align:start; scroll-snap-stop:normal;
     box-sizing:border-box;
   }
-  main>section:not(.hero):not(.destinations) { display:flex; flex-direction:column; justify-content:center; padding:26px 24px; }
-  .hero { height:auto; margin-top:0; display:flex; align-items:center; padding:75px 24px 30px; }
+  main>section:not(.hero):not(.destinations) { display:flex; flex-direction:column; justify-content:center; padding:26px 24px calc(84px + env(safe-area-inset-bottom)); }
+  .hero { height:auto; margin-top:0; display:flex; align-items:center; padding:65px 24px calc(90px + env(safe-area-inset-bottom)); }
   .hero-copy { position:relative; inset:auto; width:100%; }
   .hero h1 { font-size:clamp(30px,8.7vw,42px); }
   .hero-text br { display:none; }
@@ -27,14 +33,14 @@
   .experiences .icon-grid { width:100%; max-width:520px; margin:0 auto; }
   .icon-grid>div { min-height:clamp(115px,20svh,170px); }
   .destinations.section { padding:0; max-width:none; }
-  .dest-head { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:20px; padding:32px 24px; }
+  .dest-head { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:20px; padding:32px 24px calc(90px + env(safe-area-inset-bottom)); }
   .dest-head>p { display:block; max-width:460px; font-size:16px; line-height:1.6; }
   .dest-head .small-btn { display:block; }
   .destination-grid { display:block; margin:0; }
   .destination-grid article { height:var(--panel-height); border-radius:0; }
   .destination-grid img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .destination-grid article:after { background:linear-gradient(0deg,rgba(0,25,18,.9),rgba(0,25,18,.06) 72%); }
-  .destination-grid article>div { left:24px; right:24px; top:auto; bottom:70px; }
+  .destination-grid article>div { left:24px; right:24px; top:auto; bottom:calc(100px + env(safe-area-inset-bottom)); }
   .destination-grid h4 { font-size:clamp(32px,9vw,46px); line-height:1.15; margin-bottom:12px; }
   .destination-grid p { font-size:11px; letter-spacing:.2em; }
   .destination-grid article>span { display:none; }
@@ -44,7 +50,7 @@
   .contact h2 span { white-space:normal; }
   .contact form { width:100%; margin-top:16px; padding:14px; gap:12px; }
   .contact input { font-size:16px; }
-  footer { align-content:center; gap:20px; padding:26px 24px; }
+  footer { align-content:center; gap:20px; padding:26px 24px calc(90px + env(safe-area-inset-bottom)); }
   .footer-addresses { gap:12px; padding-top:12px; }
   .footer-bottom { padding-top:12px; }
 }
