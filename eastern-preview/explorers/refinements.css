@@ -1,0 +1,46 @@
+/* Reference-aligned layout. All rules scoped to this standalone preview. */
+.site-header{background:transparent;box-shadow:none}
+.site-header nav{gap:clamp(16px,2.3vw,34px)}
+.brand{flex-shrink:0}
+.header-cta{white-space:nowrap}
+.eyebrow{font-size:11px;font-weight:400}
+.hero-tags{border:0;padding-top:0}
+.hero-tags span,.hero-side{letter-spacing:.35em}
+.hero-side{line-height:2}
+.ui-icon{width:22px;height:22px;flex:0 0 22px;fill:none;stroke:currentColor;stroke-width:1.6;vertical-align:middle}
+.header-cta,.hero-actions .btn,.contact button,.mobile-bar a{display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.hero-actions .btn svg{margin:0}
+.about{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:40px}
+.rhino{position:relative;min-width:0;padding-right:50px}
+.rhino img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;mix-blend-mode:multiply;-webkit-mask-image:radial-gradient(ellipse at center,#000 57%,transparent 73%);mask-image:radial-gradient(ellipse at center,#000 57%,transparent 73%)}
+.rhino p{position:absolute;right:0;bottom:0;margin:0;font-size:10px;letter-spacing:.22em;line-height:1.8;text-align:left}
+.rhino p span{display:block}
+.rhino p:after{content:"";display:block;width:54px;height:2px;background:#c79743;margin-top:12px}
+.icon-grid>div>span{font-weight:400}
+.trust{grid-template-columns:minmax(220px,.9fr) minmax(0,2.1fr);gap:28px}
+.trust-grid>div{padding:8px 16px}
+.trust-grid b{line-height:1.35;font-weight:400}
+.contact{position:relative;isolation:isolate;max-width:none;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:38px;padding:30px 5%;background:var(--cream);overflow:hidden}
+.contact:before{content:"";position:absolute;z-index:-1;left:0;bottom:0;width:26%;height:85%;background:url(assets/cliff.jpg) left bottom/cover no-repeat;-webkit-mask-image:linear-gradient(70deg,#000,transparent 85%);mask-image:linear-gradient(70deg,#000,transparent 85%)}
+.contact-copy{padding-left:18%;max-width:none;min-width:0;align-self:start;padding-top:16px}
+.contact h2{font-size:clamp(28px,3.1vw,42px);line-height:1.12}
+.contact h2 span{white-space:nowrap}
+.contact-copy>p:last-child{max-width:350px}
+.contact form{min-width:0;grid-template-columns:repeat(2,minmax(0,1fr));padding:20px;gap:14px 18px}
+.contact label{min-width:0;font-size:12px;font-weight:400}
+.contact input{min-width:0;height:40px;padding:10px 12px;font-weight:400;background:#fff}
+.contact button{min-height:48px;font-weight:400;margin-top:6px}
+footer{grid-template-columns:minmax(160px,1fr) minmax(290px,1.5fr) minmax(130px,.8fr) minmax(80px,.4fr);gap:28px;padding:32px 6% 24px}
+footer>div{min-width:0}
+.footer-brand{border-right:1px solid #ffffff45;padding-right:24px}
+.footer-brand img{width:100%;height:auto;max-width:240px}
+.connect{border-right:1px solid #ffffff45;padding-right:24px}
+.footer-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.footer-links a{display:flex;align-items:center;flex-direction:column;gap:8px}
+.footer-links .ui-icon{width:20px;height:20px;flex-basis:20px}
+.socials{display:flex;align-items:center;gap:22px;margin-top:18px}
+.socials .ui-icon{width:24px;height:24px}
+.contact-details{line-height:1.6;overflow-wrap:anywhere}
+.footer-addresses{font-size:12px}
+@media(min-width:801px) and (max-width:1100px){.site-header{padding-inline:4%;gap:16px}.brand{width:180px}.site-header nav{gap:14px}.site-header nav a{font-size:12px}.header-cta{font-size:12px;padding:12px}.contact-copy{padding-left:10%}footer{padding-inline:4%;gap:20px;grid-template-columns:1fr 1.6fr .7fr}.motto{display:none}.footer-addresses{grid-column:1/-1}}
+@media(max-width:800px){.site-header{background:transparent}.site-header.open nav{background:var(--cream)}.hero-tags{gap:clamp(10px,3vw,20px)}.hero-tags span{font-size:9px}.about{display:block}.rhino{padding-right:55px;margin-top:28px}.rhino p{font-size:9px}.icon-grid>div>span{font-weight:400}.trust{display:block}.trust-grid>div{padding:0}.contact{display:block;padding:32px 24px}.contact:before{display:none}.contact-copy{padding:0}.contact h2{font-size:clamp(25px,6.8vw,34px)}.contact form{margin-top:24px;padding:16px;gap:14px 12px}.contact label{font-size:11px}.contact input{font-size:12px}.contact button{font-size:13px}footer{grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:30px 24px;gap:26px 18px}.footer-brand{grid-column:1;grid-row:1;border:0;padding:0}.connect{grid-column:1/-1;grid-row:2;border:0;padding:0}footer>div:nth-child(3){grid-column:2;grid-row:1}.socials{gap:18px}.footer-addresses{grid-column:1/-1}.footer-links{justify-content:initial}.motto{display:none}.legal{grid-column:auto}}

@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23054836'/%3E%3Cpath d='M6 9h19v4H11v3h11v4H11v3h14v4H6z' fill='%23f2c56f'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refinements.css">
 </head>
 <body>
 <svg class="defs" aria-hidden="true"><defs>
@@ -23,12 +24,16 @@
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20 5c-2-2-5-2-8 1-3-3-6-3-8-1-3 3-1 7 1 9l7 7 7-7c2-2 4-6 1-9Z"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
   <symbol id="i-award" viewBox="0 0 24 24"><path d="m12 3 3 2 4 1 1 4 2 3-2 3-1 4-4 1-3 2-3-2-4-1-1-4-2-3 2-3 1-4 4-1 3-2Z"/><path d="m9 13 2 2 4-5"/></symbol>
-</defs></svg>
+<symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.5 3.5a11 11 0 0 0-17.3 13L2 22l5.6-1.5a11 11 0 0 0 12.9-17Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 6.5c-.8 0-1.5 1-1.5 2 0 3 5 8 8 8 1 0 2-1 2-1.8l-3-1.5-1 1c-1.8-.8-3-2-3.7-3.7l1-1L8.7 6.5Z" fill="currentColor"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 6 9 7 9-7"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-facebook" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="currentColor" stroke="none"/><path d="M13 21v-8h3l.5-3H13V8c0-1 1-1.5 3-1.5V4c-4-.5-6 1-6 4v2H8v3h2v8" fill="#073d31" stroke="none"/></symbol>
+<symbol id="i-youtube" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4" fill="currentColor" stroke="none"/><path d="m10 9 6 3-6 3Z" fill="#073d31" stroke="none"/></symbol></defs></svg>
 
 <header class="site-header">
   <a class="brand" href="#home"><img src="assets/logo.png" alt="Eastern Explorers"></a>
   <nav id="nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#about">About</a><a href="#experiences">Experiences</a><a href="#destinations">Destinations</a><a href="#why">Why Us</a><a href="#contact">Contact</a></nav>
-  <a class="header-cta" href="https://wa.me/919864000105" target="_blank" rel="noopener">◉ &nbsp; Plan Your Journey</a>
+  <a class="header-cta" href="https://wa.me/919864000105" target="_blank" rel="noopener"><svg class="ui-icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Plan Your Journey</a>
   <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
 </header>
 
@@ -38,7 +43,7 @@
       <p class="eyebrow light">Northeast and Eastern India</p>
       <h1>Explore the East.<br><span>Experience More.</span></h1>
       <p class="hero-text">Journeys through breathtaking landscapes,<br>rich cultures and unforgettable experiences.</p>
-      <div class="hero-actions"><a class="btn gold" href="https://wa.me/919864000105" target="_blank" rel="noopener">◉ &nbsp; Plan Your Journey</a><a class="btn outline" href="tel:+919864000105"><svg><use href="#i-phone"/></svg> Call Us</a></div>
+      <div class="hero-actions"><a class="btn gold" href="https://wa.me/919864000105" target="_blank" rel="noopener"><svg class="ui-icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Plan Your Journey</a><a class="btn outline" href="tel:+919864000105"><svg><use href="#i-phone"/></svg> Call Us</a></div>
       <div class="hero-tags"><span>Nature</span><span>Culture</span><span>People</span><span>Places</span></div>
     </div>
     <div class="hero-side">Discover<br>Explore<br>Belong<i></i></div>
@@ -51,12 +56,12 @@
         <div><svg><use href="#i-leaf"/></svg><b>Authentic<br>Experiences</b></div><div><svg><use href="#i-temple"/></svg><b>Local<br>Knowledge</b></div><div><svg><use href="#i-shield"/></svg><b>Trusted<br>Support</b></div>
       </div>
     </div>
-    <div class="rhino"><img src="assets/rhino.jpg" alt="Indian one-horned rhinoceros in grassland"><p>Explore&nbsp;&nbsp; Respect&nbsp;&nbsp; Preserve</p></div>
+    <div class="rhino"><img src="assets/rhino.jpg" alt="Indian one-horned rhinoceros in grassland"><p><span>Explore</span><span>Respect</span><span>Preserve</span></p></div>
   </section>
 
   <section class="experiences dark" id="experiences"><p class="eyebrow light center">What We Curate</p><h3>Experiences for every kind of explorer.</h3>
     <div class="icon-grid">
-      <div><svg><use href="#i-leaf"/></svg><b>Nature &<br>Wildlife</b></div><div><svg><use href="#i-temple"/></svg><b>Culture &<br>Heritage</b></div><div><svg><use href="#i-mountain"/></svg><b>Scenic<br>Escapes</b></div><div><svg><use href="#i-users"/></svg><b>Family &<br>Group Travel</b></div><div><svg><use href="#i-compass"/></svg><b>Adventure &<br>Trekking</b></div><div><svg><use href="#i-pin"/></svg><b>Offbeat<br>Experiences</b></div>
+      <div><svg><use href="#i-leaf"/></svg><span>Nature &<br>Wildlife</span></div><div><svg><use href="#i-temple"/></svg><span>Culture &<br>Heritage</span></div><div><svg><use href="#i-mountain"/></svg><span>Scenic<br>Escapes</span></div><div><svg><use href="#i-users"/></svg><span>Family &<br>Group Travel</span></div><div><svg><use href="#i-compass"/></svg><span>Adventure &<br>Trekking</span></div><div><svg><use href="#i-pin"/></svg><span>Offbeat<br>Experiences</span></div>
     </div>
   </section>
 
@@ -72,15 +77,15 @@
   </section>
 
   <section class="trust dark" id="why"><div class="trust-title"><p class="eyebrow light">Why Travel With Us</p><h2>Journeys<br>You Can Trust.</h2><i class="rule"></i></div>
-    <div class="trust-grid"><div><svg class="gold-icon"><use href="#i-award"/></svg><p><b>Local Expertise</b><span>Real insights,<br>better experiences</span></p></div><div><svg><use href="#i-heart"/></svg><p><b>Personalised Planning</b><span>Trips tailored<br>to your interests</span></p></div><div><svg><use href="#i-shield"/></svg><p><b>Reliable Support</b><span>From planning<br>to your return</span></p></div><div><svg><use href="#i-users"/></svg><p><b>Responsible Travel</b><span>Supporting local<br>communities</span></p></div></div>
+    <div class="trust-grid"><div><svg class="gold-icon"><use href="#i-award"/></svg><p><b>Local<br>Expertise</b><span>Real insights,<br>better experiences</span></p></div><div><svg><use href="#i-heart"/></svg><p><b>Personalised<br>Planning</b><span>Trips tailored<br>to your interests</span></p></div><div><svg><use href="#i-shield"/></svg><p><b>Reliable<br>Support</b><span>From planning<br>to your return</span></p></div><div><svg><use href="#i-users"/></svg><p><b>Responsible<br>Travel</b><span>Supporting local<br>communities</span></p></div></div>
   </section>
 
-  <section class="contact section" id="contact"><div class="contact-copy"><p class="eyebrow">Plan Your Journey</p><h2>Let’s Start<br>Your Next Adventure.</h2><i class="rule"></i><p>Tell us a few details and we’ll connect with you on WhatsApp to plan your journey.</p></div>
-    <form id="enquiry"><label>Your Name *<input required name="name" placeholder="Enter your name"></label><label>Phone Number *<input required name="phone" inputmode="tel" placeholder="Enter your number"></label><label>Destination / Interest<input name="destination" placeholder="e.g. Meghalaya, Assam, Culture, Wildlife"></label><label>Travel Date (Optional)<input name="date" type="date"></label><label>Number of Travellers<input name="travellers" placeholder="e.g. 2, 4, 10"></label><label>Message (Optional)<input name="message" placeholder="Any specific requirement?"></label><button type="submit">◉ &nbsp; Send Enquiry on WhatsApp</button></form>
+  <section class="contact section" id="contact"><div class="contact-copy"><p class="eyebrow">Plan Your Journey</p><h2>Let’s Start<br><span>Your Next Adventure.</span></h2><i class="rule"></i><p>Tell us a few details and we’ll connect with you on WhatsApp to plan your journey.</p></div>
+    <form id="enquiry"><label>Your Name *<input required name="name" placeholder="Enter your name"></label><label>Phone Number *<input required name="phone" inputmode="tel" placeholder="Enter your number"></label><label>Destination / Interest<input name="destination" placeholder="e.g. Meghalaya, Assam, Culture, Wildlife"></label><label>Travel Date (Optional)<input name="date" type="date"></label><label>Number of Travellers<input name="travellers" placeholder="e.g. 2, 4, 10"></label><label>Message (Optional)<input name="message" placeholder="Any specific requirement?"></label><button type="submit"><svg class="ui-icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> Send Enquiry on WhatsApp</button></form>
   </section>
 </main>
 
-<footer><div class="footer-brand"><img src="assets/logo.png" alt="Eastern Explorers"><p>Discover. Explore. Belong.</p></div><div class="connect"><b>Let’s Connect</b><p class="footer-links"><a href="tel:+919864000105">Call</a><a href="https://wa.me/919864000105" target="_blank" rel="noopener">WhatsApp</a><a href="mailto:Easternexplorers@yahoo.com">Email</a><a href="https://www.google.com/maps/search/?api=1&query=Saptarishi+Path+Zoo+Road+Tiniali+Guwahati+24" target="_blank" rel="noopener">Location</a></p><div class="contact-details"><span><b>Phone:</b> <a href="tel:+919864000105">9864000105</a> / <a href="tel:+919864000106">9864000106</a></span><span><b>Email:</b> <a href="mailto:Easternexplorers@yahoo.com">Easternexplorers@yahoo.com</a></span></div></div><div><b>Follow Us</b><p class="socials">◎ &nbsp; ● &nbsp; ▶</p></div><div class="motto">Discover<br>Explore<br>Belong<i></i></div><div class="footer-addresses"><p><b>Office</b>Saptarishi Path, Zoo Road Tiniali, Guwahati-24</p><p><b>Branch</b>1st Floor, Near RD Motors, NH 15, Nikamul, Tezpur 784001</p></div><small>© 2026 Eastern Explorers. All rights reserved.</small><small class="legal">Privacy Policy &nbsp; | &nbsp; Terms</small></footer>
-<div class="mobile-bar"><a href="tel:+919864000105"><svg><use href="#i-phone"/></svg> Call Us</a><a href="https://wa.me/919864000105" target="_blank" rel="noopener">◉ &nbsp; WhatsApp</a></div>
+<footer><div class="footer-brand"><img src="assets/logo.png" alt="Eastern Explorers"></div><div class="connect"><b>Let’s Connect</b><p class="footer-links"><a href="tel:+919864000105"><svg class="ui-icon" aria-hidden="true"><use href="#i-phone"/></svg><span>Call</span></a><a href="https://wa.me/919864000105" target="_blank" rel="noopener"><svg class="ui-icon" aria-hidden="true"><use href="#i-whatsapp"/></svg><span>WhatsApp</span></a><a href="mailto:Easternexplorers@yahoo.com"><svg class="ui-icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a><a href="https://www.google.com/maps/search/?api=1&query=Saptarishi+Path+Zoo+Road+Tiniali+Guwahati+24" target="_blank" rel="noopener"><svg class="ui-icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Location</span></a></p><div class="contact-details"><span><b>Phone:</b> <a href="tel:+919864000105">9864000105</a> / <a href="tel:+919864000106">9864000106</a></span><span><b>Email:</b> <a href="mailto:Easternexplorers@yahoo.com">Easternexplorers@yahoo.com</a></span></div></div><div><b>Follow Us</b><div class="socials" aria-label="Social profiles — links coming soon"><span role="img" aria-label="Instagram"><svg class="ui-icon" aria-hidden="true"><use href="#i-instagram"/></svg></span><span role="img" aria-label="Facebook"><svg class="ui-icon" aria-hidden="true"><use href="#i-facebook"/></svg></span><span role="img" aria-label="YouTube"><svg class="ui-icon" aria-hidden="true"><use href="#i-youtube"/></svg></span></div></div><div class="motto">Discover<br>Explore<br>Belong<i></i></div><div class="footer-addresses"><p><b>Office</b>Saptarishi Path, Zoo Road Tiniali, Guwahati-24</p><p><b>Branch</b>1st Floor, Near RD Motors, NH 15, Nikamul, Tezpur 784001</p></div><small>© 2026 Eastern Explorers. All rights reserved.</small><small class="legal">Privacy Policy &nbsp; | &nbsp; Terms</small></footer>
+<div class="mobile-bar"><a href="tel:+919864000105"><svg><use href="#i-phone"/></svg> Call Us</a><a href="https://wa.me/919864000105" target="_blank" rel="noopener"><svg class="ui-icon" aria-hidden="true"><use href="#i-whatsapp"/></svg> WhatsApp</a></div>
 <script src="script.js"></script>
 </body></html>
