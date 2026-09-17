@@ -1,0 +1,12 @@
+/* White header continues into the landscape, without baking a fade into the photo. */
+:root{--header-height:82px}
+html{scroll-padding-top:calc(var(--header-height) + 20px)}
+.site-header{position:fixed;top:0;left:0;right:0;height:var(--header-height);z-index:100;background:#fff;box-shadow:none}
+.site-header nav a{color:#173c2d}
+.site-header .brand img{mix-blend-mode:normal}
+.hero{margin-top:var(--header-height);height:620px;background-image:url(assets/tea-sunrise.jpg);background-position:center 54%;background-size:cover}
+.hero-shade{background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,.92) 3%,rgba(255,255,255,.5) 11%,rgba(255,255,255,0) 26%),linear-gradient(90deg,rgba(3,25,20,.65),rgba(3,25,20,.18) 65%,transparent),linear-gradient(0deg,rgba(3,25,20,.55),transparent 55%)}
+.hero-copy{top:175px}
+.site-header.open nav{max-height:calc(100dvh - var(--header-height) - 20px);overflow:auto}
+@media(max-width:800px){:root{--header-height:98px}.site-header{height:var(--header-height);background:#fff}.site-header.open nav{top:var(--header-height);background:#fff}.hero{margin-top:var(--header-height);height:620px;background-position:57% center}.hero-copy{top:185px}.hero-shade{background:linear-gradient(to bottom,#fff 0%,rgba(255,255,255,.85) 5%,rgba(255,255,255,0) 25%),linear-gradient(0deg,rgba(3,25,20,.78),rgba(3,25,20,.25) 65%,transparent)}}
+@media(max-width:430px){.hero-copy{top:175px}.hero{height:610px}}
