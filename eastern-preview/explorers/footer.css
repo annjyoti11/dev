@@ -23,3 +23,6 @@ footer{grid-template-columns:minmax(170px,1.05fr) minmax(270px,1.4fr) minmax(140
 .footer-bottom small{font-size:11px;line-height:1.6;margin:0}
 @media(max-width:1100px) and (min-width:801px){footer{grid-template-columns:minmax(160px,1fr) minmax(260px,1.5fr) minmax(130px,.7fr);gap:24px}.motto{display:none}}
 @media(max-width:800px){.rhino{padding-right:45px}.rhino p{bottom:0}footer{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:24px;padding:30px 24px}.footer-brand{grid-column:1;grid-row:1;padding:0;border:0;align-self:center}.footer-brand img{width:100%;max-width:220px}.footer-social{grid-column:2;grid-row:1;padding-left:16px;border-left:1px solid #ffffff24}.footer-social>b{font-size:12px}.socials{gap:14px;margin-top:14px}.socials .ui-icon{width:22px;height:22px}.socials>span{width:22px;height:22px}.connect{grid-column:1/-1;grid-row:2;padding:0;border:0}.connect>b{display:none}.footer-links{margin:0 0 18px}.footer-links .ui-icon{width:22px;height:22px}.contact-details{font-size:12px}.footer-addresses{grid-template-columns:1fr;gap:16px;padding-top:18px}.footer-bottom{flex-wrap:wrap;padding-top:16px;gap:10px}.footer-bottom small{font-size:10px}.motto{display:none}}
+
+/* Supplied logo includes a white background; preserve its original colours. */
+.footer-brand img{filter:none;mix-blend-mode:normal;background:#fff;border-radius:4px}
