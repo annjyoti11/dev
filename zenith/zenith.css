@@ -72,8 +72,8 @@
   .btn{min-width:254px;padding:18px 22px;font-size:12px}
   .content>.btn{align-self:flex-start}
   .textlink{font-size:11px;letter-spacing:.05em}
-  .counter{right:clamp(56px,6vw,104px);bottom:30px;font-size:10px}
-  .next{left:clamp(56px,6vw,104px);bottom:30px}
+  .counter{right:clamp(56px,6vw,104px);bottom:30px;font-size:11px}
+  .next{left:clamp(56px,6vw,104px);bottom:30px;font-size:11px}
   .hero{background-position:center 38%}
   .hero .shade{
     background:
@@ -101,7 +101,7 @@
     background:linear-gradient(135deg,#121f2c,#080d12);
   }
   .program-list article:after{right:24px;width:40px;height:40px}
-  .program-list small{font-size:10px}
+  .program-list small{font-size:11px}
   .program-list h3{font-size:22px;margin:14px 0 8px}
   .program-list p{font-size:14px;line-height:1.5;max-width:300px}
   .results,.membership{background-position:center 38%}
@@ -142,4 +142,8 @@
 @media (min-width:1280px){
   .drawer{gap:24px}
   .drawer a{font-size:11px}
+}
+
+@media(min-width:1024px){
+  footer span{font-size:11px}
 }
