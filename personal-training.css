@@ -1,0 +1,98 @@
+.pt-page .pt-hero-new{background-image:url('./assets/personal-training-coaching.webp');background-position:center 34%}.pt-hero-new .shade{background:linear-gradient(180deg,rgba(2,5,8,.10),rgba(2,5,8,.28) 38%,rgba(2,5,8,.96) 90%)}.pt-process{background:radial-gradient(circle at 100% 0,#10273d,#071019 30%,#04070a 70%)}.process-copy{justify-content:center}.process-copy h2{margin-bottom:20px}.process-list{border-top:1px solid #303a43}.process-list>div{display:grid;grid-template-columns:38px 1fr;padding:14px 0;border-bottom:1px solid #303a43}.process-list small{color:#1680ff;font-size:9px;letter-spacing:.16em;padding-top:3px}.process-list span{display:flex;flex-direction:column;gap:4px}.process-list b{font-size:16px}.process-list em{font-size:11px;line-height:1.4;color:#9fa8b1;font-style:normal}.pt-support{background-image:url('./assets/training-intensity.webp');background-position:center 38%}.pt-support .shade{background:linear-gradient(180deg,rgba(2,5,8,.10),rgba(2,5,8,.35) 35%,rgba(2,5,8,.97) 88%)}.support-strip{display:flex;margin:8px 0 17px;padding:14px 0;border-top:1px solid rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.22)}.support-strip span{flex:1;padding:0 9px;border-left:1px solid rgba(255,255,255,.2);font-size:9px;line-height:1.35;color:#9da7b0}.support-strip span:first-child{border-left:0;padding-left:0}.support-strip span:last-child{padding-right:0}.support-strip b{display:block;color:#fff;font-size:11px;margin-bottom:4px}.pt-small{font-size:12px!important;line-height:1.45!important;color:#adb5bd!important;margin:0!important}.pt-packages{background:radial-gradient(circle at 0 100%,#0b2236,#05080b 48%)}.packages-copy{justify-content:center}.packages-copy h2{margin-bottom:20px}.pt-plan-list{border-top:1px solid #303a43}.pt-plan-list a{display:grid;grid-template-columns:1fr auto 22px;align-items:center;gap:12px;min-height:88px;padding:12px 0;border-bottom:1px solid #303a43}.pt-plan-list span{display:flex;flex-direction:column;gap:4px}.pt-plan-list small{font-size:9px;color:#1680ff;letter-spacing:.15em}.pt-plan-list b{font-size:15px}.pt-plan-list em{font-size:10px;color:#8f9aa4;font-style:normal}.pt-plan-list strong{font-size:21px;letter-spacing:-.03em}.pt-plan-list i{font-size:18px;font-style:normal}.pt-plan-list .popular strong{color:#1680ff}.pt-note{font-size:10px!important;line-height:1.4!important;color:#7f8993!important;margin:13px 0 0!important}.pt-start{background-image:url('https://zenithfitnesshub.in/assets/cardio.webp')}.pt-start .shade{background:linear-gradient(180deg,rgba(2,5,8,.18),rgba(2,5,8,.47) 40%,rgba(2,5,8,.97) 89%)}.pt-start .content>p:not(.eyebrow){max-width:380px;margin:0 0 22px}.pt-actions{display:flex;flex-direction:column;align-items:flex-start;gap:18px}.pt-page .bottom{padding-bottom:max(94px,calc(76px + env(safe-area-inset-bottom)))}@media(max-height:700px){.process-copy h2,.packages-copy h2{margin-bottom:12px}.process-list>div{padding:9px 0}.pt-plan-list a{min-height:66px;padding:8px 0}.pt-plan-list strong{font-size:18px}.pt-page .bottom{padding-bottom:66px}.support-strip{margin:4px 0 10px;padding:10px 0}.pt-start .content>p:not(.eyebrow){margin-bottom:14px}}@media(min-width:760px){.pt-hero-new .shade,.pt-support .shade,.pt-start .shade{background:linear-gradient(90deg,rgba(2,5,8,.9),rgba(2,5,8,.54) 45%,rgba(2,5,8,.12) 78%),linear-gradient(0deg,rgba(2,5,8,.76),transparent 58%)}.pt-page .content{align-items:flex-start}.process-list,.pt-plan-list{width:min(650px,100%)}.support-strip{width:min(620px,100%)}.pt-hero-new{background-position:center 35%}.pt-support{background-position:center 38%}.pt-start{background-position:center 38%}}
+
+/* Desktop PT composition */
+@media(min-width:1024px){
+  .pt-hero-new,
+  .pt-support{
+    background-image:none;
+    background-color:#05080b;
+  }
+
+  .pt-hero-new::before,
+  .pt-support::before{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    width:58%;
+    background-size:cover;
+    background-repeat:no-repeat;
+    z-index:0;
+  }
+
+  .pt-hero-new::before{
+    background-image:url('./assets/personal-training-coaching.webp');
+    background-position:center 34%;
+  }
+
+  .pt-support::before{
+    background-image:url('./assets/training-intensity.webp');
+    background-position:center 38%;
+  }
+
+  .pt-hero-new .shade,
+  .pt-support .shade{
+    background:
+      linear-gradient(90deg,
+        rgba(5,8,11,1) 0%,
+        rgba(5,8,11,.98) 31%,
+        rgba(5,8,11,.82) 46%,
+        rgba(5,8,11,.42) 61%,
+        rgba(5,8,11,.08) 82%,
+        rgba(5,8,11,.02) 100%),
+      linear-gradient(0deg,rgba(2,5,8,.70),transparent 58%);
+  }
+
+  .pt-hero-new .content,
+  .pt-support .content{
+    justify-content:center;
+    padding-top:120px;
+    padding-bottom:72px;
+  }
+
+  .pt-hero-new .content{
+    max-width:none;
+  }
+
+  .pt-hero-new .lead{
+    max-width:520px;
+    margin-bottom:26px;
+  }
+
+  .pt-support h2{
+    max-width:650px;
+  }
+
+  .pt-support .support-strip{
+    width:min(560px,46vw);
+    margin:18px 0 20px;
+    padding:17px 0;
+  }
+
+  .pt-support .support-strip span{
+    font-size:10px;
+    padding:0 14px;
+  }
+
+  .pt-support .support-strip b{
+    font-size:12px;
+    margin-bottom:5px;
+  }
+
+  .pt-support .pt-small{
+    max-width:520px;
+    font-size:13px!important;
+    line-height:1.55!important;
+  }
+}
+
+
+@media(min-width:1024px){
+  .process-list small{font-size:11px}
+  .process-list em{font-size:12px}
+  .pt-plan-list small{font-size:11px}
+  .pt-plan-list em{font-size:12px}
+  .pt-note{font-size:12px!important}
+  .pt-support .support-strip span{font-size:11px}
+}
