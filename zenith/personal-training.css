@@ -86,3 +86,13 @@
     line-height:1.55!important;
   }
 }
+
+
+@media(min-width:1024px){
+  .process-list small{font-size:11px}
+  .process-list em{font-size:12px}
+  .pt-plan-list small{font-size:11px}
+  .pt-plan-list em{font-size:12px}
+  .pt-note{font-size:12px!important}
+  .pt-support .support-strip span{font-size:11px}
+}
