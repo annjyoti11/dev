@@ -19,3 +19,29 @@ const form=document.querySelector('#enquiry-form');const result=document.querySe
 form.addEventListener('submit',event=>{event.preventDefault();const data=new FormData(form);note.value=`Hello Zenith Global admissions team,\n\nMy name is ${data.get('name').trim()}. I would like to know more about ${data.get('interest')}.\n\n${data.get('questions').trim()||'Please share the relevant details, admission requirements and campus visit options.'}\n\nThank you.`;form.hidden=true;result.hidden=false;note.focus();});
 document.querySelector('#edit-note').addEventListener('click',()=>{result.hidden=true;form.hidden=false;document.querySelector('#parent-name').focus();});
 document.querySelector('#download-note').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([note.value],{type:'text/plain;charset=utf-8'}));const anchor=document.createElement('a');anchor.href=url;anchor.download='Zenith-Global-Enquiry.txt';document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+
+if(document.body.classList.contains('home-page')){
+  const header=document.querySelector('.header');
+  const spacer=document.createElement('div');
+  spacer.setAttribute('aria-hidden','true');
+  spacer.hidden=true;
+  header.before(spacer);
+  const desktop=window.matchMedia('(min-width:1001px)');
+  function updateScrollHeader(){
+    const compact=desktop.matches&&window.scrollY>120;
+    if(compact&&!header.classList.contains('is-compact')){
+      spacer.style.height=header.getBoundingClientRect().height+'px';
+      spacer.hidden=false;
+      header.classList.add('is-compact');
+    }else if(!compact){
+      header.classList.remove('is-compact');
+      spacer.hidden=true;
+    }
+  }
+  window.addEventListener('scroll',updateScrollHeader,{passive:true});
+  window.addEventListener('pageshow',updateScrollHeader);
+  window.addEventListener('resize',()=>{
+    header.classList.remove('is-compact');spacer.hidden=true;updateScrollHeader();
+  });
+  updateScrollHeader();
+}
