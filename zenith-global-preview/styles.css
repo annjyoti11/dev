@@ -25,3 +25,12 @@ html{scroll-padding-top:170px}.header-inner{flex-wrap:wrap;gap:0;min-height:0;pa
 .home-page .header.is-compact .brand strong{font-size:17px}
 .home-page .header.is-compact .brand small{font-size:6px}
 }
+
+.about-statement{align-items:start}.about-statement .prose p{font-size:18px;line-height:1.9}
+.president-layout{display:grid;grid-template-columns:.85fr 1.3fr;gap:80px;align-items:start}
+.president-intro h2{font-size:46px}.president-person{border-top:2px solid var(--green);margin-top:35px;padding-top:22px}
+.president-person strong,.president-person span{display:block}.president-person strong{font-size:20px}.president-person span{font-size:14px;color:var(--muted);margin-top:7px}
+.president-letter{padding:38px;background:var(--pale);border-radius:4px}.president-letter h3{font-size:26px;margin-bottom:28px}
+.president-signature{border-top:1px solid var(--line);padding-top:22px;font-size:15px;line-height:1.9;color:var(--navy)}
+@media(max-width:900px){.president-layout{gap:35px}.president-intro h2{font-size:37px}.president-letter{padding:28px}}
+@media(max-width:600px){.president-layout{grid-template-columns:1fr}.about-statement .prose p{font-size:16px}.president-letter{padding:25px}.president-person{margin-top:25px}}
