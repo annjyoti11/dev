@@ -1,0 +1,1 @@
+</main><footer><div><strong>ZENITH GLOBAL</strong><p>Knowledge. Character. Possibility.</p><small>&copy; <?php echo esc_html(wp_date('Y')); ?> Zenith Global Senior Secondary School</small></div></footer><?php wp_footer(); ?></body></html>

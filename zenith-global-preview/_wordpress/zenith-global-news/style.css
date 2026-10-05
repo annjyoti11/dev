@@ -1,0 +1,10 @@
+/*
+Theme Name: Zenith Global News
+Description: Lightweight school news theme using the WordPress core editor, with no page builder dependencies.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+Text Domain: zenith-global-news
+*/
+:root{--navy:#00265f;--green:#047f4e}*{box-sizing:border-box}body{margin:0;font:17px/1.7 Arial,sans-serif;color:var(--navy);background:#fff}a{color:var(--green);text-underline-offset:5px}img{max-width:100%;height:auto}header,main,footer>div{max-width:1160px;margin:auto;padding:32px 24px}.brand{font-size:24px;font-weight:700;text-decoration:none;color:var(--navy)}.brand small{display:block;font-size:11px;letter-spacing:2px}nav ul{display:flex;flex-wrap:wrap;gap:24px;list-style:none;padding:0}nav a{font-size:14px}h1,h2,h3{line-height:1.15;letter-spacing:-1px}h1{font-size:clamp(38px,6vw,68px)}h2{font-size:30px}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:12px;color:var(--green)}.intro{padding:25px 0 50px;border-bottom:1px solid #dbe5e8}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px;margin:48px 0}.card img{width:100%;aspect-ratio:16/10;object-fit:cover}.card h2 a{color:var(--navy);text-decoration:none}.meta{font-size:13px;color:#64737b}.entry{max-width:780px;margin:40px auto 70px;overflow-wrap:anywhere}.entry-content{color:#344653}.entry-content h2,.entry-content h3{color:var(--navy);margin-top:40px}.entry-content blockquote{border-left:3px solid var(--green);padding:10px 25px;margin:30px 0;background:#f0f7f5}.entry-content iframe{max-width:100%}.entry-content .alignwide{max-width:100%}footer{background:var(--navy);color:white;margin-top:70px}footer a{color:white}.skip-link{position:absolute;left:-9999px}.skip-link:focus{left:15px;top:15px;background:white;padding:12px}.pagination{margin:30px 0}.page-numbers{padding:8px}input,button{font:inherit;padding:10px;border:1px solid #b8c9cc}button{background:var(--green);color:white}input{max-width:100%}@media(max-width:640px){.grid{grid-template-columns:1fr;gap:32px}header,main,footer>div{padding:24px 20px}h2{font-size:27px}}

@@ -1,0 +1,1 @@
+<?php get_header(); ?><div class="entry"><p class="eyebrow">Page not found</p><h1>Let’s find your way back.</h1><p><a href="<?php echo esc_url(home_url('/')); ?>">Return to News</a></p><?php get_search_form(); ?></div><?php get_footer(); ?>

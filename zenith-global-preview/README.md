@@ -17,3 +17,7 @@ Standalone, responsive HTML/CSS/JavaScript preview, published by the repository'
 From the repository root: `python3 -m http.server 8080`, then visit `http://localhost:8080/zenith-global-preview/`.
 
 Only this folder is part of the school preview. Existing fitness pages and the separate `zenith-global-school` project are unchanged.
+
+## Multi-page preview and News
+
+The nine navigation destinations are separate HTML pages. Houses use the approved names, colours and mottos. News includes a labelled illustrative article. A lightweight WordPress theme and installation notes are in `_wordpress/`; this folder is excluded from GitHub Pages by its underscore prefix. WordPress hosting has not yet been connected.
