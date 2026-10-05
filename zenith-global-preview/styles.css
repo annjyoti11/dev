@@ -7,25 +7,6 @@ html{scroll-padding-top:170px}.header-inner{flex-wrap:wrap;gap:0;min-height:0;pa
 @media(max-width:1000px){html{scroll-padding-top:100px}.header-inner{padding:0;min-height:84px;flex-wrap:nowrap;gap:20px}.header .brand{margin-bottom:0}.header-cta{display:none}.header .menu-toggle{display:flex;margin-left:auto;gap:9px;padding:10px;background:var(--pale);font-size:13px;border-radius:3px}.header nav{display:none;position:absolute;top:84px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:white;padding:10px 5% 20px;max-height:calc(100dvh - 84px);overflow:auto;box-shadow:0 15px 25px #00265f15}.header nav.open{display:flex}.header nav>a{padding:12px 0;border-bottom:1px solid var(--line)}.header nav>a:after{display:none}.editorial-split,.stage-layout,.contact-grid{gap:40px}.four-grid{grid-template-columns:1fr 1fr}.house-ribbon{grid-template-columns:1fr 1fr}.house-card{padding:30px}.house-card h2{font-size:32px}.house-card blockquote{font-size:21px}.news-feature{gap:30px}.news-feature h2{font-size:33px}.stage-layout h2{font-size:34px}.stage-layout>img{height:320px}}
 @media(max-width:600px){.header-inner{min-height:78px}.header nav{top:78px;max-height:calc(100dvh - 78px)}.page-banner{padding:22px 0 42px}.page-banner h1{font-size:43px;letter-spacing:-1.7px}.page-banner p:last-child{font-size:17px}.breadcrumb{font-size:12px;margin-bottom:28px}.banner-crest{right:-35px;top:65px;width:165px}.editorial-split,.stage-layout,.faq-layout,.contact-grid,.news-feature{grid-template-columns:1fr;gap:30px}.prose p{font-size:16px}.four-grid{gap:25px}.four-grid h3{font-size:18px}.four-grid p{font-size:14px}.identity-crest{padding:35px}.identity-crest img{width:130px;height:auto}.page-jumps{gap:16px;font-size:13px}.stage-layout>img{height:240px}.stage-layout h2{font-size:33px}.content-note{margin-bottom:40px;padding:20px;font-size:13px}.house-grid{grid-template-columns:1fr;gap:24px}.house-card h2{font-size:36px}.house-top{margin-bottom:20px}.house-card blockquote{font-size:23px}.house-ribbon{gap:12px}.house-ribbon a{padding:20px 15px}.house-ribbon span{font-size:20px}.house-ribbon small{font-size:12px}.news-feature img{height:245px}.article-page h1{font-size:41px}.article-deck{font-size:18px}.article-cover{height:260px}.article-body p{font-size:16px}.article-body h2{font-size:27px}.article-body blockquote{font-size:25px;padding:18px 20px}.contact-card{padding:28px}.faq-list summary{font-size:16px}.house-card{scroll-margin-top:105px}}
 
-/* Homepage compact scroll header */
-@media(min-width:1001px){
-.home-page .header.is-compact{position:fixed;inset:0 0 auto;box-shadow:0 4px 20px #00265f12}
-.home-page .header.is-compact .header-inner{min-height:76px;padding-block:10px;flex-wrap:nowrap;gap:28px}
-.home-page .header.is-compact .header-cta{display:none}
-.home-page .header.is-compact nav{order:1;flex:1;width:auto;min-width:0;border:0;padding:0;gap:14px;font-size:13px}
-.home-page .header.is-compact nav>a{white-space:nowrap;padding:12px 0}
-.home-page .header.is-compact .brand{order:0;margin:0;gap:9px}
-.home-page .header.is-compact .brand img{width:35px;height:47px}
-.home-page .header.is-compact .brand strong{font-size:19px}
-.home-page .header.is-compact .brand small{font-size:7px;letter-spacing:1.35px}
-}
-@media(min-width:1001px) and (max-width:1150px){
-.home-page .header.is-compact .header-inner{gap:18px}
-.home-page .header.is-compact nav{font-size:11px;gap:10px}
-.home-page .header.is-compact .brand strong{font-size:17px}
-.home-page .header.is-compact .brand small{font-size:6px}
-}
-
 .about-statement{align-items:start}.about-statement .prose p{font-size:18px;line-height:1.9}
 .president-layout{display:grid;grid-template-columns:.85fr 1.3fr;gap:80px;align-items:start}
 .president-intro h2{font-size:46px}.president-person{border-top:2px solid var(--green);margin-top:35px;padding-top:22px}
@@ -34,3 +15,31 @@ html{scroll-padding-top:170px}.header-inner{flex-wrap:wrap;gap:0;min-height:0;pa
 .president-signature{border-top:1px solid var(--line);padding-top:22px;font-size:15px;line-height:1.9;color:var(--navy)}
 @media(max-width:900px){.president-layout{gap:35px}.president-intro h2{font-size:37px}.president-letter{padding:28px}}
 @media(max-width:600px){.president-layout{grid-template-columns:1fr}.about-statement .prose p{font-size:16px}.president-letter{padding:25px}.president-person{margin-top:25px}}
+
+/* Shared desktop header: stable page space, animated layout. */
+.header-spacer{display:none}
+@media(min-width:1001px){
+.header-scroll-ready .header-spacer{display:block;height:148px}
+.header-scroll-ready .header{position:fixed;top:var(--header-top,0px);left:0;right:0;height:148px;box-shadow:0 4px 20px #00265f08;transition:height .32s ease,box-shadow .32s ease}
+.header-scroll-ready .header-inner{position:relative;display:block;height:100%;min-height:0;padding:0}
+.header-scroll-ready .header .brand{position:absolute;left:0;top:15px;margin:0;gap:12px;transition:top .32s ease,gap .32s ease}
+.header-scroll-ready .header .brand img{width:48px;height:65px;transition:width .32s ease,height .32s ease}
+.header-scroll-ready .header .brand strong{font-size:25px;transition:font-size .32s ease}
+.header-scroll-ready .header .brand small{font-size:10px;letter-spacing:2.2px;transition:font-size .32s ease,letter-spacing .32s ease}
+.header-scroll-ready .header-cta{position:absolute;right:0;top:20px;margin:0;transition:opacity .18s ease,transform .25s ease,visibility .18s}
+.header-scroll-ready .header nav{position:absolute;top:92px;left:0;width:100%;border-top:1px solid var(--line);padding:0;gap:14px;transition:top .32s ease,left .32s ease,width .32s ease,font-size .32s ease,border-color .32s ease}
+.header-scroll-ready .header nav>a{white-space:nowrap;padding:15px 0}
+.header-scroll-ready .header.is-compact{height:76px;box-shadow:0 4px 20px #00265f15}
+.header-scroll-ready .header.is-compact .brand{top:14px;gap:9px}
+.header-scroll-ready .header.is-compact .brand img{width:35px;height:47px}
+.header-scroll-ready .header.is-compact .brand strong{font-size:19px}
+.header-scroll-ready .header.is-compact .brand small{font-size:7px;letter-spacing:1.35px}
+.header-scroll-ready .header.is-compact .header-cta{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px)}
+.header-scroll-ready .header.is-compact nav{top:12px;left:240px;width:calc(100% - 240px);font-size:13px;border-color:transparent}
+}
+@media(min-width:1001px) and (max-width:1150px){
+.header-scroll-ready .header.is-compact nav{left:210px;width:calc(100% - 210px);font-size:11px;gap:10px}
+.header-scroll-ready .header.is-compact .brand strong{font-size:17px}
+.header-scroll-ready .header.is-compact .brand small{font-size:6px}
+}
+@media(prefers-reduced-motion:reduce){.header-scroll-ready .header,.header-scroll-ready .header *{transition:none!important}}

@@ -20,28 +20,27 @@ form.addEventListener('submit',event=>{event.preventDefault();const data=new For
 document.querySelector('#edit-note').addEventListener('click',()=>{result.hidden=true;form.hidden=false;document.querySelector('#parent-name').focus();});
 document.querySelector('#download-note').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([note.value],{type:'text/plain;charset=utf-8'}));const anchor=document.createElement('a');anchor.href=url;anchor.download='Zenith-Global-Enquiry.txt';document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 
-if(document.body.classList.contains('home-page')){
+{
   const header=document.querySelector('.header');
+  const topline=document.querySelector('.topline');
   const spacer=document.createElement('div');
+  spacer.className='header-spacer';
   spacer.setAttribute('aria-hidden','true');
-  spacer.hidden=true;
   header.before(spacer);
+  document.body.classList.add('header-scroll-ready');
   const desktop=window.matchMedia('(min-width:1001px)');
+  let pending=false;
   function updateScrollHeader(){
-    const compact=desktop.matches&&window.scrollY>120;
-    if(compact&&!header.classList.contains('is-compact')){
-      spacer.style.height=header.getBoundingClientRect().height+'px';
-      spacer.hidden=false;
-      header.classList.add('is-compact');
-    }else if(!compact){
-      header.classList.remove('is-compact');
-      spacer.hidden=true;
-    }
+    pending=false;
+    const offset=topline?Math.max(0,topline.getBoundingClientRect().bottom):0;
+    header.style.setProperty('--header-top',offset+'px');
+    header.classList.toggle('is-compact',desktop.matches&&window.scrollY>120);
   }
-  window.addEventListener('scroll',updateScrollHeader,{passive:true});
+  function scheduleHeader(){
+    if(!pending){pending=true;requestAnimationFrame(updateScrollHeader);}
+  }
+  window.addEventListener('scroll',scheduleHeader,{passive:true});
   window.addEventListener('pageshow',updateScrollHeader);
-  window.addEventListener('resize',()=>{
-    header.classList.remove('is-compact');spacer.hidden=true;updateScrollHeader();
-  });
+  window.addEventListener('resize',scheduleHeader);
   updateScrollHeader();
 }
