@@ -67,7 +67,7 @@
 .nutrition-cta{padding:48px 0 56px;border-top:1px solid #202a33}
 .nutrition-cta>p:not(.eyebrow){margin:0}
 .nutrition-footer{padding:18px 0 0;border-top:1px solid #26313b;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.nutrition-footer img{width:112px;mix-blend-mode:screen;filter:brightness(1.2) contrast(1.08)}
+.nutrition-footer img{width:48px;height:36px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.2) contrast(1.08)}
 .nutrition-footer span{color:#78838d;font-size:9px;text-align:right}
 @media(min-width:640px){.nutrition-page{padding-left:40px;padding-right:40px}.nutrition-hero{padding-top:180px;min-height:500px}.form-grid{grid-template-columns:1fr 1fr}.activity-field{grid-column:1/-1}.target-grid{grid-template-columns:repeat(3,1fr)}.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.calorie-panel{padding:30px}.nutrition-cta{padding-top:62px;padding-bottom:68px}}
 @media(min-width:960px){.nutrition-page{padding-left:7vw;padding-right:7vw}.nutrition-hero{padding-top:190px}.food-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.food-card{padding:19px}.hero-copy,.section-heading>p:last-child,.nutrition-cta>p:not(.eyebrow){font-size:17px}}
