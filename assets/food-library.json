@@ -1,0 +1,3587 @@
+[
+  {
+    "name": "White Rice, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 130,
+    "protein": 2.7,
+    "carbs": 28.2,
+    "fat": 0.3,
+    "fibre": 0.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "rice",
+      "cooked rice",
+      "bhaat",
+      "carbohydrate"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 158,
+        "position": 1
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 2
+      },
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 200,
+        "position": 3
+      }
+    ]
+  },
+  {
+    "name": "White Rice, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 365,
+    "protein": 7.1,
+    "carbs": 80,
+    "fat": 0.7,
+    "fibre": 1.3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "rice",
+      "raw rice",
+      "carbohydrate"
+    ],
+    "portions": [
+      {
+        "label": "1 cup raw",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 185,
+        "position": 4
+      },
+      {
+        "label": "50 g raw",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 5
+      },
+      {
+        "label": "100 g raw",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 6
+      }
+    ]
+  },
+  {
+    "name": "Brown Rice, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 123,
+    "protein": 2.7,
+    "carbs": 25.6,
+    "fat": 1,
+    "fibre": 1.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "brown rice, cooked",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 195,
+        "position": 7
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 8
+      }
+    ]
+  },
+  {
+    "name": "Oats, Rolled Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 389,
+    "protein": 16.9,
+    "carbs": 66.3,
+    "fat": 6.9,
+    "fibre": 10.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "oats",
+      "rolled oats",
+      "breakfast"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 80,
+        "position": 9
+      },
+      {
+        "label": "1/2 cup",
+        "amount": 0.5,
+        "unit": "cup",
+        "grams": 40,
+        "position": 10
+      },
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 11
+      }
+    ]
+  },
+  {
+    "name": "Dalia, Broken Wheat Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 342,
+    "protein": 12,
+    "carbs": 71,
+    "fat": 1.5,
+    "fibre": 10,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "dalia",
+      "broken wheat",
+      "wheat"
+    ],
+    "portions": [
+      {
+        "label": "1/2 cup dry",
+        "amount": 0.5,
+        "unit": "cup",
+        "grams": 50,
+        "position": 12
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 13
+      }
+    ]
+  },
+  {
+    "name": "Dalia, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 83,
+    "protein": 3.1,
+    "carbs": 18,
+    "fat": 0.4,
+    "fibre": 3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "dalia, cooked",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 250,
+        "position": 14
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 180,
+        "position": 15
+      }
+    ]
+  },
+  {
+    "name": "Whole Wheat Atta",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 340,
+    "protein": 13.2,
+    "carbs": 72,
+    "fat": 2.5,
+    "fibre": 10.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "whole wheat atta",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 roti flour",
+        "amount": 30,
+        "unit": "g",
+        "grams": 30,
+        "position": 16
+      },
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 17
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 18
+      }
+    ]
+  },
+  {
+    "name": "Roti, Whole Wheat",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Grains",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 297,
+    "protein": 9.6,
+    "carbs": 55.8,
+    "fat": 4,
+    "fibre": 8.3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "roti, whole wheat",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 medium roti",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 40,
+        "position": 19
+      },
+      {
+        "label": "2 medium roti",
+        "amount": 2,
+        "unit": "piece",
+        "grams": 80,
+        "position": 20
+      }
+    ]
+  },
+  {
+    "name": "Poha, Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 350,
+    "protein": 6.7,
+    "carbs": 77,
+    "fat": 1,
+    "fibre": 2.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "poha, dry",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 cup dry",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 75,
+        "position": 21
+      },
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 22
+      }
+    ]
+  },
+  {
+    "name": "Suji, Semolina Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 360,
+    "protein": 12.7,
+    "carbs": 72.8,
+    "fat": 1.1,
+    "fibre": 3.9,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "suji, semolina dry",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1/2 cup",
+        "amount": 0.5,
+        "unit": "cup",
+        "grams": 83,
+        "position": 23
+      },
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 24
+      }
+    ]
+  },
+  {
+    "name": "Quinoa, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 120,
+    "protein": 4.4,
+    "carbs": 21.3,
+    "fat": 1.9,
+    "fibre": 2.8,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "quinoa, cooked",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 185,
+        "position": 25
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 26
+      }
+    ]
+  },
+  {
+    "name": "Bread, Whole Wheat",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Grains",
+    "foodType": "processed",
+    "diet": "vegetarian",
+    "calories": 247,
+    "protein": 13,
+    "carbs": 41,
+    "fat": 4.2,
+    "fibre": 6.8,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "bread, whole wheat",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 slice",
+        "amount": 1,
+        "unit": "slice",
+        "grams": 28,
+        "position": 27
+      },
+      {
+        "label": "2 slices",
+        "amount": 2,
+        "unit": "slice",
+        "grams": 56,
+        "position": 28
+      }
+    ]
+  },
+  {
+    "name": "Bread, White",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Grains",
+    "foodType": "processed",
+    "diet": "vegetarian",
+    "calories": 266,
+    "protein": 8.9,
+    "carbs": 49.4,
+    "fat": 3.3,
+    "fibre": 2.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "bread, white",
+      "grains"
+    ],
+    "portions": [
+      {
+        "label": "1 slice",
+        "amount": 1,
+        "unit": "slice",
+        "grams": 25,
+        "position": 29
+      },
+      {
+        "label": "2 slices",
+        "amount": 2,
+        "unit": "slice",
+        "grams": 50,
+        "position": 30
+      }
+    ]
+  },
+  {
+    "name": "Masoor Dal, Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 352,
+    "protein": 24.6,
+    "carbs": 63.4,
+    "fat": 1.1,
+    "fibre": 10.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "masoor dal, dry",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "50 g dry",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 31
+      },
+      {
+        "label": "100 g dry",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 32
+      }
+    ]
+  },
+  {
+    "name": "Masoor Dal, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 116,
+    "protein": 9,
+    "carbs": 20.1,
+    "fat": 0.4,
+    "fibre": 7.9,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "masoor dal, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 198,
+        "position": 33
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 34
+      }
+    ]
+  },
+  {
+    "name": "Moong Dal, Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 347,
+    "protein": 24,
+    "carbs": 63,
+    "fat": 1.2,
+    "fibre": 16,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "moong dal, dry",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "50 g dry",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 35
+      },
+      {
+        "label": "100 g dry",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 36
+      }
+    ]
+  },
+  {
+    "name": "Moong Dal, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 105,
+    "protein": 7,
+    "carbs": 19,
+    "fat": 0.4,
+    "fibre": 7.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "moong dal, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 37
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 38
+      }
+    ]
+  },
+  {
+    "name": "Toor Dal, Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 343,
+    "protein": 22.9,
+    "carbs": 62.8,
+    "fat": 1.7,
+    "fibre": 15,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "toor dal, dry",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "50 g dry",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 39
+      },
+      {
+        "label": "100 g dry",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 40
+      }
+    ]
+  },
+  {
+    "name": "Toor Dal, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 121,
+    "protein": 6.8,
+    "carbs": 22,
+    "fat": 0.4,
+    "fibre": 6.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "toor dal, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 41
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 42
+      }
+    ]
+  },
+  {
+    "name": "Chana Dal, Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 364,
+    "protein": 20.5,
+    "carbs": 60.8,
+    "fat": 5.6,
+    "fibre": 12.2,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chana dal, dry",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "50 g dry",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 43
+      },
+      {
+        "label": "100 g dry",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 44
+      }
+    ]
+  },
+  {
+    "name": "Chickpeas, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 164,
+    "protein": 8.9,
+    "carbs": 27.4,
+    "fat": 2.6,
+    "fibre": 7.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chickpeas, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 164,
+        "position": 45
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 46
+      }
+    ]
+  },
+  {
+    "name": "Black Chickpeas, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 164,
+    "protein": 8.9,
+    "carbs": 27,
+    "fat": 2.6,
+    "fibre": 7.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "black chickpeas, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 165,
+        "position": 47
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 48
+      }
+    ]
+  },
+  {
+    "name": "Kidney Beans, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 127,
+    "protein": 8.7,
+    "carbs": 22.8,
+    "fat": 0.5,
+    "fibre": 6.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "kidney beans, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 177,
+        "position": 49
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 50
+      }
+    ]
+  },
+  {
+    "name": "Black Gram Dal, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 116,
+    "protein": 8,
+    "carbs": 20,
+    "fat": 0.5,
+    "fibre": 7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "black gram dal, cooked",
+      "pulses"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 51
+      },
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 52
+      }
+    ]
+  },
+  {
+    "name": "Green Peas, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 84,
+    "protein": 5.4,
+    "carbs": 15.6,
+    "fat": 0.2,
+    "fibre": 5.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "green peas, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 160,
+        "position": 53
+      },
+      {
+        "label": "1/2 cup",
+        "amount": 0.5,
+        "unit": "cup",
+        "grams": 80,
+        "position": 54
+      }
+    ]
+  },
+  {
+    "name": "Milk, Toned",
+    "commonName": null,
+    "state": "ready_to_drink",
+    "category": "Dairy",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 60,
+    "protein": 3.2,
+    "carbs": 4.8,
+    "fat": 3,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "milk",
+      "toned milk",
+      "dairy"
+    ],
+    "portions": [
+      {
+        "label": "1 glass",
+        "amount": 1,
+        "unit": "glass",
+        "grams": 250,
+        "position": 55
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 240,
+        "position": 56
+      }
+    ]
+  },
+  {
+    "name": "Milk, Skim",
+    "commonName": null,
+    "state": "ready_to_drink",
+    "category": "Dairy",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 35,
+    "protein": 3.4,
+    "carbs": 5,
+    "fat": 0.1,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "milk, skim",
+      "dairy"
+    ],
+    "portions": [
+      {
+        "label": "1 glass",
+        "amount": 1,
+        "unit": "glass",
+        "grams": 250,
+        "position": 57
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 240,
+        "position": 58
+      }
+    ]
+  },
+  {
+    "name": "Curd, Plain",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Dairy",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 61,
+    "protein": 3.5,
+    "carbs": 4.7,
+    "fat": 3.3,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "curd",
+      "dahi",
+      "yogurt"
+    ],
+    "portions": [
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 59
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 245,
+        "position": 60
+      }
+    ]
+  },
+  {
+    "name": "Greek Yogurt, Plain Low Fat",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Dairy",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 73,
+    "protein": 9.9,
+    "carbs": 3.9,
+    "fat": 1.9,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "greek yogurt, plain low fat",
+      "dairy"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 61
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 62
+      }
+    ]
+  },
+  {
+    "name": "Paneer, Regular",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Dairy",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 265,
+    "protein": 18.3,
+    "carbs": 1.2,
+    "fat": 20.8,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "paneer, regular",
+      "dairy"
+    ],
+    "portions": [
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 63
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 64
+      }
+    ]
+  },
+  {
+    "name": "Paneer, Low Fat",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Dairy",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 160,
+    "protein": 20,
+    "carbs": 4,
+    "fat": 7,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "paneer, low fat",
+      "dairy"
+    ],
+    "portions": [
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 65
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 66
+      }
+    ]
+  },
+  {
+    "name": "Egg, Whole Boiled",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Eggs",
+    "foodType": "whole_food",
+    "diet": "eggetarian",
+    "calories": 155,
+    "protein": 12.6,
+    "carbs": 1.1,
+    "fat": 10.6,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "egg"
+    ],
+    "searchTags": [
+      "egg",
+      "boiled egg",
+      "whole egg"
+    ],
+    "portions": [
+      {
+        "label": "1 large egg",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 50,
+        "position": 67
+      },
+      {
+        "label": "2 large eggs",
+        "amount": 2,
+        "unit": "piece",
+        "grams": 100,
+        "position": 68
+      }
+    ]
+  },
+  {
+    "name": "Egg White, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Eggs",
+    "foodType": "whole_food",
+    "diet": "eggetarian",
+    "calories": 52,
+    "protein": 10.9,
+    "carbs": 0.7,
+    "fat": 0.2,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "egg"
+    ],
+    "searchTags": [
+      "egg white, cooked",
+      "eggs"
+    ],
+    "portions": [
+      {
+        "label": "1 egg white",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 33,
+        "position": 69
+      },
+      {
+        "label": "4 egg whites",
+        "amount": 4,
+        "unit": "piece",
+        "grams": 132,
+        "position": 70
+      }
+    ]
+  },
+  {
+    "name": "Cheddar Cheese",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Dairy",
+    "foodType": "processed",
+    "diet": "vegetarian",
+    "calories": 403,
+    "protein": 24.9,
+    "carbs": 1.3,
+    "fat": 33.1,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "cheddar cheese",
+      "dairy"
+    ],
+    "portions": [
+      {
+        "label": "1 slice",
+        "amount": 1,
+        "unit": "slice",
+        "grams": 20,
+        "position": 71
+      },
+      {
+        "label": "30 g",
+        "amount": 30,
+        "unit": "g",
+        "grams": 30,
+        "position": 72
+      }
+    ]
+  },
+  {
+    "name": "Chicken Breast, Cooked Skinless",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Meat",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 165,
+    "protein": 31,
+    "carbs": 0,
+    "fat": 3.6,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chicken breast",
+      "chicken",
+      "lean protein"
+    ],
+    "portions": [
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 73
+      },
+      {
+        "label": "150 g",
+        "amount": 150,
+        "unit": "g",
+        "grams": 150,
+        "position": 74
+      },
+      {
+        "label": "200 g",
+        "amount": 200,
+        "unit": "g",
+        "grams": 200,
+        "position": 75
+      }
+    ]
+  },
+  {
+    "name": "Chicken Breast, Raw Skinless",
+    "commonName": null,
+    "state": "raw",
+    "category": "Meat",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 120,
+    "protein": 22.5,
+    "carbs": 0,
+    "fat": 2.6,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chicken breast, raw skinless",
+      "meat"
+    ],
+    "portions": [
+      {
+        "label": "100 g raw",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 76
+      },
+      {
+        "label": "200 g raw",
+        "amount": 200,
+        "unit": "g",
+        "grams": 200,
+        "position": 77
+      }
+    ]
+  },
+  {
+    "name": "Chicken Thigh, Cooked Skinless",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Meat",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 209,
+    "protein": 26,
+    "carbs": 0,
+    "fat": 10.9,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chicken thigh, cooked skinless",
+      "meat"
+    ],
+    "portions": [
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 78
+      },
+      {
+        "label": "150 g",
+        "amount": 150,
+        "unit": "g",
+        "grams": 150,
+        "position": 79
+      }
+    ]
+  },
+  {
+    "name": "Mutton, Cooked Lean",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Meat",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 258,
+    "protein": 25.6,
+    "carbs": 0,
+    "fat": 16.5,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "mutton, cooked lean",
+      "meat"
+    ],
+    "portions": [
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 80
+      },
+      {
+        "label": "150 g",
+        "amount": 150,
+        "unit": "g",
+        "grams": 150,
+        "position": 81
+      }
+    ]
+  },
+  {
+    "name": "Rohu Fish, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Fish",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 160,
+    "protein": 23,
+    "carbs": 0,
+    "fat": 7,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "fish"
+    ],
+    "searchTags": [
+      "rohu",
+      "fish",
+      "protein"
+    ],
+    "portions": [
+      {
+        "label": "1 piece",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 80,
+        "position": 82
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 83
+      }
+    ]
+  },
+  {
+    "name": "Katla Fish, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Fish",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 170,
+    "protein": 22,
+    "carbs": 0,
+    "fat": 8.5,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "fish"
+    ],
+    "searchTags": [
+      "katla fish, cooked",
+      "fish"
+    ],
+    "portions": [
+      {
+        "label": "1 piece",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 80,
+        "position": 84
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 85
+      }
+    ]
+  },
+  {
+    "name": "Salmon, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Fish",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 206,
+    "protein": 22.1,
+    "carbs": 0,
+    "fat": 12.4,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "fish"
+    ],
+    "searchTags": [
+      "salmon, cooked",
+      "fish"
+    ],
+    "portions": [
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 86
+      },
+      {
+        "label": "150 g",
+        "amount": 150,
+        "unit": "g",
+        "grams": 150,
+        "position": 87
+      }
+    ]
+  },
+  {
+    "name": "Tuna, Canned in Water Drained",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Fish",
+    "foodType": "processed",
+    "diet": "non_vegetarian",
+    "calories": 116,
+    "protein": 25.5,
+    "carbs": 0,
+    "fat": 0.8,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "fish"
+    ],
+    "searchTags": [
+      "tuna, canned in water drained",
+      "fish"
+    ],
+    "portions": [
+      {
+        "label": "1 can drained",
+        "amount": 1,
+        "unit": "can",
+        "grams": 120,
+        "position": 88
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 89
+      }
+    ]
+  },
+  {
+    "name": "Prawns, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Seafood",
+    "foodType": "whole_food",
+    "diet": "non_vegetarian",
+    "calories": 99,
+    "protein": 24,
+    "carbs": 0.2,
+    "fat": 0.3,
+    "fibre": 0,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "shellfish"
+    ],
+    "searchTags": [
+      "prawns, cooked",
+      "seafood"
+    ],
+    "portions": [
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 90
+      },
+      {
+        "label": "150 g",
+        "amount": 150,
+        "unit": "g",
+        "grams": 150,
+        "position": 91
+      }
+    ]
+  },
+  {
+    "name": "Whey Protein Concentrate, Generic",
+    "commonName": null,
+    "state": "powder",
+    "category": "Supplements",
+    "foodType": "supplement",
+    "diet": "vegetarian",
+    "calories": 400,
+    "protein": 80,
+    "carbs": 8,
+    "fat": 6,
+    "fibre": 1,
+    "servingUnit": "scoop",
+    "servingGrams": 30,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "whey",
+      "protein powder",
+      "supplement"
+    ],
+    "portions": [
+      {
+        "label": "1 scoop",
+        "amount": 1,
+        "unit": "scoop",
+        "grams": 30,
+        "position": 92
+      },
+      {
+        "label": "2 scoops",
+        "amount": 2,
+        "unit": "scoop",
+        "grams": 60,
+        "position": 93
+      }
+    ]
+  },
+  {
+    "name": "Whey Protein Isolate, Generic",
+    "commonName": null,
+    "state": "powder",
+    "category": "Supplements",
+    "foodType": "supplement",
+    "diet": "vegetarian",
+    "calories": 370,
+    "protein": 88,
+    "carbs": 3,
+    "fat": 2,
+    "fibre": 0,
+    "servingUnit": "scoop",
+    "servingGrams": 30,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "whey isolate",
+      "protein powder"
+    ],
+    "portions": [
+      {
+        "label": "1 scoop",
+        "amount": 1,
+        "unit": "scoop",
+        "grams": 30,
+        "position": 94
+      },
+      {
+        "label": "2 scoops",
+        "amount": 2,
+        "unit": "scoop",
+        "grams": 60,
+        "position": 95
+      }
+    ]
+  },
+  {
+    "name": "Peanuts, Roasted Unsalted",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 585,
+    "protein": 24.4,
+    "carbs": 21.5,
+    "fat": 49.7,
+    "fibre": 8.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "peanut"
+    ],
+    "searchTags": [
+      "peanuts, roasted unsalted",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "1 handful",
+        "amount": 1,
+        "unit": "handful",
+        "grams": 28,
+        "position": 96
+      },
+      {
+        "label": "30 g",
+        "amount": 30,
+        "unit": "g",
+        "grams": 30,
+        "position": 97
+      }
+    ]
+  },
+  {
+    "name": "Peanut Butter, Unsweetened",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "processed",
+    "diet": "vegan",
+    "calories": 588,
+    "protein": 25,
+    "carbs": 20,
+    "fat": 50,
+    "fibre": 6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "peanut"
+    ],
+    "searchTags": [
+      "peanut butter, unsweetened",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 16,
+        "position": 98
+      },
+      {
+        "label": "2 tbsp",
+        "amount": 2,
+        "unit": "tbsp",
+        "grams": 32,
+        "position": 99
+      }
+    ]
+  },
+  {
+    "name": "Almonds",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 579,
+    "protein": 21.2,
+    "carbs": 21.6,
+    "fat": 49.9,
+    "fibre": 12.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "tree_nuts"
+    ],
+    "searchTags": [
+      "almonds",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "10 almonds",
+        "amount": 10,
+        "unit": "piece",
+        "grams": 12,
+        "position": 100
+      },
+      {
+        "label": "1 handful",
+        "amount": 1,
+        "unit": "handful",
+        "grams": 28,
+        "position": 101
+      }
+    ]
+  },
+  {
+    "name": "Walnuts",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 654,
+    "protein": 15.2,
+    "carbs": 13.7,
+    "fat": 65.2,
+    "fibre": 6.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "tree_nuts"
+    ],
+    "searchTags": [
+      "walnuts",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "4 halves",
+        "amount": 4,
+        "unit": "half",
+        "grams": 10,
+        "position": 102
+      },
+      {
+        "label": "1 handful",
+        "amount": 1,
+        "unit": "handful",
+        "grams": 28,
+        "position": 103
+      }
+    ]
+  },
+  {
+    "name": "Cashews",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 553,
+    "protein": 18.2,
+    "carbs": 30.2,
+    "fat": 43.9,
+    "fibre": 3.3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "tree_nuts"
+    ],
+    "searchTags": [
+      "cashews",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "10 cashews",
+        "amount": 10,
+        "unit": "piece",
+        "grams": 15,
+        "position": 104
+      },
+      {
+        "label": "1 handful",
+        "amount": 1,
+        "unit": "handful",
+        "grams": 28,
+        "position": 105
+      }
+    ]
+  },
+  {
+    "name": "Chia Seeds",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 486,
+    "protein": 16.5,
+    "carbs": 42.1,
+    "fat": 30.7,
+    "fibre": 34.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chia seeds",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 12,
+        "position": 106
+      },
+      {
+        "label": "2 tbsp",
+        "amount": 2,
+        "unit": "tbsp",
+        "grams": 24,
+        "position": 107
+      }
+    ]
+  },
+  {
+    "name": "Flax Seeds",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 534,
+    "protein": 18.3,
+    "carbs": 28.9,
+    "fat": 42.2,
+    "fibre": 27.3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "flax seeds",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 10,
+        "position": 108
+      },
+      {
+        "label": "2 tbsp",
+        "amount": 2,
+        "unit": "tbsp",
+        "grams": 20,
+        "position": 109
+      }
+    ]
+  },
+  {
+    "name": "Pumpkin Seeds",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Nuts & Seeds",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 559,
+    "protein": 30.2,
+    "carbs": 10.7,
+    "fat": 49.1,
+    "fibre": 6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "pumpkin seeds",
+      "nuts & seeds"
+    ],
+    "portions": [
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 10,
+        "position": 110
+      },
+      {
+        "label": "1 handful",
+        "amount": 1,
+        "unit": "handful",
+        "grams": 28,
+        "position": 111
+      }
+    ]
+  },
+  {
+    "name": "Mustard Oil",
+    "commonName": null,
+    "state": "liquid",
+    "category": "Fats & Oils",
+    "foodType": "oil",
+    "diet": "vegan",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "fibre": 0,
+    "servingUnit": "tbsp",
+    "servingGrams": 14,
+    "allergens": [],
+    "searchTags": [
+      "mustard oil",
+      "fats & oils"
+    ],
+    "portions": [
+      {
+        "label": "1 tsp",
+        "amount": 1,
+        "unit": "tsp",
+        "grams": 4.5,
+        "position": 112
+      },
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 14,
+        "position": 113
+      }
+    ]
+  },
+  {
+    "name": "Olive Oil",
+    "commonName": null,
+    "state": "liquid",
+    "category": "Fats & Oils",
+    "foodType": "oil",
+    "diet": "vegan",
+    "calories": 884,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "fibre": 0,
+    "servingUnit": "tbsp",
+    "servingGrams": 14,
+    "allergens": [],
+    "searchTags": [
+      "olive oil",
+      "fats & oils"
+    ],
+    "portions": [
+      {
+        "label": "1 tsp",
+        "amount": 1,
+        "unit": "tsp",
+        "grams": 4.5,
+        "position": 114
+      },
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 14,
+        "position": 115
+      }
+    ]
+  },
+  {
+    "name": "Ghee",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Fats & Oils",
+    "foodType": "fat",
+    "diet": "vegetarian",
+    "calories": 900,
+    "protein": 0,
+    "carbs": 0,
+    "fat": 100,
+    "fibre": 0,
+    "servingUnit": "tsp",
+    "servingGrams": 5,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "ghee",
+      "fats & oils"
+    ],
+    "portions": [
+      {
+        "label": "1 tsp",
+        "amount": 1,
+        "unit": "tsp",
+        "grams": 5,
+        "position": 116
+      },
+      {
+        "label": "1 tbsp",
+        "amount": 1,
+        "unit": "tbsp",
+        "grams": 14,
+        "position": 117
+      }
+    ]
+  },
+  {
+    "name": "Potato, Boiled",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 87,
+    "protein": 1.9,
+    "carbs": 20.1,
+    "fat": 0.1,
+    "fibre": 1.8,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "potato, boiled",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 118
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 119
+      }
+    ]
+  },
+  {
+    "name": "Sweet Potato, Boiled",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 76,
+    "protein": 1.4,
+    "carbs": 17.7,
+    "fat": 0.1,
+    "fibre": 2.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "sweet potato, boiled",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 120
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 121
+      }
+    ]
+  },
+  {
+    "name": "Broccoli, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 35,
+    "protein": 2.4,
+    "carbs": 7.2,
+    "fat": 0.4,
+    "fibre": 3.3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "broccoli, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 122
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 123
+      }
+    ]
+  },
+  {
+    "name": "Cauliflower, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 23,
+    "protein": 1.8,
+    "carbs": 4.1,
+    "fat": 0.5,
+    "fibre": 2.3,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "cauliflower, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 124
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 125
+      }
+    ]
+  },
+  {
+    "name": "Carrot, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 41,
+    "protein": 0.9,
+    "carbs": 9.6,
+    "fat": 0.2,
+    "fibre": 2.8,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "carrot, raw",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 126
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 127
+      }
+    ]
+  },
+  {
+    "name": "Cucumber, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 15,
+    "protein": 0.7,
+    "carbs": 3.6,
+    "fat": 0.1,
+    "fibre": 0.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "cucumber, raw",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 128
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 129
+      }
+    ]
+  },
+  {
+    "name": "Tomato, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 18,
+    "protein": 0.9,
+    "carbs": 3.9,
+    "fat": 0.2,
+    "fibre": 1.2,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "tomato, raw",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 130
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 131
+      }
+    ]
+  },
+  {
+    "name": "Onion, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 40,
+    "protein": 1.1,
+    "carbs": 9.3,
+    "fat": 0.1,
+    "fibre": 1.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "onion, raw",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 132
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 133
+      }
+    ]
+  },
+  {
+    "name": "Spinach, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 23,
+    "protein": 3,
+    "carbs": 3.8,
+    "fat": 0.3,
+    "fibre": 2.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "spinach, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 134
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 135
+      }
+    ]
+  },
+  {
+    "name": "Bottle Gourd, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 15,
+    "protein": 0.6,
+    "carbs": 3.7,
+    "fat": 0.1,
+    "fibre": 1.2,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "bottle gourd, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 136
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 137
+      }
+    ]
+  },
+  {
+    "name": "Ridge Gourd, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 20,
+    "protein": 0.7,
+    "carbs": 4.4,
+    "fat": 0.2,
+    "fibre": 1.1,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "ridge gourd, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 138
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 139
+      }
+    ]
+  },
+  {
+    "name": "Okra, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 33,
+    "protein": 1.9,
+    "carbs": 7.5,
+    "fat": 0.2,
+    "fibre": 3.2,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "okra, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 140
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 141
+      }
+    ]
+  },
+  {
+    "name": "Cabbage, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 23,
+    "protein": 1.3,
+    "carbs": 5.5,
+    "fat": 0.1,
+    "fibre": 1.9,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "cabbage, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 142
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 143
+      }
+    ]
+  },
+  {
+    "name": "Pumpkin, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 26,
+    "protein": 1,
+    "carbs": 6.5,
+    "fat": 0.1,
+    "fibre": 0.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "pumpkin, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 144
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 145
+      }
+    ]
+  },
+  {
+    "name": "Green Beans, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Vegetables",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 35,
+    "protein": 1.9,
+    "carbs": 7.9,
+    "fat": 0.3,
+    "fibre": 3.2,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "green beans, cooked",
+      "vegetables"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 120,
+        "position": 146
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 147
+      }
+    ]
+  },
+  {
+    "name": "Banana, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 89,
+    "protein": 1.1,
+    "carbs": 22.8,
+    "fat": 0.3,
+    "fibre": 2.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "banana, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 118,
+        "position": 148
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 149
+      }
+    ]
+  },
+  {
+    "name": "Apple, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 52,
+    "protein": 0.3,
+    "carbs": 13.8,
+    "fat": 0.2,
+    "fibre": 2.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "apple, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 182,
+        "position": 150
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 151
+      }
+    ]
+  },
+  {
+    "name": "Orange, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 47,
+    "protein": 0.9,
+    "carbs": 11.8,
+    "fat": 0.1,
+    "fibre": 2.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "orange, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 131,
+        "position": 152
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 153
+      }
+    ]
+  },
+  {
+    "name": "Papaya, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 43,
+    "protein": 0.5,
+    "carbs": 10.8,
+    "fat": 0.3,
+    "fibre": 1.7,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "papaya, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 145,
+        "position": 154
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 155
+      }
+    ]
+  },
+  {
+    "name": "Guava, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 68,
+    "protein": 2.6,
+    "carbs": 14.3,
+    "fat": 1,
+    "fibre": 5.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "guava, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 55,
+        "position": 156
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 157
+      }
+    ]
+  },
+  {
+    "name": "Pineapple, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 50,
+    "protein": 0.5,
+    "carbs": 13.1,
+    "fat": 0.1,
+    "fibre": 1.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "pineapple, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 165,
+        "position": 158
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 159
+      }
+    ]
+  },
+  {
+    "name": "Watermelon, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 30,
+    "protein": 0.6,
+    "carbs": 7.6,
+    "fat": 0.2,
+    "fibre": 0.4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "watermelon, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 152,
+        "position": 160
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 161
+      }
+    ]
+  },
+  {
+    "name": "Mango, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 60,
+    "protein": 0.8,
+    "carbs": 15,
+    "fat": 0.4,
+    "fibre": 1.6,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "mango, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 165,
+        "position": 162
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 163
+      }
+    ]
+  },
+  {
+    "name": "Grapes, Raw",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 69,
+    "protein": 0.7,
+    "carbs": 18.1,
+    "fat": 0.2,
+    "fibre": 0.9,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "grapes, raw",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 151,
+        "position": 164
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 165
+      }
+    ]
+  },
+  {
+    "name": "Pomegranate Arils",
+    "commonName": null,
+    "state": "raw",
+    "category": "Fruits",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 83,
+    "protein": 1.7,
+    "carbs": 18.7,
+    "fat": 1.2,
+    "fibre": 4,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "pomegranate arils",
+      "fruits"
+    ],
+    "portions": [
+      {
+        "label": "1 serving",
+        "amount": 1,
+        "unit": "serving",
+        "grams": 174,
+        "position": 166
+      },
+      {
+        "label": "100 g",
+        "amount": 100,
+        "unit": "g",
+        "grams": 100,
+        "position": 167
+      }
+    ]
+  },
+  {
+    "name": "Dal, Home-Style Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 110,
+    "protein": 6.5,
+    "carbs": 16,
+    "fat": 2.5,
+    "fibre": 4.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "dal, home-style cooked",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 168
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 169
+      }
+    ]
+  },
+  {
+    "name": "Khichdi, Rice and Dal",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 120,
+    "protein": 4.5,
+    "carbs": 21,
+    "fat": 2,
+    "fibre": 2.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "khichdi, rice and dal",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 300,
+        "position": 170
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 171
+      }
+    ]
+  },
+  {
+    "name": "Vegetable Upma",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 130,
+    "protein": 3.5,
+    "carbs": 22,
+    "fat": 3.5,
+    "fibre": 2.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "gluten"
+    ],
+    "searchTags": [
+      "vegetable upma",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 250,
+        "position": 172
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 180,
+        "position": 173
+      }
+    ]
+  },
+  {
+    "name": "Poha, Vegetable Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 130,
+    "protein": 3,
+    "carbs": 24,
+    "fat": 2.8,
+    "fibre": 2,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "poha, vegetable cooked",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 250,
+        "position": 174
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 180,
+        "position": 175
+      }
+    ]
+  },
+  {
+    "name": "Idli, Plain",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 146,
+    "protein": 4.5,
+    "carbs": 30,
+    "fat": 0.7,
+    "fibre": 1.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "idli, plain",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 idli",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 50,
+        "position": 176
+      },
+      {
+        "label": "2 idli",
+        "amount": 2,
+        "unit": "piece",
+        "grams": 100,
+        "position": 177
+      }
+    ]
+  },
+  {
+    "name": "Dosa, Plain",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 168,
+    "protein": 4,
+    "carbs": 29,
+    "fat": 4,
+    "fibre": 1.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "dosa, plain",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 medium dosa",
+        "amount": 1,
+        "unit": "piece",
+        "grams": 100,
+        "position": 178
+      }
+    ]
+  },
+  {
+    "name": "Chicken Curry, Home-Style",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "non_vegetarian",
+    "calories": 180,
+    "protein": 18,
+    "carbs": 4,
+    "fat": 10,
+    "fibre": 1,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chicken curry, home-style",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 180,
+        "position": 179
+      },
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 250,
+        "position": 180
+      }
+    ]
+  },
+  {
+    "name": "Fish Curry, Home-Style",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "non_vegetarian",
+    "calories": 150,
+    "protein": 15,
+    "carbs": 4,
+    "fat": 8,
+    "fibre": 1,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [
+      "fish"
+    ],
+    "searchTags": [
+      "fish curry, home-style",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 180,
+        "position": 181
+      },
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 250,
+        "position": 182
+      }
+    ]
+  },
+  {
+    "name": "Mixed Vegetable Curry, Home-Style",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegetarian",
+    "calories": 90,
+    "protein": 3,
+    "carbs": 12,
+    "fat": 3.5,
+    "fibre": 3.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "mixed vegetable curry, home-style",
+      "prepared meals"
+    ],
+    "portions": [
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 183
+      },
+      {
+        "label": "1 bowl",
+        "amount": 1,
+        "unit": "bowl",
+        "grams": 250,
+        "position": 184
+      }
+    ]
+  },
+  {
+    "name": "Assamese Black Dal, Cooked",
+    "commonName": null,
+    "state": "cooked",
+    "category": "Prepared Meals",
+    "foodType": "prepared",
+    "diet": "vegan",
+    "calories": 120,
+    "protein": 7.5,
+    "carbs": 20,
+    "fat": 1.5,
+    "fibre": 6.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "black dal",
+      "mati dal",
+      "assamese dal"
+    ],
+    "portions": [
+      {
+        "label": "1 katori",
+        "amount": 1,
+        "unit": "katori",
+        "grams": 150,
+        "position": 185
+      },
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 200,
+        "position": 186
+      }
+    ]
+  },
+  {
+    "name": "Chira, Flattened Rice Dry",
+    "commonName": null,
+    "state": "raw",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegetarian",
+    "calories": 350,
+    "protein": 6.7,
+    "carbs": 77,
+    "fat": 1,
+    "fibre": 2.5,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "chira",
+      "flattened rice",
+      "poha"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 75,
+        "position": 187
+      },
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 188
+      }
+    ]
+  },
+  {
+    "name": "Puffed Rice, Muri",
+    "commonName": null,
+    "state": "ready_to_eat",
+    "category": "Grains",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 402,
+    "protein": 6,
+    "carbs": 90,
+    "fat": 0.5,
+    "fibre": 1,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "muri",
+      "puffed rice"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 14,
+        "position": 189
+      },
+      {
+        "label": "3 cups",
+        "amount": 3,
+        "unit": "cup",
+        "grams": 42,
+        "position": 190
+      }
+    ]
+  },
+  {
+    "name": "Sattu, Roasted Gram Flour",
+    "commonName": null,
+    "state": "powder",
+    "category": "Pulses",
+    "foodType": "whole_food",
+    "diet": "vegan",
+    "calories": 400,
+    "protein": 22,
+    "carbs": 64,
+    "fat": 7,
+    "fibre": 15,
+    "servingUnit": "g",
+    "servingGrams": 100,
+    "allergens": [],
+    "searchTags": [
+      "sattu",
+      "roasted gram flour"
+    ],
+    "portions": [
+      {
+        "label": "2 tbsp",
+        "amount": 2,
+        "unit": "tbsp",
+        "grams": 30,
+        "position": 191
+      },
+      {
+        "label": "50 g",
+        "amount": 50,
+        "unit": "g",
+        "grams": 50,
+        "position": 192
+      }
+    ]
+  },
+  {
+    "name": "Coconut Water",
+    "commonName": null,
+    "state": "liquid",
+    "category": "Beverages",
+    "foodType": "beverage",
+    "diet": "vegan",
+    "calories": 19,
+    "protein": 0.7,
+    "carbs": 3.7,
+    "fat": 0.2,
+    "fibre": 1.1,
+    "servingUnit": "ml",
+    "servingGrams": 240,
+    "allergens": [],
+    "searchTags": [
+      "coconut water",
+      "beverages"
+    ],
+    "portions": [
+      {
+        "label": "1 glass",
+        "amount": 1,
+        "unit": "glass",
+        "grams": 240,
+        "position": 193
+      },
+      {
+        "label": "300 ml",
+        "amount": 300,
+        "unit": "ml",
+        "grams": 300,
+        "position": 194
+      }
+    ]
+  },
+  {
+    "name": "Tea with Milk and Sugar, Generic",
+    "commonName": null,
+    "state": "liquid",
+    "category": "Beverages",
+    "foodType": "beverage",
+    "diet": "vegetarian",
+    "calories": 35,
+    "protein": 1,
+    "carbs": 5.5,
+    "fat": 1,
+    "fibre": 0,
+    "servingUnit": "ml",
+    "servingGrams": 150,
+    "allergens": [
+      "milk"
+    ],
+    "searchTags": [
+      "tea with milk and sugar, generic",
+      "beverages"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 150,
+        "position": 195
+      }
+    ]
+  },
+  {
+    "name": "Coffee, Black Unsweetened",
+    "commonName": null,
+    "state": "liquid",
+    "category": "Beverages",
+    "foodType": "beverage",
+    "diet": "vegan",
+    "calories": 2,
+    "protein": 0.3,
+    "carbs": 0,
+    "fat": 0,
+    "fibre": 0,
+    "servingUnit": "ml",
+    "servingGrams": 240,
+    "allergens": [],
+    "searchTags": [
+      "coffee, black unsweetened",
+      "beverages"
+    ],
+    "portions": [
+      {
+        "label": "1 cup",
+        "amount": 1,
+        "unit": "cup",
+        "grams": 240,
+        "position": 196
+      }
+    ]
+  }
+]
