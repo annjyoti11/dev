@@ -50,7 +50,7 @@ var results=filteredFoods(),total=results.length,pages=Math.max(1,Math.ceil(tota
 if(currentPage>pages)currentPage=pages;
 var start=(currentPage-1)*pageSize,shown=results.slice(start,start+pageSize);
 $('#food-count').text(total?('Showing '+(start+1)+'–'+Math.min(start+pageSize,total)+' of '+total+' foods'):'No foods found');
-grid.html(shown.length?shown.map(function(food,i){return cardHtml(food,start+i)}).join(''):'<div class="empty-state">No foods match that search. Try a different name or clear the filters.</div>');
+grid.html(shown.length?shown.map(function(food,i){return cardHtml(food,foods.indexOf(food))}).join(''):'<div class="empty-state">No foods match that search. Try a different name or clear the filters.</div>');
 renderPagination(total);
 }
 function setActiveFilter(value){
