@@ -59,7 +59,7 @@ filterButtons.each(function(){var active=$(this).data('filter')===value;$(this).
 render();
 }
 $.getJSON('/assets/food-library.json').done(function(data){foods=Array.isArray(data)?data:[];render()}).fail(function(){$('#food-count').text('Food library could not load');grid.html('<div class="empty-state">Please refresh the page to load the food library.</div>')});
-$('#food-search').on('input',function(){searchTerm=$.trim($(this).val()).toLowerCase();$('#clear-search').prop('hidden',!searchTerm);currentPage=1;render()});
+$('#food-search').on('input',function(){searchTerm=String($(this).val()||'').trim().toLowerCase();$('#clear-search').prop('hidden',!searchTerm);currentPage=1;render()});
 $('#clear-search').on('click',function(){$('#food-search').val('').trigger('input').trigger('focus')});
 filterButtons.on('click',function(){setActiveFilter($(this).data('filter'))});
 pagination.on('click','button[data-page]',function(){if(this.disabled)return;currentPage=Number($(this).data('page'));render();document.getElementById('food-library').scrollIntoView({behavior:'smooth',block:'start'})});
