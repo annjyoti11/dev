@@ -27,7 +27,7 @@ return portions.map(function(p){return {label:p.label||gramsLabel(p.grams),grams
 }
 function cardHtml(food,index){
 var opts=portionOptions(food),id='portion-'+index,first=opts[0],g=first.grams,scale=g/100;
-var state=food.state?food.state.charAt(0).toUpperCase()+food.state.slice(1):'';
+var state=food.state?food.state.replace(/_/g,' ').replace(/^./,function(letter){return letter.toUpperCase()}):'';
 var subtitle=[food.commonName,state,food.diet].filter(Boolean).join(' · ');
 var options=opts.map(function(p,i){return '<option value="'+p.grams+'"'+(i===0?' selected':'')+'>'+escapeHtml(p.label)+' ('+escapeHtml(gramsLabel(p.grams))+')</option>'}).join('');
 return '<article class="food-card" data-index="'+index+'"><div class="food-card-top"><h3>'+escapeHtml(food.name)+'</h3><span class="food-category">'+escapeHtml(food.category)+'</span></div><p class="food-meta">'+escapeHtml(subtitle||'Nutrition reference')+'</p><div class="food-serving"><label for="'+id+'">Portion</label><select id="'+id+'" class="portion-select" data-index="'+index+'">'+options+'</select></div><div class="food-calories"><strong class="portion-calories">'+Math.round((Number(food.calories)||0)*scale)+'</strong><span>kcal in selected portion</span></div><div class="macro-row"><div><b class="macro-protein">'+round((Number(food.protein)||0)*scale)+' g</b><span>Protein</span></div><div><b class="macro-carbs">'+round((Number(food.carbs)||0)*scale)+' g</b><span>Carbs</span></div><div><b class="macro-fat">'+round((Number(food.fat)||0)*scale)+' g</b><span>Fat</span></div><div><b>'+round((Number(food.fibre)||0)*scale)+' g</b><span>Fibre</span></div></div></article>';
@@ -73,7 +73,7 @@ card.find('.macro-row div').eq(3).find('b').text(round((Number(food.fibre)||0)*s
 });
 $('#calorie-form').on('submit',function(event){
 event.preventDefault();
-var age=Number($('#age').val()),weight=Number($('#weight').val()),height=Number($('#height').val()),sex=$('#sex').val(),activity=Number($('#activity').val());
+var age=Number($('#age').val()),weight=Number($('#weight').val()),height=Number($('#height').val()),sex=$('#gender').val(),activity=Number($('#activity').val());
 if(!this.reportValidity())return;
 var bmr=10*weight+6.25*height-5*age+(sex==='male'?5:-161);
 var maintenance=Math.max(1200,Math.round((bmr*activity)/50)*50);
