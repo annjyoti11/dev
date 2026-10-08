@@ -30,7 +30,7 @@ function logo(){return '<img src="../assets/zenith-symbol-white.svg" class="bran
 function shell(content,active){document.getElementById('app').innerHTML='<div class="app"><div class="main">'+content+'</div>'+nav(active)+'</div>';}
 function subhead(title,link){return '<header class="subheader"><a class="back" href="'+(link||'index.html')+'" aria-label="Back">'+icon('back')+'</a><span class="heading">'+title+'</span></header>';}
 const STORAGE='zenith_app_preview_demo_1';
-function read(){try{let value=JSON.parse(sessionStorage.getItem(STORAGE)||'{}');return {dinner:!!value.dinner,walk:!!value.walk,water:Math.min(2500,Math.max(0,Number(value.water)||1800))};}catch(e){return {dinner:false,walk:false,water:1800};}}
+function read(){try{let value=JSON.parse(sessionStorage.getItem(STORAGE)||'{}');return {dinner:!!value.dinner,dinnerLog:value.dinnerLog&&typeof value.dinnerLog==='object'&&value.dinnerLog.portions?value.dinnerLog:null,walk:!!value.walk,water:Math.min(2500,Math.max(0,Number(value.water)||1800))};}catch(e){return {dinner:false,walk:false,water:1800};}}
 let state=read();
 function save(){try{sessionStorage.setItem(STORAGE,JSON.stringify(state));}catch(e){}}
 function pill(label,detail){return '<div class="step-pill">'+icon('steps')+'<strong>6,420</strong><span>steps</span>'+icon('chevron')+'</div>';}
@@ -232,6 +232,34 @@ shell(
 
 /* Screen 06 — Nutrition Overview. All diary entries and targets are fictional examples.
    Do not present simulated nutrient values as real intake or synced client data. */
+/* Screen 08 · Five illustrative food portions. Per-food allocations total 620 kcal, 42P/78C/16F. */
+const DINNER_FOODS=[
+{id:'fish',name:'Rohu fish',note:'Planned 150 g',qty:150,step:25,max:500,unit:'g',kcal:200,protein:30,carbs:0,fat:9},
+{id:'rice',name:'White rice',note:'Cooked · planned 200 g',qty:200,step:25,max:600,unit:'g',kcal:255,protein:5,carbs:54,fat:1},
+{id:'dal',name:'Moong dal',note:'Cooked · planned 100 g',qty:100,step:25,max:450,unit:'g',kcal:107,protein:6,carbs:18,fat:1},
+{id:'gourd',name:'Bottle gourd',note:'Cooked · planned 100 g',qty:100,step:25,max:450,unit:'g',kcal:13,protein:1,carbs:6,fat:0},
+{id:'oil',name:'Olive oil',note:'Planned 1 tsp',qty:1,step:.5,max:4,unit:'tsp',kcal:45,protein:0,carbs:0,fat:5}
+];
+function normalizeDinnerPortions(source){const safe={};DINNER_FOODS.forEach(f=>{const n=source&&Object.prototype.hasOwnProperty.call(source,f.id)?Number(source[f.id]):f.qty;safe[f.id]=Number.isFinite(n)&&n>=0&&n<=f.max&&Math.abs(n/f.step-Math.round(n/f.step))<1e-6?n:f.qty;});return safe;}
+function dinnerNutrition(portions){const safe=normalizeDinnerPortions(portions),totals={kcal:0,protein:0,carbs:0,fat:0};DINNER_FOODS.forEach(f=>{const ratio=safe[f.id]/f.qty;for(const key of Object.keys(totals)){totals[key]+=f[key]*ratio;}});for(const k of Object.keys(totals))totals[k]=Math.round(totals[k]);return totals;}
+function dinnerSavedPortions(){return normalizeDinnerPortions(state.dinnerLog&&state.dinnerLog.portions);}
+function loggedDinnerNutrition(){return dinnerNutrition(dinnerSavedPortions());}
+function dinnerOrigin(){const query=(window.location&&window.location.search)||'';return query.includes('from=plan')?'nutrition-plan.html?day=3':query.includes('from=nutrition')?'nutrition.html':'index.html';}
+function dinnerOriginLabel(){const query=(window.location&&window.location.search)||'';return query.includes('from=plan')?'Back to plan':query.includes('from=nutrition')?'Back to Nutrition':'Back to Home';}
+function formattedQuantity(v,unit){return (Number.isInteger(v)?v:v.toFixed(1))+' '+unit;}
+let dinnerDraft=null,dinnerEditMode=false,dinnerRemoveConfirm=false,dinnerError='';
+function prepareDinnerDraft(){if(dinnerDraft===null)dinnerDraft=state.dinner?dinnerSavedPortions():normalizeDinnerPortions(null);}
+function mealArt(){
+return '<div class="meal-art" role="img" aria-label="Illustrative plated dinner with rice, fish, dal and greens; not a photograph">'+
+'<svg viewBox="0 0 370 215" aria-hidden="true"><defs><radialGradient id="dish"><stop stop-color="#fffdf7"/><stop offset=".8" stop-color="#e5e9df"/><stop offset="1" stop-color="#93acb3"/></radialGradient><linearGradient id="fishglow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7a45f"/><stop offset=".6" stop-color="#a64d27"/><stop offset="1" stop-color="#783820"/></linearGradient></defs>'+
+'<ellipse cx="188" cy="135" rx="141" ry="73" fill="#02111c" opacity=".27"/><ellipse cx="186" cy="106" rx="131" ry="100" fill="url(#dish)"/><ellipse cx="186" cy="106" rx="111" ry="82" fill="#f0ede5" stroke="#c4cac2" stroke-width="2"/>'+
+'<path d="M93 98c1-35 58-59 100-39 26 12 29 35 12 51-21 20-77 29-101 12-8-6-11-14-11-24" fill="#f6f0e4" stroke="#d8d0bd" stroke-width="2"/>'+
+Array.from({length:23},(_,i)=>{const x=108+(i*27)%96,y=65+(i*17)%52;return '<ellipse cx="'+x+'" cy="'+y+'" rx="8" ry="3.2" fill="#fffefa" transform="rotate('+i*13+' '+x+' '+y+')"/>';}).join('')+
+'<path d="M213 64c27-11 60-1 65 19 5 18-12 32-35 33-21 1-41-14-40-29 0-10 4-18 10-23" fill="url(#fishglow)" stroke="#9a492b" stroke-width="2"/><path d="M215 75c18-5 37-2 50 5M215 92c19 13 37 10 51-3" fill="none" stroke="#f7c487" stroke-width="4" stroke-linecap="round"/>'+
+'<g fill="#416f42"><ellipse cx="247" cy="139" rx="24" ry="7" transform="rotate(-32 247 139)"/><ellipse cx="228" cy="142" rx="23" ry="7" transform="rotate(20 228 142)"/><ellipse cx="267" cy="121" rx="17" ry="6" transform="rotate(44 267 121)"/></g><g fill="#91ae65"><ellipse cx="235" cy="144" rx="14" ry="5" transform="rotate(-36 235 144)"/><ellipse cx="253" cy="128" rx="14" ry="5" transform="rotate(20 253 128)"/></g>'+
+'<ellipse cx="137" cy="151" rx="31" ry="29" fill="#9aaeb1"/><ellipse cx="137" cy="147" rx="26" ry="24" fill="#cf9b4e"/><g fill="#e8c674"><circle cx="125" cy="145" r="3"/><circle cx="138" cy="153" r="3"/><circle cx="145" cy="140" r="3"/><circle cx="131" cy="135" r="2.5"/></g></svg></div>';
+}
+
 const demoNutrition={
 target:{kcal:2000,protein:140,carbs:220,fat:62},
 meals:[
@@ -243,7 +271,7 @@ meals:[
 let nutritionExpanded=null;
 function nutritionLedger(){
 const recorded=demoNutrition.meals.filter(function(m){return m.status==='recorded'||(m.id==='dinner'&&state.dinner);});
-return recorded.reduce(function(a,m){a.kcal+=m.kcal;a.protein+=m.protein;a.carbs+=m.carbs;a.fat+=m.fat;return a;},{kcal:0,protein:0,carbs:0,fat:0});
+return recorded.reduce(function(a,m){const n=m.id==='dinner'?loggedDinnerNutrition():m;a.kcal+=n.kcal;a.protein+=n.protein;a.carbs+=n.carbs;a.fat+=n.fat;return a;},{kcal:0,protein:0,carbs:0,fat:0});
 }
 function nutritionRing(percent){
 const perimeter=301.593,offset=(perimeter*(1-percent/100)).toFixed(2);
@@ -263,9 +291,10 @@ const isDinner=m.id==='dinner';
 const optional=m.id==='snack';
 const status=recorded?'Recorded':isDinner?'Next up':'Optional';
 const statusClass=recorded?'good':isDinner?'next':'';
+const shownEnergy=isDinner&&state.dinner?loggedDinnerNutrition().kcal:m.kcal;
 const inner='<span class="nutrition-meal-marker '+(recorded?'recorded':optional?'optional':'')+'">'+icon(recorded?'check':optional?'clock':'meals')+'</span>'+
 '<span class="nutrition-meal-body"><strong>'+m.title+'</strong><span class="time">'+m.time+'</span></span>'+
-'<span class="nutrition-meal-trailing"><strong>'+m.kcal+' kcal</strong><span class="status '+statusClass+'">'+status+'</span></span>';
+'<span class="nutrition-meal-trailing"><strong>'+shownEnergy+' kcal</strong><span class="status '+statusClass+'">'+status+'</span></span>';
 if(isDinner){
 return '<article class="nutrition-meal"><a class="nutrition-meal-button" href="meal.html?from=nutrition" aria-label="View dinner details, '+(recorded?'recorded in demo':'planned')+'">'+inner+'</a></article>';
 }
@@ -300,7 +329,7 @@ nutritionMacro('Fat',totals.fat,demoNutrition.target.fat)+'</section>'+
 '<section class="nutrition-focus"><div class="nutrition-focus-overline"><span class="dot"></span>'+(focused?'MEAL RECORDED':'UP NEXT · DINNER')+'</div>'+
 '<h3>'+(focused?'Dinner is logged.':'A balanced evening plate.')+'</h3>'+
 '<p>'+(focused?'Your three main meals are recorded in this example. The optional snack remains unlogged.':'Rohu fish, rice and moong dal · a planned 620 kcal sample meal.')+'</p>'+
-'<div class="focus-meta">'+icon(focused?'check':'clock')+(focused?'620 kcal · sample entry recorded':'9:00 PM · planned, not yet logged')+'</div>'+
+'<div class="focus-meta">'+icon(focused?'check':'clock')+(focused?loggedDinnerNutrition().kcal+' kcal · sample entry recorded':'9:00 PM · planned, not yet logged')+'</div>'+
 '<div class="nutrition-focus-actions"><a class="main-action" href="meal.html?from=nutrition">'+(focused?'Review dinner':'View dinner')+' '+icon('arrow')+'</a>'+
 '<a class="quiet-action" href="earlier-today.html">Earlier today '+icon('chevron')+'</a></div></section>'+
 '<div class="nutrition-section-title"><h2>Meals today</h2><span class="aside">'+recordedMain+' / 3 main meals</span></div>'+
