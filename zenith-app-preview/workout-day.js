@@ -89,6 +89,7 @@ return '<nav class="bottom-nav" aria-label="App preview navigation">'+items.map(
 }
 function shell(body,immersive=false){
 app.innerHTML='<div class="app'+(immersive?' focus-app':'')+'"><main class="main"><div class="session-page">'+body+'</div></main>'+(immersive?'':nav())+'</div>';
+if(window.scrollTo)window.scrollTo(0,0);
 }
 function header(focus){
 return '<header class="session-top"><a class="back" href="workout-plan.html?week='+week+'" aria-label="'+(focus?'Leave session and keep demo progress':'Back to complete workout plan')+'">'+ico('back')+'</a><span class="session-top-text"><small>ZENITH · '+(focus?'LIVE SESSION DEMO':'WORKOUT DAY')+'</small><strong>'+(focus?'One set at a time':'Session overview')+'</strong></span><span class="session-top-tag">'+(focus?'SET '+Math.min(state.cursor+1,15)+' / 15':'WEEK '+String(week+1).padStart(2,'0'))+'</span></header>';
@@ -96,7 +97,7 @@ return '<header class="session-top"><a class="back" href="workout-plan.html?week
 function title(){return titles[day];}
 function summarize(){
 return '<section class="session-hero"><div class="session-overline">'+weekdays[day]+' · '+weeks[week][day]+' · SAMPLE PROGRAM</div><h1>'+title().split(' ').slice(0,-1).join(' ')+' <span>'+title().split(' ').slice(-1)[0]+'.</span></h1>'+
-'<p>Five focused movements. One complete set at a time when you start.</p><div class="session-hero-facts"><div><b>'+currentMovements.length+'</b><small>Movements</small></div><div><b>'+totalSets+'</b><small>Sets</small></div><div><b>≈45 min</b><small>Est. session</small></div></div></section>';
+'<p>'+(demoEnabled?'Five focused movements. One complete set at a time when you start.':'Inspect the sample session structure. Logging is available for the Friday demo only.')+'</p><div class="session-hero-facts"><div><b>'+currentMovements.length+'</b><small>Movements</small></div><div><b>'+totalSets+'</b><small>Sets</small></div><div><b>≈45 min</b><small>Est. session</small></div></div></section>';
 }
 function intro(){
 return '<div class="session-alert"><strong>Demonstration only.</strong> This sample is not a published coaching prescription. Numbers, exercises and resistance are not personal advice.</div>'+
@@ -157,7 +158,7 @@ function restDisplay(){
  '<div class="rest-dial" role="timer" aria-label="Rest countdown"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rest-dial-base" cx="60" cy="60" r="50"/><circle id="rest-dial-progress" class="rest-dial-progress" cx="60" cy="60" r="50" style="stroke-dasharray:'+circumference+';stroke-dashoffset:'+(circumference*(1-pct))+'"/></svg><div class="rest-dial-text"><strong id="rest-time">'+numberSeconds(remaining)+'</strong><small>REST REMAINING</small></div></div>'+
  '<div class="rest-up-next"><span>COMING UP</span><strong>'+next.m.title+'</strong><small>Set '+(next.step.set+1)+' of '+next.m.sets+'</small></div>'+
  '<div class="rest-buttons"><button type="button" data-workflow="skip" class="focus-success">Skip rest '+ico('arrow')+'</button><button type="button" class="focus-button-light" data-workflow="add-rest">+15 sec</button></div>'+
- '<p class="rest-note">Demo timer continues using the saved deadline while this page is closed.</p></section>';
+ '<button type="button" class="rest-edit" data-workflow="edit-last">Edit last set</button><p class="rest-note">Demo timer continues using the saved deadline while this page is closed.</p></section>';
 }
 function complete(){
  const rows=currentMovements.map((m,i)=>{
@@ -236,6 +237,8 @@ document.addEventListener('click',function(event){
  const cmd=button.getAttribute('data-workflow');
  if(cmd==='start'&&state.status==='ready'){state.status='active';state.cursor=0;state.mode='set';state.draft={weight:'',reps:''};save();render();return;}
  if(cmd==='skip'&&state.status==='active'&&state.mode==='rest'){advance();render();return;}
+ if(cmd==='edit-last'&&state.status==='active'&&state.mode==='rest'&&state.cursor>0){
+ const i=state.cursor-1;const last=state.records[i];state.records[i]=null;state.sets[i]=false;state.cursor=i;state.mode='set';state.restEnd=0;state.restStart=0;state.restSeconds=0;state.draft={weight:last?String(last.weight):'',reps:last?String(last.reps):''};save();render();return;}
  if(cmd==='add-rest'&&state.status==='active'&&state.mode==='rest'){state.restEnd+=15000;state.restSeconds+=15;save();render();return;}
  if(cmd==='reset'&&state.status==='completed'){state=initial();save();render();}
 });
