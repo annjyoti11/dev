@@ -91,3 +91,5 @@
 .training-plan-entry .ic{color:#abdff0;width:17px;height:17px}
 @media(max-width:350px){.program-hero{padding:21px 17px 18px}.program-hero h1{font-size:33px}.program-stat{padding:0 5px}.program-stat strong{font-size:21px}.program-top-label strong{font-size:14px}.program-phase{font-size:9px;padding:7px}.program-week-select{gap:5px}.program-week-button{padding:9px 2px}.program-session-list{padding:0 9px}.program-session-toggle{gap:8px}}
 @media(prefers-reduced-motion:reduce){.program-week-button,.program-session-toggle .trailing,.program-coach summary .ic{transition:none!important}}
+
+.program-view-link{display:inline-flex;align-items:center;gap:8px;min-height:43px;margin-top:14px;padding:10px 12px;border:1px solid #3b708c;border-radius:11px;background:#204459;color:#c8ecfa;font-size:12px;font-weight:730;text-decoration:none}.program-view-link .ic{width:15px;height:15px}
