@@ -3,7 +3,7 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan), 05 (Individual Workout Day) and 06 (Nutrition Overview) have now been redesigned for mobile review.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan), 05 (Individual Workout Day), 06 (Nutrition Overview), and 07 (Complete Nutrition Plan) have now been redesigned for mobile review.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
@@ -12,6 +12,7 @@ Build and review the client experience screen by screen, before implementing the
 - `workout-plan.html` — Screen 04 Complete Workout Plan: four-week selector, week-accurate dated schedule, expandable exercise previews, and concise coaching rationale.
 - `workout-day.html?week=1&day=4` — Screen 05 Individual Workout Day: **one exercise / one set at a time** during the active session, weight + reps entry, completion confirmation, rest timer and next-set transition.
 - `nutrition.html` — Screen 06 Nutrition Overview: premium energy ring, macro progress, clear dinner action, expandable sample meal timeline, and ledger-based demo totals.
+- `nutrition-plan.html` — Screen 07 Complete Nutrition Plan: seven-day sample selector, planned energy allocation, practical portions, optional food guidance and a connected Thursday dinner detail.
 - `meal.html` — sample planned dinner and a functional demo log action.
 - `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
 
@@ -83,4 +84,16 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - The meal detail currently simulates consuming the planned portion; in production the client should confirm foods and quantities eaten, including substitutions, before recording a nutrition log. Never treat a planned meal as automatically eaten.
 - No external food photos, AI, coaching decisions, database writes, calorie estimation APIs, or health-record connections.
 - HTML CSS/JS uses separate `nutrition.css` and the shared `app.js`. Test on phone for readability and touch targets before transferring approved visuals to Flutter.
+
+
+## Screen 07 — Complete Nutrition Plan
+
+- Standalone page `nutrition-plan.html` with shared `app.js` and scoped `nutrition-plan.css`; the Nutrition dashboard contains a dedicated “Your complete food plan” entry.
+- Sample week: Monday 5 October through Sunday 11 October 2026. Thursday is selected by default and can also be loaded using `nutrition-plan.html?day=3`. Tapping any day updates the menu, selected state, date, planned energy total and expandable portions, and updates the query string for revisits.
+- Thursday planned example matches the existing Nutrition and Dinner previews: 410 kcal oats/curd/fruit breakfast; 710 kcal rice/dal/paneer lunch; 620 kcal rohu fish dinner (including 150 g fish, 200 g rice, 100 g dal, 100 g bottle gourd, 1 tsp oil); optional 260 kcal snack. Total planned allocation 2,000 kcal, with 140 g protein as an illustrative target. The optional snack contributes to the **plan**, not the logged intake unless recorded.
+- Other weekdays are fictional illustrative menu variants and **read-only**. Every day has four slots and an illustrative 2,000 kcal allocation, including an optional snack. These energy values are examples, not verified calculations from a food database or advice for a real client.
+- Only the Thursday dinner links to the current meal detail page using `meal.html?from=plan`. Both the back arrow and secondary Back action return to the complete plan; the simulated logging action also returns there. The existing `from=nutrition` and Home flows still work unchanged.
+- On Thursday, Breakfast and Lunch show demonstration-recorded status consistent with Nutrition Overview. Dinner reflects the browser-only `state.dinner` log. Other days are deliberately shown as planned, with no invented past or future logging.
+- Expandable portions, clear time slots, concise optional food guidance and the original app navigation. This is **not** a published plan, live coaching recommendation, allergy-aware diet, or system of record; a real product needs coach approval, actual food intake confirmation, individualized constraints and verified nutrition figures.
+- Verification should include the day selector, back/reopen state via URL, meal expansion/collapse, Thursday dinner action, absence of invented logs on non-Thursday days, and cross-page consistency before design sign-off.
 
