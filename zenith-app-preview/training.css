@@ -97,3 +97,5 @@
 .training-plan-entry-copy strong{display:block;font-size:12px;letter-spacing:.01em}
 .training-plan-entry-copy small{display:block;margin-top:4px;font-size:11px;color:#9cbcca}
 .training-plan-entry>.ic{color:#abdff0;width:17px;height:17px}
+
+.training-next-subaction{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:13px 2px 1px}.training-next-subaction .text-link{font-size:12px;color:#b3dcef;min-height:32px;display:inline-flex;align-items:center}.training-next-subaction button{border:none;background:none;font-weight:690;cursor:pointer}.training-next .training-cta{text-decoration:none}
