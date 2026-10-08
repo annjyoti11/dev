@@ -40,7 +40,7 @@ function metric(name,value,goal,pct,ico){return '<div class="metric"><div class=
 function home(){
 let hero=state.dinner?
 '<section class="hero"><div class="eyebrow"><span class="glow-dot"></span>DINNER RECORDED</div><h2>Nicely done.</h2><p class="meta">Your meal is in today’s log.</p><div class="schedule">'+icon('walk')+'A short walk is available now</div><div class="buttons">'+(state.walk?'<span class="tag good">Walk recorded</span>':'<button class="btn" data-action="walk">Record a 10-minute walk '+icon('arrow')+'</button>')+'<a class="text-link" href="earlier-today.html">View today’s activity ›</a></div></section>':
-'<section class="hero"><div class="eyebrow"><span class="glow-dot"></span>UP NEXT · NUTRITION</div><h2>Dinner</h2><p class="meta">Rohu fish · Rice · Dal</p><div class="schedule">'+icon('clock')+'Scheduled for 9:00 pm</div><div class="buttons"><a class="btn" href="meal.html">View dinner '+icon('arrow')+'</a><a class="text-link" href="nutrition.html">Meal plan ›</a></div></section>';
+'<section class="hero"><div class="eyebrow"><span class="glow-dot"></span>UP NEXT · NUTRITION</div><h2>Dinner</h2><p class="meta">Rohu fish · Rice · Dal</p><div class="schedule">'+icon('clock')+'Scheduled for 9:00 pm</div><div class="buttons"><a class="btn" href="meal-20261008.html">View dinner '+icon('arrow')+'</a><a class="text-link" href="nutrition.html">Meal plan ›</a></div></section>';
 let next=state.dinner ? (state.walk?'The next activity will appear when due.':'Available after your recorded dinner') : 'Available after you record dinner';
 shell('<header class="header">'+logo()+'<a href="progress.html" aria-label="View step progress">'+pill()+'</a></header>'+
 '<div class="lead"><div class="eyebrow">DEMO EVENING · SAMPLE DAY</div><h1>Evening, Aarav.</h1><p>One clear step at a time.</p></div>'+
@@ -308,7 +308,7 @@ const inner='<span class="nutrition-meal-marker '+(recorded?'recorded':optional?
 '<span class="nutrition-meal-body"><strong>'+m.title+'</strong><span class="time">'+m.time+'</span></span>'+
 '<span class="nutrition-meal-trailing"><strong>'+shownEnergy+' kcal</strong><span class="status '+statusClass+'">'+status+'</span></span>';
 if(isDinner){
-return '<article class="nutrition-meal"><a class="nutrition-meal-button" href="meal.html?from=nutrition" aria-label="View dinner details, '+(recorded?'recorded in demo':'planned')+'">'+inner+'</a></article>';
+return '<article class="nutrition-meal"><a class="nutrition-meal-button" href="meal-20261008.html?from=nutrition" aria-label="View dinner details, '+(recorded?'recorded in demo':'planned')+'">'+inner+'</a></article>';
 }
 const expanded=nutritionExpanded===m.id;
 return '<article class="nutrition-meal" aria-expanded="'+expanded+'">'+
@@ -342,7 +342,7 @@ nutritionMacro('Fat',totals.fat,demoNutrition.target.fat)+'</section>'+
 '<h3>'+(focused?'Dinner is logged.':'A balanced evening plate.')+'</h3>'+
 '<p>'+(focused?'Your three main meals are recorded in this example. The optional snack remains unlogged.':'Rohu fish, rice and moong dal · a planned 620 kcal sample meal.')+'</p>'+
 '<div class="focus-meta">'+icon(focused?'check':'clock')+(focused?loggedDinnerNutrition().kcal+' kcal · sample entry recorded':'9:00 PM · planned, not yet logged')+'</div>'+
-'<div class="nutrition-focus-actions"><a class="main-action" href="meal.html?from=nutrition">'+(focused?'Review dinner':'View dinner')+' '+icon('arrow')+'</a>'+
+'<div class="nutrition-focus-actions"><a class="main-action" href="meal-20261008.html?from=nutrition">'+(focused?'Review dinner':'View dinner')+' '+icon('arrow')+'</a>'+
 '<a class="quiet-action" href="earlier-today.html">Earlier today '+icon('chevron')+'</a></div></section>'+
 '<div class="nutrition-section-title"><h2>Meals today</h2><span class="aside">'+recordedMain+' / 3 main meals</span></div>'+
 '<section class="nutrition-timeline" aria-label="Today’s sample meal timeline">'+demoNutrition.meals.map(nutritionMealRow).join('')+'</section>'+
@@ -418,7 +418,7 @@ function nutritionPlanRow(i){
  '<div class="diet-entry-meta"><div class="slot">'+planSlotNames[i].toUpperCase()+' · '+planSlotTimes[i]+'</div><h3>'+m[0]+'</h3><div class="desc">'+m[2]+(isThuDinner&&state.dinner?' · Demo consumed: '+loggedDinnerNutrition().kcal+' kcal':'')+'</div></div>'+
  '<div class="diet-entry-tail"><strong>'+m[1]+' kcal</strong><small class="'+(status==='Demo recorded'?'logged':'')+'">'+status+'</small></div></div>'+
  '<div class="diet-entry-control"><button type="button" data-diet-meal="'+i+'" aria-expanded="'+expanded+'" aria-controls="diet-meal-panel-'+i+'">'+(expanded?'Hide food & portions':'Food & portions')+' '+icon('chevron')+'</button>'+
- (isThuDinner?'<a href="meal.html?from=plan" aria-label="Open Thursday dinner detail">'+(state.dinner?'Review demo log':'View dinner detail')+' '+icon('arrow')+'</a>':'')+'</div>'+
+ (isThuDinner?'<a href="meal-20261008.html?from=plan" aria-label="Open Thursday dinner detail">'+(state.dinner?'Review demo log':'View dinner detail')+' '+icon('arrow')+'</a>':'')+'</div>'+
  '<div class="diet-entry-panel" id="diet-meal-panel-'+i+'" '+(expanded?'':'hidden')+'><div class="eyebrow">EXAMPLE PORTIONS</div>'+
  m[3].map(item=>'<div class="diet-ingredient"><span>'+item[0]+'</span><small>'+item[1]+'</small></div>').join('')+
  '<p>Planning example only. Adjustments, substitutions and serving weights should follow an approved individualized plan.</p></div></article>';
