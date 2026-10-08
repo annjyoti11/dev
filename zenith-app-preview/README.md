@@ -3,7 +3,7 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03–09 are now available for mobile review, including Training, Complete Workout Plan, Live Workout Day, Nutrition, Complete Nutrition Plan, Individual Meal Detail and Progress Overview.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03–10 are now available for mobile review, including Training, Complete Workout Plan, Live Workout Day, Nutrition, Complete Nutrition Plan, Individual Meal Detail, Progress Overview, and Personal Profile & Coaching Journey.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
@@ -13,6 +13,7 @@ Build and review the client experience screen by screen, before implementing the
 - `workout-day.html?week=1&day=4` — Screen 05 Individual Workout Day: **one exercise / one set at a time** during the active session, weight + reps entry, completion confirmation, rest timer and next-set transition.
 - `nutrition.html` — Screen 06 Nutrition Overview: premium energy ring, macro progress, clear dinner action, expandable sample meal timeline, and ledger-based demo totals.
 - `nutrition-plan.html` — Screen 07 Complete Nutrition Plan: seven-day sample selector, planned energy allocation, practical portions, optional food guidance and a connected Thursday dinner detail.
+- `profile-20261008.html` — Screen 10 Personal Profile & Coaching Journey: fictional member identity, Transformation with included membership, current training phase, coach-reviewed milestones, connected sample achievements, privacy disclosures, and confirmation-protected demo reset. `profile.html` redirects here.
 - `progress-20261008.html` — Screen 09 Progress Overview: weekly training evidence, dynamic sample activity and hydration, and explicitly illustrative body trends. `progress.html` redirects here.
 - `meal.html` — Screen 08 Individual Meal Detail: illustrated food plate, adjustable actual portions, dynamic nutrition estimates, save/edit/remove demo meal entry.
 - `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
@@ -131,3 +132,15 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - The Progress tab in newer shared `app.js` navigates to the new bundled page. Older standalone bundles still linking to `progress.html` are supported by its redirect.
 - This is **not** a data-backed coaching dashboard, a measurement tracking API, a step sensor integration or a validated nutrition tracker. Real-device visual sign-off and backend integration are separate work.
 - Acceptance checks: create initial state → navigate Training/Activity/Body → interact → log demo water/workout → refresh/reopen → confirm weekly stats, recent recorded sets and final state; verify Body never claims hypothetical values as real.
+
+## Screen 10 — Personal Profile & Coaching Journey
+
+- Preview URL: `profile-20261008.html`. Like Meal and Progress, this cache-isolated page bundles base styles, scoped `profile.css`, and the current shared `app.js`. Legacy `profile.html` redirects here with query and fragment preserved; previous bundles continue to function through the redirect.
+- Profile identity `Aarav Sharma` is **fictional**. No real member identity, email, phone, account ID, or coach-chat connection is present.
+- Illustrative Transformation overview: Week 02/12 in the **12-Week Transformation**, which **includes gym membership**. The currently presented **Foundation Strength** block (Week 02/04) is a training phase inside the Transformation, not another plan or membership payment. No expiry, renewal or payment status is invented.
+- Four conceptual journey stages: program introduction, Foundation Strength current block, coach review at the end of the four-week block, and a future phase decided after coach approval. Never represent an upcoming review as a real scheduled appointment or assume the system has published the next training phase.
+- Sample highlights read the browser-only workout and daily state. Training sessions: 3/5 initially and 4/5 after the recorded Friday sample. Meals: 2/3 initially and 3/3 when dinner is logged. The progress and nutrition links use their existing prototype screens.
+- Coach guidance is explanatory, not real messaging or assignment. The coach retains approval for consequential changes proposed by Anvaya.
+- **Account & privacy** uses disclosures instead of inert mock action buttons. It explicitly states what identity, membership and data are unavailable. No payment, contact or personal edit UI is falsely advertised as operational.
+- **Preview controls** require a second confirmation before clearing browser-only dinner, dependent walking activity, water additions, and the full sample 15-set workout. Cancel keeps everything intact. Reset writes a compatible version-2 workout state for the Live Workout page.
+- Acceptance check: open → inspect roadmap and sample figures → log an example workout or meal → revisit Profile → confirm updated achievements → open reset dialog → cancel or confirm → reopen all affected tabs → verify final user-visible and storage states. Real-device visual testing and Flutter implementation remain separate tasks.
