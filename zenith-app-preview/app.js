@@ -405,7 +405,7 @@ function nutritionPlanRow(i){
  const isThuDinner=nutritionPlanDay===3&&i===2;
  return '<article class="diet-entry" data-plan-meal-row="'+i+'">'+
  '<div class="diet-entry-head"><span class="diet-entry-icon '+(status==='Demo recorded'?'logged':i===3?'optional':'')+'">'+icon(status==='Demo recorded'?'check':i===3?'clock':'meals')+'</span>'+
- '<div class="diet-entry-meta"><div class="slot">'+planSlotNames[i].toUpperCase()+' · '+planSlotTimes[i]+'</div><h3>'+m[0]+'</h3><div class="desc">'+m[2]+'</div></div>'+
+ '<div class="diet-entry-meta"><div class="slot">'+planSlotNames[i].toUpperCase()+' · '+planSlotTimes[i]+'</div><h3>'+m[0]+'</h3><div class="desc">'+m[2]+(isThuDinner&&state.dinner?' · Demo consumed: '+loggedDinnerNutrition().kcal+' kcal':'')+'</div></div>'+
  '<div class="diet-entry-tail"><strong>'+m[1]+' kcal</strong><small class="'+(status==='Demo recorded'?'logged':'')+'">'+status+'</small></div></div>'+
  '<div class="diet-entry-control"><button type="button" data-diet-meal="'+i+'" aria-expanded="'+expanded+'" aria-controls="diet-meal-panel-'+i+'">'+(expanded?'Hide food & portions':'Food & portions')+' '+icon('chevron')+'</button>'+
  (isThuDinner?'<a href="meal.html?from=plan" aria-label="Open Thursday dinner detail">'+(state.dinner?'Review demo log':'View dinner detail')+' '+icon('arrow')+'</a>':'')+'</div>'+
