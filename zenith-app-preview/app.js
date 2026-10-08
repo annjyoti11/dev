@@ -25,7 +25,7 @@ const ICONS={
  spark:'<path d="m12 3 2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/>'
 };
 function icon(name){return '<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24">'+(ICONS[name]||ICONS.info)+'</svg></span>';}
-const urls={home:'index.html',training:'training.html',nutrition:'nutrition.html',progress:'progress-20261008.html',profile:'profile.html'};
+const urls={home:'index.html',training:'training.html',nutrition:'nutrition.html',progress:'progress-20261008.html',profile:'profile-20261008.html'};
 const navLabels={home:'Home',training:'Training',nutrition:'Nutrition',progress:'Progress',profile:'Profile'};
 function nav(active){return '<nav class="bottom-nav" aria-label="App preview navigation">'+Object.keys(urls).map(function(key){return '<a href="'+urls[key]+'" '+(key===active?'class="current" aria-current="page"':'')+'>'+icon(key)+'<span>'+navLabels[key]+'</span><span class="mark"></span></a>';}).join('')+'</nav>';}
 function logo(){return '<img src="../assets/zenith-symbol-white.svg" class="brand-logo" alt="Zenith Fitness Hub Z symbol">';}
@@ -349,7 +349,7 @@ nutritionMacro('Fat',totals.fat,demoNutrition.target.fat)+'</section>'+
 '<div class="nutrition-section-title"><h2>A useful reminder</h2></div>'+
 '<section class="nutrition-lesson"><span class="tile">'+icon('spark')+'</span><div><strong>Record what you actually eat.</strong>'+
 '<p>A planned meal is not the same as a consumed meal. Your coach can make better decisions from accurate entries than from perfect-looking numbers.</p></div></section>'+
-'<p class="nutrition-footer">This screen contains fictional meals, macro estimates and targets for design review. No food tracking, coach assignment or backend is connected. <a href="profile.html">Preview settings</a>.</p>'+
+'<p class="nutrition-footer">This screen contains fictional meals, macro estimates and targets for design review. No food tracking, coach assignment or backend is connected. <a href="profile-20261008.html">Preview settings</a>.</p>'+
 '</div>','nutrition');
 }
 /* Screen 07 — Complete Nutrition Plan.
@@ -601,15 +601,74 @@ shell(
 '<p>Progress is interpreted in context—not reduced to body weight. Your coach reviews meaningful changes before recommending adjustments.</p></div></div>'+
 '<p class="progress-footer">This is a fictional client demonstration. Steps are fixed sample data; water, meal and workout entries are browser-only demo state. Measurement charts are illustrative, not verified health records.</p></div>','progress');
 }
+/* Screen 10 — Profile and Coaching Journey. All identity/program labels are fictional examples. */
+let profileResetOpen=false;
 function profile(){
-shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBER · SAMPLE DATA</div><h1 class="page-title">Aarav Sharma.</h1><p class="page-intro">Your coaching space. A clear place for your active program, support and preferences.</p>'+
-'<div class="content-card"><div class="feature-kicker">CURRENT COACHING</div><h2>12-Week Transformation</h2><p>Personal coaching, nutrition guidance and scheduled progress reviews.</p><div class="cta-row"><a class="btn secondary" href="training.html">Training</a><a class="btn secondary" href="nutrition.html">Nutrition</a></div></div>'+
-'<div class="section-header"><h2>Your account</h2></div><div class="content-card mini-list">'+
-[['Gym & membership','Membership information needs validation in the live app'],['Coaching roadmap','Personal weekly focus and reviews'],['Privacy & data','Know what your coach can access']].map(function(m){return '<div class="list-item"><span class="item-text"><span class="title-small">'+m[0]+'</span><span class="sub-small" style="display:block">'+m[1]+'</span></span>'+icon('chevron')+'</div>';}).join('')+'</div>'+
-'<div class="content-card"><h2>Preview controls</h2><p>Prototype actions are stored in this browser tab only. Reset the sample meal, walking, hydration and workout set logs to revisit the initial demo.</p><div class="cta-row"><button class="btn secondary" data-action="reset">Reset sample activity</button></div></div>','profile');
+const snapshot=workoutPreviewSnapshot();
+const sessions=snapshot.phase==='completed'?4:3;
+const mainMeals=state.dinner?3:2;
+const trainingNote=snapshot.phase==='completed'?'Friday’s sample workout recorded. Saturday is up next.':snapshot.phase==='active'?'Friday’s sample workout is in progress ('+snapshot.logged+'/15 sets).':'Friday is the next planned strength session.';
+const avatar='<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="17" r="8"/><path d="M9 41c0-11 7-16 15-16s15 5 15 16"/><path d="M12 7 9 10m27-3 3 3"/></svg>';
+shell(
+'<div class="identity-page">'+
+'<header class="identity-head"><div class="identity-brand">'+logo()+'<div class="identity-brand-copy"><small>ZENITH · CLIENT APP</small><strong>My Zenith</strong></div></div><span class="identity-date">PROFILE · DEMO</span></header>'+
+'<section class="identity-hero" aria-label="Fictional member profile"><div class="identity-hero-top"><span>YOUR PERSONAL SPACE</span><span class="identity-demo-pill">SAMPLE CLIENT</span></div>'+
+'<div class="identity-intro"><div class="identity-avatar">'+avatar+'</div>'+
+'<div class="identity-person"><small>WELCOME BACK</small><h1>Aarav Sharma.</h1><div class="caption">One journey. Your own pace.</div></div></div>'+
+'<p class="identity-hero-quote">Every recorded session and consistent habit tells a part of your story.</p>'+
+'<div class="identity-hero-stats"><div><b>12</b><small>Week journey</small></div><div><b>02 <span style="font-size:12px;color:#a9cada;font-weight:550">/ 12</span></b><small>Example week</small></div><div><b>'+sessions+' <span style="font-size:12px;color:#a9cada;font-weight:550">/ 5</span></b><small>Sessions logged</small></div></div></section>'+
+'<div class="identity-section"><h2>Your coaching program</h2><small>Example overview</small></div>'+
+'<section class="identity-program"><div class="identity-program-overline">12-WEEK TRANSFORMATION</div>'+
+'<h3>Stronger, week by week.</h3>'+
+'<p>Structured strength training, practical nutrition guidance and coaching reviews within one connected journey.</p>'+
+'<div class="identity-program-stamp">'+icon('check')+' Membership included in Transformation</div>'+
+'<div class="identity-program-track" role="progressbar" aria-label="Illustrative program week 2 of 12" aria-valuemin="0" aria-valuemax="12" aria-valuenow="2"><span></span></div>'+
+'<div class="identity-program-progress"><strong>Week 02 of 12</strong><span>Illustrative journey position</span></div>'+
+'<div class="identity-program-actions"><a href="workout-plan.html">Training plan '+icon('arrow')+'</a><a href="nutrition-plan.html?day=3">Food plan '+icon('arrow')+'</a></div></section>'+
+'<div class="identity-included"><span class="icon">'+icon('shield')+'</span><div><strong>Membership is part of your Transformation.</strong>'+
+'<p>This program includes gym membership. The four-week Foundation Strength block is a training phase, not another subscription. Actual payment and renewal status are not connected to this preview.</p></div></div>'+
+'<div class="identity-section"><h2>Your coaching journey</h2><small>Milestones · Sample</small></div>'+
+'<section class="identity-timeline" aria-label="Illustrative coaching journey milestones">'+
+'<div class="identity-timeline-item completed"><span class="identity-timeline-mark">'+icon('check')+'</span><div class="identity-timeline-body"><div class="stage">01 · STARTING POINT</div><h3>Build your foundation</h3><p>Illustrative goal-setting and program introduction. Real onboarding requires a completed, verified assessment.</p></div></div>'+
+'<div class="identity-timeline-item current"><span class="identity-timeline-mark">'+icon('training')+'</span><div class="identity-timeline-body"><div class="stage">02 · CURRENT TRAINING PHASE</div><h3>Foundation Strength · Week 02/04</h3>'+
+'<p>'+trainingNote+'</p><span class="identity-stage-tag">CURRENT BLOCK · EXAMPLE</span><a href="training.html">View your training '+icon('arrow')+'</a></div></div>'+
+'<div class="identity-timeline-item"><span class="identity-timeline-mark">'+icon('clock')+'</span><div class="identity-timeline-body"><div class="stage">03 · NEXT REVIEW CHECKPOINT</div><h3>Coach reviews your response</h3><p>After this four-week example block, the coach can review training, nutrition and check-in evidence. No automatic changes are implied.</p></div></div>'+
+'<div class="identity-timeline-item"><span class="identity-timeline-mark">'+icon('shield')+'</span><div class="identity-timeline-body"><div class="stage">04 · WHAT COMES NEXT</div><h3>A plan shaped by your progress</h3><p>Any consequential plan update requires coach review and approval. Future milestones are illustrative, not scheduled appointments.</p></div></div></section>'+
+'<div class="identity-section"><h2>Moments that matter</h2><small>From your sample week</small></div>'+
+'<div class="identity-highlights"><div class="identity-highlight-card"><span class="icon">'+icon('training')+'</span><strong>'+sessions+' <span>/ 5</span></strong><small>Sample training sessions recorded</small>'+
+'<a href="progress-20261008.html">See your progress '+icon('chevron')+'</a></div>'+
+'<div class="identity-highlight-card"><span class="icon">'+icon('meals')+'</span><strong>'+mainMeals+' <span>/ 3</span></strong><small>Sample main meals recorded</small>'+
+'<a href="nutrition.html">View nutrition '+icon('chevron')+'</a></div></div>'+
+'<div class="identity-section"><h2>Your coaching support</h2><small>How it works</small></div>'+
+'<section class="identity-coach-card"><div class="identity-coach-head"><span class="identity-coach-avatar">'+icon('profile')+'</span>'+
+'<div><strong>Zenith coaching team</strong><small>Your plan, reviewed with care</small></div></div>'+
+'<p>Your coach remains responsible for approving meaningful changes. Anvaya helps organize observations and suggestions; it does not silently change your published plan.</p>'+
+'<details><summary>How does coaching intelligence support me? '+icon('chevron')+'</summary>'+
+'<p>Anvaya can help your coach identify patterns across your actual check-ins, training and nutrition records, flag concerns and draft recommendations. Your coach reviews consequential decisions before they become part of your program. This prototype is not connected to Anvaya or real messages.</p></details></section>'+
+'<div class="identity-section"><h2>Account & privacy</h2><small>Clear by design</small></div>'+
+'<section class="identity-account">'+
+'<details><summary><span class="item-icon">'+icon('profile')+'</span><span class="copy"><strong>Personal details</strong><small>Review what is available</small></span>'+icon('chevron')+'</summary>'+
+'<div class="detail"><p><strong>Example name:</strong> Aarav Sharma. Email, phone, contact details and actual membership ID are not connected. Editing personal details is not enabled in this design prototype.</p></div></details>'+
+'<details><summary><span class="item-icon">'+icon('shield')+'</span><span class="copy"><strong>Membership & billing</strong><small>Included in the Transformation example</small></span>'+icon('chevron')+'</summary>'+
+'<div class="detail"><p>Transformation includes gym membership. This demonstration does not know payment status, membership validity, renewal dates or receipts. A live app must retrieve those from the authoritative account system.</p></div></details>'+
+'<details><summary><span class="item-icon">'+icon('info')+'</span><span class="copy"><strong>Your data & permissions</strong><small>What this preview stores</small></span>'+icon('chevron')+'</summary>'+
+'<div class="detail"><p>The prototype uses browser session storage for sample food, water, walking and workout values. It does not contain real identity records, account credentials, connected health information, or an active coach messaging channel.</p></div></details></section>'+
+'<section class="identity-preview-control"><h3>Preview controls</h3><p>Only demonstration entries are affected. Resetting makes it easier to test the original screens again.</p>'+
+(!profileResetOpen?
+'<button type="button" data-profile-command="show-reset">Reset sample activity</button>':
+'<div class="identity-reset-dialog"><strong>Reset all demo progress?</strong>'+
+'<p>This clears simulated meal and walk logs, water additions and the sample 15-set workout. It does not change production records.</p>'+
+'<div class="buttons"><button type="button" data-action="reset">Confirm demo reset</button><button type="button" data-profile-command="cancel-reset">Keep my demo data</button></div></div>')+'</section>'+
+'<p class="identity-footer">Fictional profile and journey created for visual review only. No authenticated member, coach assignments, billing data, or real progress records are connected. <a href="index.html">Back to Home</a>.</p>'+
+'</div>','profile');
 }
 function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='nutrition-plan')return nutritionPlan();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
 document.addEventListener('click',function(e){
+const profileCmd=e.target.closest('[data-profile-command]');
+if(profileCmd){const cmd=profileCmd.getAttribute('data-profile-command');
+if(cmd==='show-reset'){profileResetOpen=true;profile();return;}
+if(cmd==='cancel-reset'){profileResetOpen=false;profile();return;}
+}
 const foodAdjust=e.target.closest('[data-food-adjust]');
 if(foodAdjust){if(state.dinner&&!dinnerEditMode)return;prepareDinnerDraft();
 const parts=foodAdjust.getAttribute('data-food-adjust').split(':'),food=DINNER_FOODS.find(f=>f.id===parts[0]);
@@ -673,7 +732,7 @@ const name=action.getAttribute('data-action');
 
 if(name==='walk'){state.walk=true;save();home();}
 if(name==='water'){state.water=Math.min(2500,state.water+250);save();progress();}
-if(name==='reset'){state={dinner:false,dinnerLog:null,walk:false,water:1800};save();try{sessionStorage.setItem(WORKOUT_SAMPLE_KEY,JSON.stringify({status:'ready',sets:Array(15).fill(false)}));}catch(e){}profile();}
+if(name==='reset'){state={dinner:false,dinnerLog:null,walk:false,water:1800};save();try{sessionStorage.setItem(WORKOUT_SAMPLE_KEY,JSON.stringify({version:2,status:'ready',mode:'set',cursor:0,sets:Array(15).fill(false),records:Array(15).fill(null),draft:{weight:'',reps:''},restEnd:0,restStart:0,restSeconds:0}));}catch(e){}profileResetOpen=false;profile();}
 if(name==='training-preview'){const box=document.getElementById('training-preview-panel');if(box){trainingPreviewOpen=!trainingPreviewOpen;box.hidden=!trainingPreviewOpen;action.setAttribute('aria-expanded',String(trainingPreviewOpen));const label=action.querySelector('.training-preview-label');if(label)label.textContent=trainingPreviewOpen?'Hide movement preview':'Preview movements';}}
 });
 render();
