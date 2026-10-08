@@ -3,13 +3,16 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screen 03, Training Overview, has now been redesigned for mobile review.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
 - `earlier-today.html` — recorded versus unrecorded tasks; Today / Week tabs.
+- `training.html` — Screen 03 Training Overview: today’s recovery state, weekly momentum, next session preview, interactive seven-day selection, and sample coaching focus.
 - `meal.html` — sample planned dinner and a functional demo log action.
-- `training.html`, `nutrition.html`, `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
+- `nutrition.html`, `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
+
+Training Overview uses a fixed illustrative week (Monday 5–Sunday 11 October 2026). Thursday is recovery; Friday is Upper Body; Saturday is Lower Body. The three recorded sessions, progress indicator, dates, movements and coach focus are fictional. Previewing the next session expands an inline exercise list; tapping another day updates the day details without navigation. Workout execution and complete plan screens have not been implemented yet.
 
 Bottom navigation is connected. The sample dinner can be logged from its detail page, which updates Home and Earlier Today. The demo post-meal walk and hydration controls also update sample state. Profile includes a reset control.
 
@@ -36,3 +39,9 @@ Open `http://localhost:8080/zenith-app-preview/`.
 
 ## Roadmap
 Review each deeper screen in sequence, replace exploratory layouts with approved HTML concepts, test navigation / responsive layouts / state transitions, and only then port to Flutter.
+
+## Training design sign-off checklist
+- Verify on narrow Android and iPhone widths; typography, scroll, active navigation and touch targets.
+- Check preview open/close, day selection, screen revisit and empty/long-content variants.
+- Sample data must never be represented as a real prescription or live coaching instruction.
+- Visual design approval precedes implementation of Screen 04 (full plan) and Flutter integration.
