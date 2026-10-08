@@ -251,6 +251,16 @@ function dinnerOriginLabel(){const query=(window.location&&window.location.searc
 function formattedQuantity(v,unit){return (Number.isInteger(v)?v:v.toFixed(1))+' '+unit;}
 let dinnerDraft=null,dinnerEditMode=false,dinnerRemoveConfirm=false,dinnerError='';
 function prepareDinnerDraft(){if(dinnerDraft===null)dinnerDraft=state.dinner?dinnerSavedPortions():normalizeDinnerPortions(null);}
+function mealFoodIcon(id){
+const marks={
+fish:'<path d="M3 12c6-8 14-8 19 0-5 8-13 8-19 0Z"/><circle cx="17" cy="10" r="1"/><path d="m3 12-1-6v12Z"/>',
+rice:'<path d="M3 11c2 9 16 9 18 0M4 10c0-7 16-7 16 0"/><path d="m9 9 1-2m4 4 1-2m-3 0 1-2"/>',
+dal:'<path d="M3 11c0 11 18 11 18 0"/><ellipse cx="12" cy="11" rx="9" ry="4"/><path d="m8 8 1-3m5 2 1-3"/>',
+gourd:'<path d="M7 19c-4-4-4-12 2-14 5-2 12 4 10 10-2 6-8 7-12 4Z"/><path d="M8 18c4-3 6-7 7-11M8 7 5 4m10 3 3-4"/>',
+oil:'<path d="M9 4h6m-6 0v3l-2 3v9h10v-9l-2-3V4M8 12h8M11 2h2"/>'
+};
+return '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">'+(marks[id]||marks.rice)+'</svg>';
+}
 function mealArt(){
 return '<div class="meal-art" role="img" aria-label="Illustrative plated dinner with rice, fish, dal and greens; not a photograph">'+
 '<svg viewBox="0 0 370 215" aria-hidden="true"><defs><radialGradient id="dish"><stop stop-color="#fffdf7"/><stop offset=".8" stop-color="#e5e9df"/><stop offset="1" stop-color="#93acb3"/></radialGradient><linearGradient id="fishglow" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7a45f"/><stop offset=".6" stop-color="#a64d27"/><stop offset="1" stop-color="#783820"/></linearGradient></defs>'+
@@ -443,7 +453,7 @@ const editable=!state.dinner||dinnerEditMode;
 const portions=editable?dinnerDraft:dinnerSavedPortions(),facts=dinnerNutrition(portions);
 const rows=DINNER_FOODS.map(f=>{
 const n=portions[f.id],minus=n<=0?' disabled aria-disabled="true"':'',plus=n>=f.max?' disabled aria-disabled="true"':'';
-return '<div class="meal-food-row '+(n===0?'inactive':'')+'"><span class="meal-food-avatar '+f.id+'">'+icon('meals')+'</span><div class="meal-food-name"><strong>'+f.name+'</strong><small>'+f.note+'</small></div>'+
+return '<div class="meal-food-row '+(n===0?'inactive':'')+'"><span class="meal-food-avatar '+f.id+'">'+mealFoodIcon(f.id)+'</span><div class="meal-food-name"><strong>'+f.name+'</strong><small>'+f.note+'</small></div>'+
 (editable?'<div class="meal-food-action"><button type="button" data-food-adjust="'+f.id+':minus" aria-label="Decrease '+f.name+'"'+minus+'>'+icon('minus')+'</button><span class="quantity">'+formattedQuantity(n,f.unit)+'</span><button type="button" data-food-adjust="'+f.id+':plus" aria-label="Increase '+f.name+'"'+plus+'>'+icon('plus')+'</button></div>':
 '<span class="quantity-only">'+formattedQuantity(n,f.unit)+'</span>')+'</div>';
 }).join('');
