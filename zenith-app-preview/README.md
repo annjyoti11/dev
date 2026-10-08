@@ -111,3 +111,10 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - This is an interactive **design preview**, not an allergy-aware food diary, nutrient database, a diagnosis, or a published prescription. Food substitutions, barcode scanning, photo recognition and coaching/backend synchronization are not implemented.
 - Acceptance checks: planned meal → adjust → estimated totals → record → return → refresh/reopen → edit/cancel/save → remove/confirm → verify final Nutrition, Home and Plan states. Real-device screen appearance and touch interactions still require visual review.
 
+
+## Meal preview cache isolation (8 October 2026)
+
+- Screen 08 is also published as `meal-20261008.html`, a self-contained snapshot with inline base CSS, meal-detail CSS and application JavaScript. This avoids mixed-version asset caching in mobile browsers when reviewing the design.
+- The previous `meal.html` redirects to the new preview while preserving the `?from=nutrition` / `?from=plan` origin and URL fragment. The shared app routes directly to the new path.
+- Other prototype HTML pages have a refreshed version parameter on their shared app JS and base CSS. This is cache-busting, not a CDN/browser cache purge; GitHub Pages publication still needs to complete.
+- The bundled Screen 08 is a review snapshot. Future changes to its source styles or script require regenerating a new uniquely versioned snapshot, rather than assuming the bundle updates automatically.
