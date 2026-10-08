@@ -3,7 +3,7 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan), 05 (Individual Workout Day), 06 (Nutrition Overview), and 07 (Complete Nutrition Plan), and 08 (Individual Meal Detail) have now been redesigned for mobile review.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03–09 are now available for mobile review, including Training, Complete Workout Plan, Live Workout Day, Nutrition, Complete Nutrition Plan, Individual Meal Detail and Progress Overview.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
@@ -13,6 +13,7 @@ Build and review the client experience screen by screen, before implementing the
 - `workout-day.html?week=1&day=4` — Screen 05 Individual Workout Day: **one exercise / one set at a time** during the active session, weight + reps entry, completion confirmation, rest timer and next-set transition.
 - `nutrition.html` — Screen 06 Nutrition Overview: premium energy ring, macro progress, clear dinner action, expandable sample meal timeline, and ledger-based demo totals.
 - `nutrition-plan.html` — Screen 07 Complete Nutrition Plan: seven-day sample selector, planned energy allocation, practical portions, optional food guidance and a connected Thursday dinner detail.
+- `progress-20261008.html` — Screen 09 Progress Overview: weekly training evidence, dynamic sample activity and hydration, and explicitly illustrative body trends. `progress.html` redirects here.
 - `meal.html` — Screen 08 Individual Meal Detail: illustrated food plate, adjustable actual portions, dynamic nutrition estimates, save/edit/remove demo meal entry.
 - `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
 
@@ -118,3 +119,15 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - The previous `meal.html` redirects to the new preview while preserving the `?from=nutrition` / `?from=plan` origin and URL fragment. The shared app routes directly to the new path.
 - Other prototype HTML pages have a refreshed version parameter on their shared app JS and base CSS. This is cache-busting, not a CDN/browser cache purge; GitHub Pages publication still needs to complete.
 - The bundled Screen 08 is a review snapshot. Future changes to its source styles or script require regenerating a new uniquely versioned snapshot, rather than assuming the bundle updates automatically.
+
+## Screen 09 — Progress Overview
+
+- Primary review URL: `progress-20261008.html` — a self-contained HTML file bundling the current `styles.css`, `progress.css`, and shared `app.js`. Its distinct URL avoids mixed-version stylesheet/script caching. `progress.html` now redirects, preserving query and hash.
+- Premium progress hierarchy: weekly interpretation → three compact headline metrics → **Training / Activity / Body** selectable views.
+- Training reads `zenith-preview-workout-v1` browser session state; 3 of 5 sessions before the sample Friday workout, 4 of 5 after completion. Thursday is a scheduled recovery day, not an overdue session. The calendar distinguishes recorded, planned and recovery statuses. If any sample weight-and-rep data exists, the most recent set is shown; **one workout must not be described as a strength trend**.
+- Activity shows **fixed illustrative** 6,420 of 8,000 steps, live-to-demo water value from `zenith_app_preview_demo_1` (starting 1,800 ml; buttons add 250 ml up to 2,500 ml), and the current recorded/main-meal and post-meal-walk states. These are demo records only, not real sensors.
+- Body offers separate **Waist** and **Weight** trend examples with four fictional measurements and a clearly identified illustrative chart. No client body data or medical records are linked. A real product must use verified check-in metrics, contextual coach review and appropriate privacy controls.
+- Interactive controls update their visible selections, and revisiting Progress reflects the latest session/hydration state. Cross-tab navigation remains available. Existing Home, Training, Nutrition, Profile and meal preview routes remain untouched apart from shared script version refresh.
+- The Progress tab in newer shared `app.js` navigates to the new bundled page. Older standalone bundles still linking to `progress.html` are supported by its redirect.
+- This is **not** a data-backed coaching dashboard, a measurement tracking API, a step sensor integration or a validated nutrition tracker. Real-device visual sign-off and backend integration are separate work.
+- Acceptance checks: create initial state → navigate Training/Activity/Body → interact → log demo water/workout → refresh/reopen → confirm weekly stats, recent recorded sets and final state; verify Body never claims hypothetical values as real.
