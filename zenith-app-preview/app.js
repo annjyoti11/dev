@@ -230,11 +230,85 @@ shell(
 '</div>','training');
 }
 
+/* Screen 06 — Nutrition Overview. All diary entries and targets are fictional examples.
+   Do not present simulated nutrient values as real intake or synced client data. */
+const demoNutrition={
+target:{kcal:2000,protein:140,carbs:220,fat:62},
+meals:[
+{id:'breakfast',title:'Breakfast',time:'8:00 AM',kcal:410,protein:28,carbs:50,fat:11,detail:'Oats, curd and seasonal fruit.',status:'recorded'},
+{id:'lunch',title:'Lunch',time:'1:45 PM',kcal:710,protein:41,carbs:82,fat:24,detail:'Rice, dal, vegetables and paneer.',status:'recorded'},
+{id:'dinner',title:'Dinner',time:'9:00 PM',kcal:620,protein:42,carbs:78,fat:16,detail:'Rohu fish, white rice and moong dal.',status:'linked'},
+{id:'snack',title:'Optional snack',time:'Flexible time',kcal:260,protein:29,carbs:10,fat:11,detail:'An optional example. Not recorded and not included in intake totals.',status:'optional'}
+]};
+let nutritionExpanded=null;
+function nutritionLedger(){
+const recorded=demoNutrition.meals.filter(function(m){return m.status==='recorded'||(m.id==='dinner'&&state.dinner);});
+return recorded.reduce(function(a,m){a.kcal+=m.kcal;a.protein+=m.protein;a.carbs+=m.carbs;a.fat+=m.fat;return a;},{kcal:0,protein:0,carbs:0,fat:0});
+}
+function nutritionRing(percent){
+const perimeter=301.593,offset=(perimeter*(1-percent/100)).toFixed(2);
+return '<div class="nutrition-ring" role="img" aria-label="'+Math.round(percent)+' percent of sample calorie target logged">'+
+'<svg viewBox="0 0 120 120" aria-hidden="true"><circle class="base" cx="60" cy="60" r="48"/><circle class="progress" cx="60" cy="60" r="48" stroke-dasharray="'+perimeter+'" stroke-dashoffset="'+offset+'"/></svg>'+
+'<div class="nutrition-ring-label"><strong>'+Math.round(percent)+'%</strong><small>LOGGED</small></div></div>';
+}
+function nutritionMacro(label,logged,target){
+const percentage=Math.max(0,Math.min(100,Math.round(100*logged/target)));
+return '<div class="nutrition-macro"><div class="nutrition-macro-name">'+label+'</div>'+
+'<div class="nutrition-macro-data"><strong>'+logged+'g</strong><span> / '+target+'g</span></div>'+
+'<div class="meter" role="progressbar" aria-label="'+label+' sample logged against target" aria-valuemin="0" aria-valuemax="'+target+'" aria-valuenow="'+logged+'"><span style="width:'+percentage+'%"></span></div></div>';
+}
+function nutritionMealRow(m){
+const recorded=m.status==='recorded'||m.id==='dinner'&&state.dinner;
+const isDinner=m.id==='dinner';
+const optional=m.id==='snack';
+const status=recorded?'Recorded':isDinner?'Next up':'Optional';
+const statusClass=recorded?'good':isDinner?'next':'';
+const inner='<span class="nutrition-meal-marker '+(recorded?'recorded':optional?'optional':'')+'">'+icon(recorded?'check':optional?'clock':'meals')+'</span>'+
+'<span class="nutrition-meal-body"><strong>'+m.title+'</strong><span class="time">'+m.time+'</span></span>'+
+'<span class="nutrition-meal-trailing"><strong>'+m.kcal+' kcal</strong><span class="status '+statusClass+'">'+status+'</span></span>';
+if(isDinner){
+return '<article class="nutrition-meal"><a class="nutrition-meal-button" href="meal.html?from=nutrition" aria-label="View dinner details, '+(recorded?'recorded in demo':'planned')+'">'+inner+'</a></article>';
+}
+const expanded=nutritionExpanded===m.id;
+return '<article class="nutrition-meal" aria-expanded="'+expanded+'">'+
+'<button type="button" class="nutrition-meal-button" data-nutrition-detail="'+m.id+'" aria-expanded="'+expanded+'" aria-controls="nutrition-detail-'+m.id+'">'+inner+'</button>'+
+'<div class="nutrition-meal-expand" id="nutrition-detail-'+m.id+'" '+(expanded?'':'hidden')+'>'+
+'<p>'+m.detail+'</p><div class="facts"><span><b>'+m.protein+'g</b> protein</span><span><b>'+m.carbs+'g</b> carbs</span><span><b>'+m.fat+'g</b> fat</span></div>'+
+'<p class="small-note">'+(optional?'Illustrative only · this item is not logged.':'Illustrative entry · these figures are not verified intake data.')+'</p></div></article>';
+}
 function nutrition(){
-shell(subhead('Nutrition','index.html')+'<div class="demo-label">NEXT DESIGN PASS · EXPLORATION</div><h1 class="page-title">Eat with direction.</h1><p class="page-intro">Your targets and meals together, with the next practical action in focus.</p>'+
-'<div class="content-card"><div class="feature-kicker">ILLUSTRATIVE DAILY TARGET</div><h2>Balanced nutrition</h2><p>2,000 kcal · 150 g protein · 4 meals</p><div class="track" style="margin-top:16px"><span style="width:'+(state.dinner?'82':'58')+'%"></span></div><div class="sub-small" style="margin-top:8px">Illustrative calorie progress; not calculated from real consumption.</div></div>'+
-'<div class="section-header"><h2>Today’s meals</h2></div><div class="content-card mini-list">'+
-[['Breakfast','8:00 am','Recorded'],['Lunch','1:45 pm','Recorded'],['Dinner','9:00 pm',state.dinner?'Recorded':'Next up'],['Snack','Flexible','Planned']].map(function(m,i){return '<a class="list-item" href="'+(i===2?'meal.html':'#meal-note')+'"><span class="tile-icon '+(i<2||i===2&&state.dinner?'good':'')+'">'+icon('meals')+'</span><span class="item-text"><span class="title-small">'+m[0]+'</span><span class="sub-small" style="display:block">'+m[1]+'</span></span><span class="tag '+(m[2]==='Recorded'?'good':'')+'">'+m[2]+'</span></a>';}).join('')+'</div><p id="meal-note" class="info-note">Only the dinner detail is interactive in this first prototype. The other meals will be designed screen by screen.</p>','nutrition');
+const totals=nutritionLedger();
+const remaining=Math.max(0,demoNutrition.target.kcal-totals.kcal);
+const pct=Math.min(100,totals.kcal/demoNutrition.target.kcal*100);
+const recordedMain=state.dinner?3:2;
+const focused=state.dinner;
+shell(
+'<div class="nutrition-page">'+
+'<header class="nutrition-top"><div class="nutrition-brand">'+logo()+'<div class="nutrition-brand-copy"><span>ZENITH · CLIENT APP</span><strong>Nutrition</strong></div></div><span class="nutrition-day">THU · 08 OCT</span></header>'+
+'<section class="nutrition-intro"><div class="overline">YOUR NUTRITION JOURNEY</div><h1>Fuel the <span>work.</span></h1><p>Your recorded meals, daily targets and one clear next step.</p></section>'+
+'<section class="nutrition-energy" aria-label="Illustrative nutrition intake"><div class="nutrition-energy-head"><span class="label">TODAY’S ENERGY</span><span class="sample-chip">DEMO VALUES</span></div>'+
+'<div class="nutrition-energy-content"><div class="nutrition-kcal"><strong>'+totals.kcal.toLocaleString('en-IN')+'</strong><span>of '+demoNutrition.target.kcal.toLocaleString('en-IN')+' kcal target</span>'+
+'<div class="remaining"><b>'+remaining+'</b> kcal remaining<br>in this example</div></div>'+nutritionRing(pct)+'</div>'+
+'<div class="nutrition-energy-foot">'+icon('check')+' Based on '+recordedMain+' sample recorded main meals</div></section>'+
+'<div class="nutrition-section-title"><h2>Your nutrition balance</h2><span class="aside">Logged / target</span></div>'+
+'<section class="nutrition-macros" aria-label="Illustrative daily macronutrients">'+
+nutritionMacro('Protein',totals.protein,demoNutrition.target.protein)+
+nutritionMacro('Carbs',totals.carbs,demoNutrition.target.carbs)+
+nutritionMacro('Fat',totals.fat,demoNutrition.target.fat)+'</section>'+
+'<div class="nutrition-section-title"><h2>'+(focused?'Main meals complete':'Your next meal')+'</h2><span class="aside">'+(focused?'3 / 3 main meals':'Scheduled · 9:00 PM')+'</span></div>'+
+'<section class="nutrition-focus"><div class="nutrition-focus-overline"><span class="dot"></span>'+(focused?'MEAL RECORDED':'UP NEXT · DINNER')+'</div>'+
+'<h3>'+(focused?'Dinner is logged.':'A balanced evening plate.')+'</h3>'+
+'<p>'+(focused?'Your three main meals are recorded in this example. The optional snack remains unlogged.':'Rohu fish, rice and moong dal · a planned 620 kcal sample meal.')+'</p>'+
+'<div class="focus-meta">'+icon(focused?'check':'clock')+(focused?'620 kcal · sample entry recorded':'9:00 PM · planned, not yet logged')+'</div>'+
+'<div class="nutrition-focus-actions"><a class="main-action" href="meal.html?from=nutrition">'+(focused?'Review dinner':'View dinner')+' '+icon('arrow')+'</a>'+
+'<a class="quiet-action" href="earlier-today.html">Earlier today '+icon('chevron')+'</a></div></section>'+
+'<div class="nutrition-section-title"><h2>Meals today</h2><span class="aside">'+recordedMain+' / 3 main meals</span></div>'+
+'<section class="nutrition-timeline" aria-label="Today’s sample meal timeline">'+demoNutrition.meals.map(nutritionMealRow).join('')+'</section>'+
+'<div class="nutrition-section-title"><h2>A useful reminder</h2></div>'+
+'<section class="nutrition-lesson"><span class="tile">'+icon('spark')+'</span><div><strong>Record what you actually eat.</strong>'+
+'<p>A planned meal is not the same as a consumed meal. Your coach can make better decisions from accurate entries than from perfect-looking numbers.</p></div></section>'+
+'<p class="nutrition-footer">This screen contains fictional meals, macro estimates and targets for design review. No food tracking, coach assignment or backend is connected. <a href="profile.html">Preview settings</a>.</p>'+
+'</div>','nutrition');
 }
 function meal(){
 shell(subhead('Dinner','nutrition.html')+'<div class="demo-label">INTERACTIVE SAMPLE MEAL</div><h1 class="page-title">Dinner.</h1><p class="page-intro">Rohu fish, rice and dal · scheduled for 9:00 pm</p>'+
@@ -258,6 +332,11 @@ shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBE
 }
 function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
 document.addEventListener('click',function(e){
+const mealDetail=e.target.closest('[data-nutrition-detail]');
+if(mealDetail){const id=mealDetail.getAttribute('data-nutrition-detail');const valid=demoNutrition.meals.some(m=>m.id===id&&m.id!=='dinner');if(valid){
+nutritionExpanded=nutritionExpanded===id?null:id;
+document.querySelectorAll('[data-nutrition-detail]').forEach(function(b){const active=b.getAttribute('data-nutrition-detail')===nutritionExpanded;b.setAttribute('aria-expanded',String(active));const container=b.closest('.nutrition-meal');if(container)container.setAttribute('aria-expanded',String(active));const node=document.getElementById('nutrition-detail-'+b.getAttribute('data-nutrition-detail'));if(node)node.hidden=!active;});
+}return;}
 const planWeekButton=e.target.closest('[data-plan-week]');
 if(planWeekButton){const i=Number(planWeekButton.getAttribute('data-plan-week'));if(Number.isInteger(i)&&i>=0&&i<programWeeks.length){
 programSelectedWeek=i;programExpandedDay=null;
@@ -277,7 +356,7 @@ const action=e.target.closest('[data-action]');const tab=e.target.closest('[data
 if(tab){selectedTab=tab.getAttribute('data-tab');earlier();return;}
 if(!action)return;
 const name=action.getAttribute('data-action');
-if(name==='log-dinner'){state.dinner=true;save();window.location.href='index.html';}
+if(name==='log-dinner'){state.dinner=true;save();window.location.href=(window.location&&window.location.search&&window.location.search.includes('from=nutrition'))?'nutrition.html':'index.html';}
 if(name==='walk'){state.walk=true;save();home();}
 if(name==='water'){state.water=Math.min(2500,state.water+250);save();progress();}
 if(name==='reset'){state={dinner:false,walk:false,water:1800};save();try{sessionStorage.setItem(WORKOUT_SAMPLE_KEY,JSON.stringify({status:'ready',sets:Array(15).fill(false)}));}catch(e){}profile();}
