@@ -25,7 +25,7 @@ const ICONS={
  spark:'<path d="m12 3 2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/>'
 };
 function icon(name){return '<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24">'+(ICONS[name]||ICONS.info)+'</svg></span>';}
-const urls={home:'index.html',training:'training.html',nutrition:'nutrition.html',progress:'progress-20261008.html',profile:'profile-20261008.html'};
+const urls={home:'index.html',training:'training.html',nutrition:'nutrition.html',progress:'progress-20261008.html',profile:'profile-20261009.html'};
 const navLabels={home:'Home',training:'Training',nutrition:'Nutrition',progress:'Progress',profile:'Profile'};
 function nav(active){return '<nav class="bottom-nav" aria-label="App preview navigation">'+Object.keys(urls).map(function(key){return '<a href="'+urls[key]+'" '+(key===active?'class="current" aria-current="page"':'')+'>'+icon(key)+'<span>'+navLabels[key]+'</span><span class="mark"></span></a>';}).join('')+'</nav>';}
 function logo(){return '<img src="../assets/zenith-symbol-white.svg" class="brand-logo" alt="Zenith Fitness Hub Z symbol">';}
@@ -34,6 +34,16 @@ function subhead(title,link){return '<header class="subheader"><a class="back" h
 const STORAGE='zenith_app_preview_demo_1';
 function read(){try{let value=JSON.parse(sessionStorage.getItem(STORAGE)||'{}');return {dinner:!!value.dinner,dinnerLog:value.dinnerLog&&typeof value.dinnerLog==='object'&&value.dinnerLog.portions?value.dinnerLog:null,walk:!!value.walk,water:Math.min(2500,Math.max(0,Number(value.water)||1800))};}catch(e){return {dinner:false,walk:false,water:1800};}}
 let state=read();
+const PROFILE_DEMO_KEY='zenith-preview-profile-v1';
+function demoProfile(){
+const fallback={name:'Aarav Sharma',gender:'Prefer not to say',goal:'Fat loss & strength',time:'Evening'};
+try{const v=JSON.parse(sessionStorage.getItem(PROFILE_DEMO_KEY)||'null');if(!v||typeof v!=='object')return fallback;
+return {name:typeof v.name==='string'&&v.name.trim().length>=2&&v.name.trim().length<=60?v.name.trim():fallback.name,
+gender:['Male','Female','Non-binary','Prefer not to say'].includes(v.gender)?v.gender:fallback.gender,
+goal:['Fat loss & strength','Build muscle','Improve general fitness','Increase strength'].includes(v.goal)?v.goal:fallback.goal,
+time:['Morning','Afternoon','Evening','Flexible'].includes(v.time)?v.time:fallback.time};
+}catch(e){return fallback;}}
+function safeText(v){return String(v).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
 function save(){try{sessionStorage.setItem(STORAGE,JSON.stringify(state));}catch(e){}}
 function pill(label,detail){return '<div class="step-pill">'+icon('steps')+'<strong>6,420</strong><span>steps</span>'+icon('chevron')+'</div>';}
 function metric(name,value,goal,pct,ico){return '<div class="metric"><div class="label">'+icon(ico)+'<span>'+name+'</span></div><strong>'+value+'</strong><small>'+goal+'</small><div class="track" role="progressbar" aria-label="'+name+'" aria-valuenow="'+Math.round(pct)+'" aria-valuemin="0" aria-valuemax="100"><span style="width:'+pct+'%"></span></div></div>';}
@@ -43,7 +53,7 @@ let hero=state.dinner?
 '<section class="hero"><div class="eyebrow"><span class="glow-dot"></span>UP NEXT · NUTRITION</div><h2>Dinner</h2><p class="meta">Rohu fish · Rice · Dal</p><div class="schedule">'+icon('clock')+'Scheduled for 9:00 pm</div><div class="buttons"><a class="btn" href="meal-20261008.html">View dinner '+icon('arrow')+'</a><a class="text-link" href="nutrition.html">Meal plan ›</a></div></section>';
 let next=state.dinner ? (state.walk?'The next activity will appear when due.':'Available after your recorded dinner') : 'Available after you record dinner';
 shell('<header class="header">'+logo()+'<a href="progress-20261008.html" aria-label="View step progress">'+pill()+'</a></header>'+
-'<div class="lead"><div class="eyebrow">DEMO EVENING · SAMPLE DAY</div><h1>Evening, Aarav.</h1><p>One clear step at a time.</p></div>'+
+'<div class="lead"><div class="eyebrow">DEMO EVENING · SAMPLE DAY</div><h1>Evening, '+safeText(demoProfile().name.split(/\s+/)[0])+'.</h1><p>One clear step at a time.</p></div>'+
 hero+
 '<div class="section-header"><h2>Today’s momentum</h2><a href="earlier-today.html">Earlier today →</a></div>'+
 '<div class="metrics">'+metric('Steps','6,420','of 8,000',80.25,'steps')+metric('Water',(state.water/1000).toFixed(1)+' L','of 2.5 L',100*state.water/2500,'water')+metric('Meals',state.dinner?'3 / 3':'2 / 3','logged today',state.dinner?100:66.67,'meals')+'</div>'+
@@ -614,8 +624,8 @@ shell(
 '<header class="identity-head"><div class="identity-brand">'+logo()+'<div class="identity-brand-copy"><small>ZENITH · CLIENT APP</small><strong>My Zenith</strong></div></div><span class="identity-date">PROFILE · DEMO</span></header>'+
 '<section class="identity-hero" aria-label="Fictional member profile"><div class="identity-hero-top"><span>YOUR PERSONAL SPACE</span><span class="identity-demo-pill">SAMPLE CLIENT</span></div>'+
 '<div class="identity-intro"><div class="identity-avatar">'+avatar+'</div>'+
-'<div class="identity-person"><small>WELCOME BACK</small><h1>Aarav Sharma.</h1><div class="caption">One journey. Your own pace.</div></div></div>'+
-'<p class="identity-hero-quote">Every recorded session and consistent habit tells a part of your story.</p>'+
+'<div class="identity-person"><small>WELCOME BACK</small><h1>'+safeText(demoProfile().name)+'.</h1><div class="caption">One journey. Your own pace.</div></div></div>'+
+'<p class="identity-hero-quote">Every recorded session and consistent habit tells a part of your story.</p><a class="identity-edit-link" href="profile-edit-20261009.html">'+icon('profile')+' Edit your details '+icon('arrow')+'</a>'+
 '<div class="identity-hero-stats"><div><b>12</b><small>Week journey</small></div><div><b>02 <span style="font-size:12px;color:#a9cada;font-weight:550">/ 12</span></b><small>Example week</small></div><div><b>'+sessions+' <span style="font-size:12px;color:#a9cada;font-weight:550">/ 5</span></b><small>Sessions logged</small></div></div></section>'+
 '<div class="identity-section"><h2>Your coaching program</h2><small>Example overview</small></div>'+
 '<section class="identity-program"><div class="identity-program-overline">12-WEEK TRANSFORMATION</div>'+
@@ -648,7 +658,7 @@ shell(
 '<div class="identity-section"><h2>Account & privacy</h2><small>Clear by design</small></div>'+
 '<section class="identity-account">'+
 '<details><summary><span class="item-icon">'+icon('profile')+'</span><span class="copy"><strong>Personal details</strong><small>Review what is available</small></span>'+icon('chevron')+'</summary>'+
-'<div class="detail"><p><strong>Example name:</strong> Aarav Sharma. Email, phone, contact details and actual membership ID are not connected. Editing personal details is not enabled in this design prototype.</p></div></details>'+
+'<div class="detail"><p><strong>Example name:</strong> '+safeText(demoProfile().name)+'. <strong>Gender:</strong> '+safeText(demoProfile().gender)+'. <strong>Personal focus:</strong> '+safeText(demoProfile().goal)+'. <strong>Training time:</strong> '+safeText(demoProfile().time)+'. These are browser-only sample details. Email, phone and account ID are not connected.</p><a href="profile-edit-20261009.html">Edit sample details '+icon('arrow')+'</a></div></details>'+
 '<details><summary><span class="item-icon">'+icon('shield')+'</span><span class="copy"><strong>Membership & billing</strong><small>Included in the Transformation example</small></span>'+icon('chevron')+'</summary>'+
 '<div class="detail"><p>Transformation includes gym membership. This demonstration does not know payment status, membership validity, renewal dates or receipts. A live app must retrieve those from the authoritative account system.</p></div></details>'+
 '<details><summary><span class="item-icon">'+icon('info')+'</span><span class="copy"><strong>Your data & permissions</strong><small>What this preview stores</small></span>'+icon('chevron')+'</summary>'+
@@ -659,7 +669,7 @@ shell(
 '<div class="identity-reset-dialog"><strong>Reset all demo progress?</strong>'+
 '<p>This clears simulated meal and walk logs, water additions and the sample 15-set workout. It does not change production records.</p>'+
 '<div class="buttons"><button type="button" data-action="reset">Confirm demo reset</button><button type="button" data-profile-command="cancel-reset">Keep my demo data</button></div></div>')+'</section>'+
-'<p class="identity-footer">Fictional profile and journey created for visual review only. No authenticated member, coach assignments, billing data, or real progress records are connected. <a href="index.html">Back to Home</a>.</p>'+
+'<p class="identity-footer">Fictional profile and journey created for visual review only. No authenticated member, coach assignments, billing data, or real progress records are connected. <a href="login-20261009.html">Preview login</a> · <a href="index.html">Back to Home</a>.</p>'+
 '</div>','profile');
 }
 function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='nutrition-plan')return nutritionPlan();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
