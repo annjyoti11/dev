@@ -197,3 +197,6 @@
 @media(max-width:350px){.focus-stage{padding:16px}.focus-art{height:64px;width:64px;margin:12px 0 8px}.focus-exercise-title{font-size:24px}.focus-entry{padding:13px 10px}.focus-inputs{gap:7px}.focus-input-control{grid-template-columns:30px minmax(0,1fr) 30px}.focus-input-control button{min-width:30px}.rest-dial{height:185px;width:185px}.rest-dial-text strong{font-size:38px}.rest-screen{padding:17px 12px}.rest-screen h1{font-size:27px}}
 @media(max-height:730px){.focus-art{height:54px;width:54px;margin:10px 0 8px}.focus-art .ic{width:33px;height:33px}.focus-stage{padding:14px}.focus-entry{margin-top:9px;padding:12px}.focus-stage .focus-prescription{padding-top:8px}.rest-screen h1{margin-top:13px}.rest-dial{height:166px;width:166px;margin:11px 0}.rest-dial-text strong{font-size:35px}}
 @media(prefers-reduced-motion:reduce){.focus-progress-rail>span,.rest-dial-progress,.focus-success{transition:none!important}}
+
+.rest-edit{display:inline-flex;align-items:center;justify-content:center;min-height:38px;margin:6px 0 0;padding:7px 14px;color:#b0d9eb;font-size:12px;font-weight:690;text-decoration:underline;text-underline-offset:3px;background:transparent;border:0}
+.rest-edit:focus-visible{outline:2px solid #99d6f1;outline-offset:3px;border-radius:8px}
