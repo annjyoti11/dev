@@ -25,7 +25,7 @@ const ICONS={
  spark:'<path d="m12 3 2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/>'
 };
 function icon(name){return '<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24">'+(ICONS[name]||ICONS.info)+'</svg></span>';}
-const urls={home:'index.html',training:'training.html',nutrition:'nutrition.html',progress:'progress.html',profile:'profile.html'};
+const urls={home:'index.html',training:'training.html',nutrition:'nutrition.html',progress:'progress-20261008.html',profile:'profile.html'};
 const navLabels={home:'Home',training:'Training',nutrition:'Nutrition',progress:'Progress',profile:'Profile'};
 function nav(active){return '<nav class="bottom-nav" aria-label="App preview navigation">'+Object.keys(urls).map(function(key){return '<a href="'+urls[key]+'" '+(key===active?'class="current" aria-current="page"':'')+'>'+icon(key)+'<span>'+navLabels[key]+'</span><span class="mark"></span></a>';}).join('')+'</nav>';}
 function logo(){return '<img src="../assets/zenith-symbol-white.svg" class="brand-logo" alt="Zenith Fitness Hub Z symbol">';}
@@ -42,7 +42,7 @@ let hero=state.dinner?
 '<section class="hero"><div class="eyebrow"><span class="glow-dot"></span>DINNER RECORDED</div><h2>Nicely done.</h2><p class="meta">Your meal is in today’s log.</p><div class="schedule">'+icon('walk')+'A short walk is available now</div><div class="buttons">'+(state.walk?'<span class="tag good">Walk recorded</span>':'<button class="btn" data-action="walk">Record a 10-minute walk '+icon('arrow')+'</button>')+'<a class="text-link" href="earlier-today.html">View today’s activity ›</a></div></section>':
 '<section class="hero"><div class="eyebrow"><span class="glow-dot"></span>UP NEXT · NUTRITION</div><h2>Dinner</h2><p class="meta">Rohu fish · Rice · Dal</p><div class="schedule">'+icon('clock')+'Scheduled for 9:00 pm</div><div class="buttons"><a class="btn" href="meal-20261008.html">View dinner '+icon('arrow')+'</a><a class="text-link" href="nutrition.html">Meal plan ›</a></div></section>';
 let next=state.dinner ? (state.walk?'The next activity will appear when due.':'Available after your recorded dinner') : 'Available after you record dinner';
-shell('<header class="header">'+logo()+'<a href="progress.html" aria-label="View step progress">'+pill()+'</a></header>'+
+shell('<header class="header">'+logo()+'<a href="progress-20261008.html" aria-label="View step progress">'+pill()+'</a></header>'+
 '<div class="lead"><div class="eyebrow">DEMO EVENING · SAMPLE DAY</div><h1>Evening, Aarav.</h1><p>One clear step at a time.</p></div>'+
 hero+
 '<div class="section-header"><h2>Today’s momentum</h2><a href="earlier-today.html">Earlier today →</a></div>'+
@@ -487,11 +487,119 @@ mealArt()+'<div class="meal-image-note">ILLUSTRATIVE FOOD ART · NOT A PHOTO</di
 controls+
 '<p class="meal-footnote">Concept preview only. No client records, allergies, dietary restrictions or coaching instructions are connected. <a href="'+dinnerOrigin()+'">'+dinnerOriginLabel()+'</a>.</p></div>','nutrition');
 }
+/* Screen 09 — Progress overview; fictional data and browser-only demo session values. */
+let progressTab='training',progressBodyMetric='waist';
+const sampleBody={
+waist:{label:'Waist',unit:'cm',values:[94.1,93.6,93.2,92.8]},
+weight:{label:'Body weight',unit:'kg',values:[82.4,82.2,82.3,81.9]}
+};
+function progressPerformance(){
+try{
+const saved=JSON.parse(sessionStorage.getItem(WORKOUT_SAMPLE_KEY)||'null');
+if(!saved||!Array.isArray(saved.records)||saved.records.length!==15)return null;
+const names=['Dumbbell Bench Press','Lat Pulldown','Seated Row','Dumbbell Shoulder Press','Triceps Pushdown'];
+let recent=null;
+for(let i=0;i<saved.records.length;i++){
+const r=saved.records[i];
+if(r&&Number.isFinite(r.weight)&&Number.isFinite(r.reps)&&r.weight>=0&&r.reps>0)recent={exercise:names[Math.floor(i/3)]||'Exercise',weight:r.weight,reps:r.reps,set:i%3+1};
+}
+return recent;
+}catch(e){return null;}
+}
+function progressSampleWeek(snapshot){
+const names=['M','T','W','T','F','S','S'];
+return '<div class="progress-week-strips" aria-label="Illustrative workout calendar">'+names.map(function(n,i){
+let status=i<3?'done':i===3||i===6?'rest':i===4&&snapshot.phase==='completed'?'done':i===4?'next':'';
+let label=i<3?'Session recorded':i===3||i===6?'Recovery day':i===4&&snapshot.phase==='completed'?'Friday demo recorded':i===4?'Planned Friday training':'Planned Saturday training';
+return '<div class="day" aria-label="'+['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'][i]+': '+label+'"><span class="label">'+n+'</span>'+
+'<span class="block '+status+'" title="'+label+'">'+(status==='done'?icon('check'):status==='rest'?icon('moon'):status==='next'?icon('clock'):'<span class="small"></span>')+'</span></div>';
+}).join('')+'</div>';
+}
+function progressBodyChart(metric){
+const m=sampleBody[metric]||sampleBody.waist,values=m.values;
+const low=Math.min(...values)-.4,high=Math.max(...values)+.4;
+const pts=values.map(function(v,i){return {x:22+i*92,y:22+(high-v)/(high-low)*107};});
+const line=pts.map((p,i)=>(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' ');
+const fill=line+' L '+pts[pts.length-1].x+' 150 L '+pts[0].x+' 150 Z';
+return '<svg class="progress-body-chart" viewBox="0 0 320 160" role="img" aria-label="Illustrative '+m.label.toLowerCase()+' values: '+values.join(', ')+' '+m.unit+' across four dates">'+
+'<path class="gridline" d="M16 45H304M16 95H304M16 145H304"/>'+
+'<path class="area" d="'+fill+'"/><path class="plot" d="'+line+'"/>'+
+pts.map(p=>'<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="4.5"/>').join('')+'</svg>'+
+'<div class="progress-chart-labels"><span>17 Sep</span><span>24 Sep</span><span>1 Oct</span><span>8 Oct</span></div>';
+}
+function progressTraining(snapshot){
+const count=snapshot.phase==='completed'?4:3;
+const recent=progressPerformance();
+return '<div class="progress-card"><div class="progress-card-heading"><h3>Weekly training rhythm</h3><span class="chip">5–11 OCT · DEMO</span></div>'+
+'<div class="progress-training-status"><strong>'+String(count).padStart(2,'0')+' <span>/ 05</span></strong><span>planned sessions recorded</span></div>'+
+progressSampleWeek(snapshot)+
+'<div class="progress-legend"><span><i></i>Recorded</span><span><i></i>Up next</span><span><i></i>Recovery / planned</span></div>'+
+'<p class="progress-card-note">Thursday is a scheduled recovery day, not a missed workout. '+(snapshot.phase==='completed'?'Friday’s sample session is recorded; Saturday is next.':snapshot.phase==='active'?'Friday’s demonstration is in progress with '+snapshot.logged+' of 15 sets logged.':'Friday is the next planned strength session.')+'</p>'+
+'<a class="progress-detail-link" href="training.html">View training week '+icon('arrow')+'</a></div>'+
+'<div class="progress-card"><div class="progress-card-heading"><h3>Strength evidence</h3><span class="chip">SAMPLE LOG</span></div>'+
+(recent?'<div class="progress-strength-grid"><div><small>Most recent set</small><strong>'+recent.weight+' <span>kg</span></strong><p>'+recent.exercise+'</p></div>'+
+'<div><small>Repetitions recorded</small><strong>'+recent.reps+' <span>reps</span></strong><p>Set '+recent.set+' of the movement</p></div></div>'+
+'<p class="progress-card-note">These values come from the example workout you logged in this browser. One session does not establish a strength trend.</p>':
+'<div class="progress-no-record"><span class="icon">'+icon('bar')+'</span><strong>No set performance recorded yet.</strong>'+
+'<p>Your sample training sessions are marked recorded, but no weight-and-rep evidence has been entered. Real strength trends require comparable logs over time.</p></div>')+
+'<a class="progress-detail-link" href="workout-day.html?week=1&day=4">Explore sample set log '+icon('arrow')+'</a></div>';
+}
+function progressActivity(){
+const water=state.water,stepPercent=6420/8000*100,waterPct=water/2500*100;
+return '<div class="progress-activity-tile"><div class="title"><span>'+icon('steps')+'Steps today</span><span class="chip">EXAMPLE</span></div>'+
+'<div class="value"><strong>6,420</strong><span>/ 8,000 steps</span></div><div class="progress-track" role="progressbar" aria-label="Illustrative steps towards goal" aria-valuemin="0" aria-valuemax="8000" aria-valuenow="6420"><span style="width:'+stepPercent+'%"></span></div>'+
+'<p>This is a fixed sample reading—not live pedometer data.</p></div>'+
+'<div class="progress-activity-tile"><div class="title"><span>'+icon('water')+'Hydration</span><span class="chip">DEMO LOG</span></div>'+
+'<div class="value"><strong>'+(water/1000).toFixed(2)+' L</strong><span>/ 2.50 L</span></div>'+
+'<div class="progress-track" role="progressbar" aria-label="Demo hydration toward example goal" aria-valuemin="0" aria-valuemax="2500" aria-valuenow="'+water+'"><span style="width:'+waterPct+'%"></span></div>'+
+'<p>Updates when you record sample water in this preview.</p><div class="actions"><button type="button" data-action="water" '+(water>=2500?'disabled':'')+'>+250 ml water</button></div></div>'+
+'<div class="progress-activity-tile"><div class="title"><span>'+icon('meals')+'Daily actions</span><span class="chip">SAMPLE DAY</span></div>'+
+'<div class="progress-strength-grid"><div><small>Main meals recorded</small><strong>'+(state.dinner?'3':'2')+' <span>/ 3</span></strong><p>Breakfast, lunch'+(state.dinner?', dinner':'; dinner planned')+'</p></div>'+
+'<div><small>Post-meal walk</small><strong style="font-size:15px;margin-top:13px">'+(state.walk?'Recorded':state.dinner?'Available':'Later')+'</strong><p>'+(state.walk?'Demo action complete':state.dinner?'After dinner recorded':'After planned dinner')+'</p></div></div>'+
+'<a class="progress-detail-link" href="earlier-today.html">See activity history '+icon('arrow')+'</a></div>';
+}
+function progressBody(){
+const m=sampleBody[progressBodyMetric];
+const change=Math.round((m.values[3]-m.values[0])*10)/10;
+return '<div class="progress-chart-card"><div class="progress-card-heading"><h3>Body measurements</h3><span class="chip">ILLUSTRATIVE</span></div>'+
+'<p class="progress-card-note">These values are fictional examples, not connected client measurements.</p>'+
+'<div class="progress-body-switch" role="group" aria-label="Choose a sample body metric">'+
+'<button type="button" data-progress-body="waist" class="'+(progressBodyMetric==='waist'?'selected':'')+'" aria-pressed="'+(progressBodyMetric==='waist')+'">Waist</button>'+
+'<button type="button" data-progress-body="weight" class="'+(progressBodyMetric==='weight'?'selected':'')+'" aria-pressed="'+(progressBodyMetric==='weight')+'">Weight</button></div>'+
+'<div class="progress-body-value"><strong>'+m.values[3].toFixed(1)+'</strong><small>'+m.unit+' · example latest</small></div>'+
+'<p class="progress-body-caption">Illustrative four-entry change: '+(change<0?'−':'+')+Math.abs(change).toFixed(1)+' '+m.unit+'</p>'+
+progressBodyChart(progressBodyMetric)+
+'<p class="progress-chart-explanation">Measurements become meaningful with consistent methods, context and your coach’s review. They are one signal—not a verdict on your progress.</p></div>'+
+'<div class="progress-insight"><span class="icon">'+icon('shield')+'</span><div><div class="heading">DATA INTEGRITY</div>'+
+'<p>There are no verified body measurements attached to this preview. A live progress screen should show confirmed check-ins, respect privacy, and avoid claiming results from missing data.</p></div></div>';
+}
 function progress(){
-shell(subhead('Progress','index.html')+'<div class="demo-label">NEXT DESIGN PASS · EXPLORATION</div><h1 class="page-title">Every step matters.</h1><p class="page-intro">Progress should include consistency and strength, not only body weight.</p>'+
-'<div class="content-card"><div class="feature-kicker">SAMPLE ACTIVITY</div><h2>Today’s steps</h2><div style="font-size:32px;font-weight:740;margin:10px 0">6,420 <span style="font-size:13px;color:#abc3cf">/ 8,000</span></div><div class="track"><span style="width:80.25%"></span></div><p style="margin-top:12px">Illustrative step reading. No device sensor is connected.</p></div>'+
-'<div class="section-header"><h2>Recovery & hydration</h2></div><div class="content-card"><h2>'+(state.water/1000).toFixed(2)+' L of 2.5 L</h2><p>Demo hydration target</p><div class="track"><span style="width:'+100*state.water/2500+'%"></span></div><div class="cta-row"><button class="btn" data-action="water">+250 ml water</button></div></div>'+
-'<div class="content-card"><h2>Beyond the scale</h2><p>Strength progression, attendance trends and body measurements will appear here when supported by real client records.</p></div>','progress');
+const snapshot=workoutPreviewSnapshot(),sessions=snapshot.phase==='completed'?4:3;
+const insight=snapshot.phase==='completed'?'Four of five sample sessions are recorded. The next planned session is Saturday.':
+snapshot.phase==='active'?'Three sample sessions are recorded, and Friday’s practice log has '+snapshot.logged+' of 15 sets.':
+'Three sample sessions are recorded. Today is scheduled recovery—not a missed training day.';
+const tabs=[['training','Training'],['activity','Activity'],['body','Body']];
+const contents=progressTab==='activity'?progressActivity():progressTab==='body'?progressBody():progressTraining(snapshot);
+shell(
+'<div class="progress-page"><header class="progress-head"><div class="progress-brand">'+logo()+
+'<div class="progress-brand-copy"><small>ZENITH · CLIENT APP</small><strong>Progress</strong></div></div>'+
+'<span class="progress-date">THU · 08 OCT</span></header>'+
+'<section class="progress-intro"><div class="progress-kicker">YOUR BIGGER PICTURE</div>'+
+'<h1>More than <span>a number.</span></h1><p>Strength, consistency and the small actions that add up.</p></section>'+
+'<section class="progress-highlight"><div class="progress-highlight-top"><span>THIS WEEK’S SIGNAL</span><small>SAMPLE DATA</small></div>'+
+'<h2>'+(snapshot.phase==='completed'?'Consistency, in motion.':'Showing up matters.')+'</h2><p>'+insight+'</p>'+
+'<div class="progress-highlight-footer"><strong>'+sessions+' <span>/ 5 sessions</span></strong><a href="training.html">Your training '+icon('arrow')+'</a></div></section>'+
+'<div class="progress-section"><h2>At a glance</h2><span>Illustrative week</span></div>'+
+'<div class="progress-quick">'+
+'<div class="progress-quick-tile"><div class="progress-quick-icon">'+icon('training')+'<span>WK 02</span></div><strong>'+String(sessions).padStart(2,'0')+'/05</strong><small>Sessions recorded</small></div>'+
+'<div class="progress-quick-tile"><div class="progress-quick-icon">'+icon('steps')+'<span>TODAY</span></div><strong>6,420</strong><small>Sample step count</small></div>'+
+'<div class="progress-quick-tile"><div class="progress-quick-icon">'+icon('water')+'<span>TODAY</span></div><strong>'+(state.water/1000).toFixed(2)+'L</strong><small>Sample hydration</small></div></div>'+
+'<div class="progress-section"><h2>Explore your progress</h2><span>Select a view</span></div>'+
+'<div class="progress-switch" role="group" aria-label="Progress areas">'+tabs.map(([id,name])=>'<button type="button" data-progress-tab="'+id+'" class="'+(progressTab===id?'selected':'')+'" aria-pressed="'+(progressTab===id)+'">'+name+'</button>').join('')+'</div>'+
+'<div class="progress-tab-content" id="progress-tab-content" aria-live="polite">'+contents+'</div>'+
+'<div class="progress-insight"><span class="icon">'+icon('spark')+'</span><div><div class="heading">WHAT MATTERS HERE</div>'+
+'<p>Progress is interpreted in context—not reduced to body weight. Your coach reviews meaningful changes before recommending adjustments.</p></div></div>'+
+'<p class="progress-footer">This is a fictional client demonstration. Steps are fixed sample data; water, meal and workout entries are browser-only demo state. Measurement charts are illustrative, not verified health records.</p></div>','progress');
 }
 function profile(){
 shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBER · SAMPLE DATA</div><h1 class="page-title">Aarav Sharma.</h1><p class="page-intro">Your coaching space. A clear place for your active program, support and preferences.</p>'+
@@ -554,6 +662,10 @@ document.querySelectorAll('[data-plan-day]').forEach(function(b){const j=Number(
 }return;}
 const dayButton=e.target.closest('[data-training-day]');
 if(dayButton){const idx=Number(dayButton.getAttribute('data-training-day'));if(Number.isInteger(idx)&&idx>=0&&idx<trainingDays.length){trainingSelected=idx;const detail=document.getElementById('training-day-summary');if(detail)detail.innerHTML=trainingDayDetail(idx);document.querySelectorAll('[data-training-day]').forEach(function(b){const selected=Number(b.getAttribute('data-training-day'))===idx;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});}return;}
+const progressArea=e.target.closest('[data-progress-tab]');
+if(progressArea){const key=progressArea.getAttribute('data-progress-tab');if(['training','activity','body'].includes(key)){progressTab=key;progress();}return;}
+const progressBody=e.target.closest('[data-progress-body]');
+if(progressBody){const metric=progressBody.getAttribute('data-progress-body');if(['waist','weight'].includes(metric)){progressBodyMetric=metric;progress();}return;}
 const action=e.target.closest('[data-action]');const tab=e.target.closest('[data-tab]');
 if(tab){selectedTab=tab.getAttribute('data-tab');earlier();return;}
 if(!action)return;
