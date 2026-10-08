@@ -20,6 +20,8 @@ const ICONS={
  bar:'<path d="M5 20V13m5 7V9m5 11V4m5 16V11"/>',
  info:'<circle cx="12" cy="12" r="9"/><path d="M12 10v6m0-10h.01"/>',
  shield:'<path d="m12 3 8 4v5c0 5-4 8-8 10-4-2-8-5-8-10V7z"/><path d="m9 12 2 2 4-4"/>',
+ minus:'<path d="M5 12h14"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
  spark:'<path d="m12 3 2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/>'
 };
 function icon(name){return '<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24">'+(ICONS[name]||ICONS.info)+'</svg></span>';}
@@ -490,6 +492,24 @@ shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBE
 }
 function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='nutrition-plan')return nutritionPlan();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
 document.addEventListener('click',function(e){
+const foodAdjust=e.target.closest('[data-food-adjust]');
+if(foodAdjust){if(state.dinner&&!dinnerEditMode)return;prepareDinnerDraft();
+const parts=foodAdjust.getAttribute('data-food-adjust').split(':'),food=DINNER_FOODS.find(f=>f.id===parts[0]);
+if(!food||!['plus','minus'].includes(parts[1]))return;
+const delta=parts[1]==='plus'?food.step:-food.step;
+dinnerDraft[food.id]=Math.max(0,Math.min(food.max,Math.round((dinnerDraft[food.id]+delta)*10)/10));dinnerError='';meal();return;}
+const mealCommand=e.target.closest('[data-meal-command]');
+if(mealCommand){
+const cmd=mealCommand.getAttribute('data-meal-command');
+if(cmd==='edit'&&state.dinner){dinnerDraft=dinnerSavedPortions();dinnerEditMode=true;dinnerRemoveConfirm=false;dinnerError='';meal();return;}
+if(cmd==='cancel'){dinnerDraft=null;dinnerEditMode=false;dinnerError='';meal();return;}
+if(cmd==='save'){prepareDinnerDraft();if(dinnerNutrition(dinnerDraft).kcal<=0){dinnerError='Select at least one food amount.';meal();return;}
+state.dinner=true;state.dinnerLog={portions:normalizeDinnerPortions(dinnerDraft)};save();
+dinnerDraft=null;dinnerEditMode=false;dinnerRemoveConfirm=false;dinnerError='';window.location.href=dinnerOrigin();return;}
+if(cmd==='remove'&&state.dinner){dinnerRemoveConfirm=true;meal();return;}
+if(cmd==='cancel-remove'){dinnerRemoveConfirm=false;meal();return;}
+if(cmd==='confirm-remove'&&state.dinner&&dinnerRemoveConfirm){state.dinner=false;state.dinnerLog=null;state.walk=false;save();dinnerRemoveConfirm=false;dinnerEditMode=false;dinnerDraft=null;meal();return;}
+return;}
 const dietDay=e.target.closest('[data-diet-day]');
 if(dietDay){const n=Number(dietDay.getAttribute('data-diet-day'));if(Number.isInteger(n)&&n>=0&&n<7){
 nutritionPlanDay=n;planExpandedMeal=null;
@@ -528,10 +548,10 @@ const action=e.target.closest('[data-action]');const tab=e.target.closest('[data
 if(tab){selectedTab=tab.getAttribute('data-tab');earlier();return;}
 if(!action)return;
 const name=action.getAttribute('data-action');
-if(name==='log-dinner'){state.dinner=true;save();window.location.href=(window.location&&window.location.search&&window.location.search.includes('from=plan'))?'nutrition-plan.html?day=3':(window.location&&window.location.search&&window.location.search.includes('from=nutrition'))?'nutrition.html':'index.html';}
+
 if(name==='walk'){state.walk=true;save();home();}
 if(name==='water'){state.water=Math.min(2500,state.water+250);save();progress();}
-if(name==='reset'){state={dinner:false,walk:false,water:1800};save();try{sessionStorage.setItem(WORKOUT_SAMPLE_KEY,JSON.stringify({status:'ready',sets:Array(15).fill(false)}));}catch(e){}profile();}
+if(name==='reset'){state={dinner:false,dinnerLog:null,walk:false,water:1800};save();try{sessionStorage.setItem(WORKOUT_SAMPLE_KEY,JSON.stringify({status:'ready',sets:Array(15).fill(false)}));}catch(e){}profile();}
 if(name==='training-preview'){const box=document.getElementById('training-preview-panel');if(box){trainingPreviewOpen=!trainingPreviewOpen;box.hidden=!trainingPreviewOpen;action.setAttribute('aria-expanded',String(trainingPreviewOpen));const label=action.querySelector('.training-preview-label');if(label)label.textContent=trainingPreviewOpen?'Hide movement preview':'Preview movements';}}
 });
 render();
