@@ -295,6 +295,7 @@ shell(
 nutritionMacro('Protein',totals.protein,demoNutrition.target.protein)+
 nutritionMacro('Carbs',totals.carbs,demoNutrition.target.carbs)+
 nutritionMacro('Fat',totals.fat,demoNutrition.target.fat)+'</section>'+
+'<a class="nutrition-plan-entry" href="nutrition-plan.html?day=3" aria-label="Explore your complete seven-day example nutrition plan"><span class="nutrition-plan-entry-icon">'+icon('bar')+'</span><span class="nutrition-plan-entry-copy"><strong>Your complete food plan</strong><small>Explore seven days, meals & portions</small></span>'+icon('chevron')+'</a>'+
 '<div class="nutrition-section-title"><h2>'+(focused?'Main meals complete':'Your next meal')+'</h2><span class="aside">'+(focused?'3 / 3 main meals':'Scheduled · 9:00 PM')+'</span></div>'+
 '<section class="nutrition-focus"><div class="nutrition-focus-overline"><span class="dot"></span>'+(focused?'MEAL RECORDED':'UP NEXT · DINNER')+'</div>'+
 '<h3>'+(focused?'Dinner is logged.':'A balanced evening plate.')+'</h3>'+
@@ -310,8 +311,103 @@ nutritionMacro('Fat',totals.fat,demoNutrition.target.fat)+'</section>'+
 '<p class="nutrition-footer">This screen contains fictional meals, macro estimates and targets for design review. No food tracking, coach assignment or backend is connected. <a href="profile.html">Preview settings</a>.</p>'+
 '</div>','nutrition');
 }
+/* Screen 07 — Complete Nutrition Plan.
+   Seven sample daily menus; schedule is never a consumption record. */
+const planDays=[
+{short:'Mon',date:'05',title:'Start with structure',tag:'Balanced start',meals:[
+['Oats & egg breakfast',430,'2 eggs, cooked oats and a seasonal fruit',[['Eggs','2 whole'],['Rolled oats','50 g dry'],['Seasonal fruit','100 g']]],
+['Chicken & rice bowl',690,'Chicken, rice and vegetables',[['Cooked chicken','150 g'],['Cooked rice','190 g'],['Vegetables','150 g']]],
+['Paneer & roti plate',610,'Paneer, rotis and mixed vegetables',[['Paneer','120 g'],['Whole wheat roti','2 medium'],['Vegetables','150 g']]],
+['Curd & nuts',270,'Flexible snack allocation',[['Plain curd','200 g'],['Nuts','20 g']]]]},
+{short:'Tue',date:'06',title:'Simple, repeatable meals',tag:'Everyday ease',meals:[
+['Vegetable omelette & toast',400,'Eggs, whole wheat toast and fruit',[['Eggs','2 whole'],['Whole wheat bread','2 slices'],['Fruit','100 g']]],
+['Rajma & rice',700,'Kidney beans, rice and curd',[['Cooked rajma','200 g'],['Cooked rice','180 g'],['Curd','150 g']]],
+['Fish, dal & vegetables',640,'Fish curry, dal and sautéed vegetables',[['Cooked fish','150 g'],['Moong dal','150 g'],['Vegetables','150 g']]],
+['Protein-rich yogurt',260,'Flexible snack allocation',[['Plain high-protein yogurt','200 g'],['Nuts','15 g']]]]},
+{short:'Wed',date:'07',title:'Protein across the day',tag:'Steady rhythm',meals:[
+['Oats with milk & eggs',420,'Oats, milk and eggs',[['Rolled oats','45 g dry'],['Milk','200 ml'],['Eggs','2 whole']]],
+['Chicken, roti & salad',680,'Chicken curry, rotis and salad',[['Cooked chicken','150 g'],['Whole wheat roti','2 medium'],['Mixed salad','150 g']]],
+['Paneer & rice bowl',630,'Paneer, rice and stir-fried greens',[['Paneer','130 g'],['Cooked rice','190 g'],['Greens','150 g']]],
+['Curd & fruit',270,'Flexible snack allocation',[['Curd','200 g'],['Seasonal fruit','150 g']]]]},
+{short:'Thu',date:'08',title:'A familiar, balanced day',tag:'Sample today',meals:[
+['Oats, curd & fruit',410,'Oats, curd and seasonal fruit',[['Rolled oats','45 g dry'],['Plain curd','200 g'],['Seasonal fruit','100 g']]],
+['Rice, dal & paneer',710,'Rice, dal, vegetables and paneer',[['Cooked rice','200 g'],['Cooked dal','150 g'],['Paneer','100 g'],['Mixed vegetables','150 g']]],
+['Rohu fish dinner',620,'Rohu fish, rice and moong dal',[['Rohu fish','150 g'],['White rice','200 g'],['Moong dal','100 g'],['Bottle gourd','100 g'],['Olive oil','1 tsp']]],
+['Optional snack',260,'High-protein yogurt and roasted nuts',[['High-protein yogurt','200 g'],['Roasted nuts','20 g']]]]},
+{short:'Fri',date:'09',title:'Fuel an active day',tag:'Training day',meals:[
+['Eggs, banana & toast',420,'Eggs, toast and banana',[['Eggs','2 whole'],['Whole wheat toast','2 slices'],['Banana','1 medium']]],
+['Chicken & rice plate',690,'Chicken curry, rice and vegetables',[['Cooked chicken','150 g'],['Cooked rice','200 g'],['Vegetables','150 g']]],
+['Fish & vegetable roti',630,'Fish, rotis and cooked greens',[['Cooked fish','150 g'],['Whole wheat roti','2 medium'],['Cooked vegetables','150 g']]],
+['Yogurt & nuts',260,'Flexible snack allocation',[['Plain yogurt','200 g'],['Mixed nuts','20 g']]]]},
+{short:'Sat',date:'10',title:'Keep meals practical',tag:'Training day',meals:[
+['Paneer toast & fruit',440,'Paneer, toast and fruit',[['Paneer','100 g'],['Whole wheat toast','2 slices'],['Fruit','100 g']]],
+['Rice, dal & egg curry',690,'Cooked rice, dal and egg curry',[['Cooked rice','200 g'],['Moong dal','150 g'],['Egg curry','2 eggs']]],
+['Chicken & roti dinner',610,'Chicken, rotis and greens',[['Cooked chicken','150 g'],['Whole wheat roti','2 medium'],['Cooked greens','150 g']]],
+['Curd & fruit',260,'Flexible snack allocation',[['Curd','200 g'],['Seasonal fruit','150 g']]]]},
+{short:'Sun',date:'11',title:'Consistency, not perfection',tag:'Flexible day',meals:[
+['Omelette & fruit',420,'Eggs, toast and fruit',[['Eggs','2 whole'],['Whole wheat toast','2 slices'],['Fruit','100 g']]],
+['Fish & rice lunch',700,'Rohu fish, rice, dal and vegetables',[['Cooked rohu fish','150 g'],['Cooked rice','200 g'],['Dal','150 g'],['Vegetables','100 g']]],
+['Paneer & vegetable dinner',600,'Paneer, roti and seasonal vegetables',[['Paneer','130 g'],['Whole wheat roti','2 medium'],['Vegetables','150 g']]],
+['Yogurt & nuts',280,'Flexible snack allocation',[['Plain yogurt','200 g'],['Nuts','20 g']]]]}
+];
+const planSlotNames=['Breakfast','Lunch','Dinner','Flexible snack'];
+const planSlotTimes=['8:00 AM','1:45 PM','9:00 PM','Flexible'];
+let nutritionPlanDay=(function(){const match=/(?:\?|&)day=(\d+)(?:&|$)/.exec((window.location&&window.location.search)||'');const number=match?Number(match[1]):3;return Number.isInteger(number)&&number>=0&&number<7?number:3;})();
+let planExpandedMeal=null;
+function nutritionPlanMealState(i){
+ if(nutritionPlanDay!==3)return i===3?'Optional':'Planned';
+ if(i===3)return 'Optional';
+ if(i<2)return 'Demo recorded';
+ return state.dinner?'Demo recorded':'Planned';
+}
+function nutritionPlanDaily(){
+ const day=planDays[nutritionPlanDay];
+ const sampleTotal=day.meals.reduce((sum,m)=>sum+m[1],0);
+ const isThursday=nutritionPlanDay===3;
+ return '<div class="diet-week-focus"><div class="copy"><span>'+day.short.toUpperCase()+' · '+day.date+' OCTOBER</span><strong>'+day.title+'</strong></div><span class="badge">'+day.tag+'</span></div>'+
+ '<div class="diet-composition"><div class="big">'+sampleTotal.toLocaleString('en-IN')+'<span> kcal</span></div><div class="detail"><strong>Illustrative planned allocation</strong>Includes a flexible snack, not necessarily eaten'+(isThursday?'<br>Same values as Thursday’s Nutrition demo':'')+'</div><span class="marker">'+icon('bar')+'</span></div>';
+}
+function nutritionPlanRow(i){
+ const day=planDays[nutritionPlanDay],m=day.meals[i];
+ const status=nutritionPlanMealState(i);
+ const expanded=planExpandedMeal===i;
+ const isThuDinner=nutritionPlanDay===3&&i===2;
+ return '<article class="diet-entry" data-plan-meal-row="'+i+'">'+
+ '<div class="diet-entry-head"><span class="diet-entry-icon '+(status==='Demo recorded'?'logged':i===3?'optional':'')+'">'+icon(status==='Demo recorded'?'check':i===3?'clock':'meals')+'</span>'+
+ '<div class="diet-entry-meta"><div class="slot">'+planSlotNames[i].toUpperCase()+' · '+planSlotTimes[i]+'</div><h3>'+m[0]+'</h3><div class="desc">'+m[2]+'</div></div>'+
+ '<div class="diet-entry-tail"><strong>'+m[1]+' kcal</strong><small class="'+(status==='Demo recorded'?'logged':'')+'">'+status+'</small></div></div>'+
+ '<div class="diet-entry-control"><button type="button" data-diet-meal="'+i+'" aria-expanded="'+expanded+'" aria-controls="diet-meal-panel-'+i+'">'+(expanded?'Hide food & portions':'Food & portions')+' '+icon('chevron')+'</button>'+
+ (isThuDinner?'<a href="meal.html?from=plan" aria-label="Open Thursday dinner detail">'+(state.dinner?'Review demo log':'View dinner detail')+' '+icon('arrow')+'</a>':'')+'</div>'+
+ '<div class="diet-entry-panel" id="diet-meal-panel-'+i+'" '+(expanded?'':'hidden')+'><div class="eyebrow">EXAMPLE PORTIONS</div>'+
+ m[3].map(item=>'<div class="diet-ingredient"><span>'+item[0]+'</span><small>'+item[1]+'</small></div>').join('')+
+ '<p>Planning example only. Adjustments, substitutions and serving weights should follow an approved individualized plan.</p></div></article>';
+}
+function nutritionPlan(){
+const day=planDays[nutritionPlanDay];
+const days=planDays.map((d,i)=>'<button type="button" class="diet-day '+(i===nutritionPlanDay?'selected ':'')+(i===3?'today':'')+'" data-diet-day="'+i+'" aria-pressed="'+(i===nutritionPlanDay?'true':'false')+'" aria-label="'+d.short+' '+d.date+' October'+(i===3?', reference day':'')+'"><span class="name">'+d.short+'</span><span class="date">'+d.date+'</span><span class="dot"></span></button>').join('');
+shell(
+'<div class="diet-plan"><header class="diet-nav"><div class="diet-nav-start"><a class="back" href="nutrition.html" aria-label="Back to Nutrition">'+icon('back')+'</a><span class="diet-nav-copy"><small>ZENITH · NUTRITION</small><strong>Your complete plan</strong></span></div><span class="diet-version">7-DAY SAMPLE</span></header>'+
+'<section class="diet-hero"><div class="diet-eyebrow">YOUR WEEKLY FOOD GUIDE</div><h1>Eat with <span>intention.</span></h1><p>A simple rhythm of real food and practical portions, organized so you can see the next step without losing the bigger picture.</p>'+
+'<div class="diet-hero-stats"><div><b>2,000</b><small>kcal / day*</small></div><div><b>140g</b><small>protein target*</small></div><div><b>4</b><small>meal slots</small></div></div></section>'+
+'<div class="diet-section"><h2>Your seven-day plan</h2><small>5–11 October</small></div>'+
+'<section class="diet-week" aria-label="Choose a sample nutrition day"><div class="diet-week-note"><strong>Choose a day</strong><span>Tap to explore</span></div><div class="diet-days" role="group" aria-label="Sample weekly meal plans">'+days+'</div><div id="diet-day-summary">'+nutritionPlanDaily()+'</div></section>'+
+'<div class="diet-section"><h2>Meals for <span id="diet-day-label">'+day.short+'</span></h2><small>Plan, not intake</small></div>'+
+'<section class="diet-entries" id="diet-entries" aria-label="Sample planned meals">'+day.meals.map((m,i)=>nutritionPlanRow(i)).join('')+'</section>'+
+'<div class="diet-section"><h2>Your food approach</h2></div>'+
+'<section class="diet-summary"><div class="diet-summary-head"><span class="icon">'+icon('spark')+'</span><h3>Flexible, but purposeful.</h3></div>'+
+'<p>Regular meals and repeatable portions make a plan easier to live with. This is a demonstration menu, not a substitute for the plan your coach approves for you.</p>'+
+'<details><summary>Food swaps, timing & practical notes '+icon('chevron')+'</summary><ul>'+
+'<li>Replace foods only with suitable alternatives that fit your allergies, preferences and coach-approved targets.</li>'+
+'<li>Meal times are a suggested routine—not evidence that a meal was eaten.</li>'+
+'<li>Actual ingredient weights and nutrient values need validation with your coach and food database.</li>'+
+'<li>A planned snack stays unrecorded unless you log what you actually ate.</li>'+
+'</ul></details></section>'+
+'<a class="diet-return" href="nutrition.html">Return to your Nutrition dashboard '+icon('arrow')+'</a>'+
+'<p class="diet-footer">*Fictional plan with illustrative food quantities and energy allocations; daily targets are not personalized. The Thursday dinner detail is linked to the existing demo log. All other days are read-only. No external AI, food database or client health record is used.</p></div>','nutrition');
+}
+
 function meal(){
-shell(subhead('Dinner','nutrition.html')+'<div class="demo-label">INTERACTIVE SAMPLE MEAL</div><h1 class="page-title">Dinner.</h1><p class="page-intro">Rohu fish, rice and dal · scheduled for 9:00 pm</p>'+
+shell(subhead('Dinner',(window.location&&window.location.search&&window.location.search.includes('from=plan'))?'nutrition-plan.html?day=3':'nutrition.html')+'<div class="demo-label">INTERACTIVE SAMPLE MEAL</div><h1 class="page-title">Dinner.</h1><p class="page-intro">Rohu fish, rice and dal · scheduled for 9:00 pm</p>'+
 '<div class="summary"><div class="feature-kicker">PLANNED MEAL</div><h1 style="font-size:26px">A balanced evening plate</h1><p>Food items and approximate portions in this illustration are for demonstration only.</p><div class="summary-stats"><div class="summary-stat"><strong>620</strong><span>kcal · example</span></div><div class="summary-stat"><strong>42 g</strong><span>protein · example</span></div></div></div>'+
 '<div class="section-header"><h2>On your plate</h2></div><div class="content-card mini-list">'+
 [['Rohu fish','150 g'],['White rice','200 g'],['Moong dal','100 g'],['Bottle gourd','100 g'],['Olive oil','1 tsp']].map(function(m){return '<div class="list-item"><span class="title-small">'+m[0]+'</span><span class="sub-small">'+m[1]+'</span></div>';}).join('')+'</div>'+
@@ -330,8 +426,22 @@ shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBE
 [['Gym & membership','Membership information needs validation in the live app'],['Coaching roadmap','Personal weekly focus and reviews'],['Privacy & data','Know what your coach can access']].map(function(m){return '<div class="list-item"><span class="item-text"><span class="title-small">'+m[0]+'</span><span class="sub-small" style="display:block">'+m[1]+'</span></span>'+icon('chevron')+'</div>';}).join('')+'</div>'+
 '<div class="content-card"><h2>Preview controls</h2><p>Prototype actions are stored in this browser tab only. Reset the sample meal, walking, hydration and workout set logs to revisit the initial demo.</p><div class="cta-row"><button class="btn secondary" data-action="reset">Reset sample activity</button></div></div>','profile');
 }
-function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
+function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='nutrition-plan')return nutritionPlan();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
 document.addEventListener('click',function(e){
+const dietDay=e.target.closest('[data-diet-day]');
+if(dietDay){const n=Number(dietDay.getAttribute('data-diet-day'));if(Number.isInteger(n)&&n>=0&&n<7){
+nutritionPlanDay=n;planExpandedMeal=null;
+if(window.history&&typeof window.history.replaceState==='function')window.history.replaceState(null,'','nutrition-plan.html?day='+n);
+const summary=document.getElementById('diet-day-summary');if(summary)summary.innerHTML=nutritionPlanDaily();
+const entries=document.getElementById('diet-entries');if(entries)entries.innerHTML=planDays[n].meals.map((m,i)=>nutritionPlanRow(i)).join('');
+const label=document.getElementById('diet-day-label');if(label)label.textContent=planDays[n].short;
+document.querySelectorAll('[data-diet-day]').forEach(b=>{const selected=Number(b.getAttribute('data-diet-day'))===n;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});
+}return;}
+const dietMeal=e.target.closest('[data-diet-meal]');
+if(dietMeal){const n=Number(dietMeal.getAttribute('data-diet-meal'));if(Number.isInteger(n)&&n>=0&&n<4){
+planExpandedMeal=planExpandedMeal===n?null:n;
+document.querySelectorAll('[data-diet-meal]').forEach(b=>{const index=Number(b.getAttribute('data-diet-meal'));const opened=index===planExpandedMeal;b.setAttribute('aria-expanded',String(opened));b.innerHTML=(opened?'Hide food & portions':'Food & portions')+' '+icon('chevron');const panel=document.getElementById('diet-meal-panel-'+index);if(panel)panel.hidden=!opened;});
+}return;}
 const mealDetail=e.target.closest('[data-nutrition-detail]');
 if(mealDetail){const id=mealDetail.getAttribute('data-nutrition-detail');const valid=demoNutrition.meals.some(m=>m.id===id&&m.id!=='dinner');if(valid){
 nutritionExpanded=nutritionExpanded===id?null:id;
@@ -356,7 +466,7 @@ const action=e.target.closest('[data-action]');const tab=e.target.closest('[data
 if(tab){selectedTab=tab.getAttribute('data-tab');earlier();return;}
 if(!action)return;
 const name=action.getAttribute('data-action');
-if(name==='log-dinner'){state.dinner=true;save();window.location.href=(window.location&&window.location.search&&window.location.search.includes('from=nutrition'))?'nutrition.html':'index.html';}
+if(name==='log-dinner'){state.dinner=true;save();window.location.href=(window.location&&window.location.search&&window.location.search.includes('from=plan'))?'nutrition-plan.html?day=3':(window.location&&window.location.search&&window.location.search.includes('from=nutrition'))?'nutrition.html':'index.html';}
 if(name==='walk'){state.walk=true;save();home();}
 if(name==='water'){state.water=Math.min(2500,state.water+250);save();progress();}
 if(name==='reset'){state={dinner:false,walk:false,water:1800};save();try{sessionStorage.setItem(WORKOUT_SAMPLE_KEY,JSON.stringify({status:'ready',sets:Array(15).fill(false)}));}catch(e){}profile();}
