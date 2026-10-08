@@ -3,7 +3,7 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan) and 05 (Individual Workout Day) have now been redesigned for mobile review.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan), 05 (Individual Workout Day) and 06 (Nutrition Overview) have now been redesigned for mobile review.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
@@ -11,8 +11,9 @@ Build and review the client experience screen by screen, before implementing the
 - `training.html` — Screen 03 Training Overview: today’s recovery state, weekly momentum, next session preview, interactive seven-day selection, and sample coaching focus.
 - `workout-plan.html` — Screen 04 Complete Workout Plan: four-week selector, week-accurate dated schedule, expandable exercise previews, and concise coaching rationale.
 - `workout-day.html?week=1&day=4` — Screen 05 Individual Workout Day: **one exercise / one set at a time** during the active session, weight + reps entry, completion confirmation, rest timer and next-set transition.
+- `nutrition.html` — Screen 06 Nutrition Overview: premium energy ring, macro progress, clear dinner action, expandable sample meal timeline, and ledger-based demo totals.
 - `meal.html` — sample planned dinner and a functional demo log action.
-- `nutrition.html`, `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
+- `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
 
 Training Overview uses a fixed illustrative week (Monday 5–Sunday 11 October 2026). Thursday is recovery; Friday is Upper Body; Saturday is Lower Body. The three recorded sessions, progress indicator, dates, movements and coach focus are fictional. Previewing the next session expands an inline exercise list; tapping another day updates the day details without navigation. The complete plan is implemented as Screen 04, and Screen 05 illustrates exercise prescriptions and set completion in browser-only demo state. Real workout execution, exercise videos, device integration and coaching backend are not implemented.
 
@@ -65,3 +66,21 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - Browser session storage key: `zenith-preview-workout-v1`, payload schema version 2. Old toggle-list prototype progress is intentionally reset because it had no weight/rep evidence. No account identity, sensors, network requests, notifications or health data synchronization. Closing the tab may clear demonstration progress depending on the browser.
 - Completion is triggered only after **15 sequential, individually confirmed sample set records**, each with a validated weight and rep count. Records can be corrected during rest via Edit last set. Logged sets are not real workouts.
 - Verification: script compilation, ready/focused/rest/complete rendering, validation, logging and correction of weight/reps, timer deadline persistence and expiry, all 15 sequential transitions, recovery-day boundaries, reset/reopen and cross-page Training/Plan updates. Visual behavior on real devices still requires review and sign-off.
+
+## Screen 06 — Nutrition Overview
+
+- The sample view is fixed at Thursday 8 October 2026, in the evening. It is **not** connected to live device time, an authenticated member, or a coaching API.
+- Explicitly fictional ledger (kcal / protein g / carbs g / fat g):
+  - Breakfast, already recorded: 410 / 28 / 50 / 11
+  - Lunch, already recorded: 710 / 41 / 82 / 24
+  - Dinner, initially planned: 620 / 42 / 78 / 16
+  - Optional snack, **never logged in this prototype**: 260 / 29 / 10 / 11
+  - Target, example only: 2000 kcal / 140 g protein / 220 g carbs / 62 g fat
+- Before dinner: 1120 kcal and 69 g protein, 132 g carbs, 35 g fat; 2 of 3 main meals recorded.
+- After dinner is confirmed in the demo: 1740 kcal and 111 g protein, 210 g carbs, 51 g fat; 3 of 3 main meals recorded. Snack remains unlogged. Planned calorie values are approximate rounded examples.
+- The calorie ring uses the same computed totals as the calorie text and macro progress bars. Calories represent **logged demo entries only**, not all planned meals or inferred actual intake.
+- Breakfast, Lunch, and optional Snack offer expandable read-only details; Dinner opens `meal.html?from=nutrition`. Logging from that route returns to Nutrition. Logging from Home returns Home. All states remain in browser session storage.
+- The meal detail currently simulates consuming the planned portion; in production the client should confirm foods and quantities eaten, including substitutions, before recording a nutrition log. Never treat a planned meal as automatically eaten.
+- No external food photos, AI, coaching decisions, database writes, calorie estimation APIs, or health-record connections.
+- HTML CSS/JS uses separate `nutrition.css` and the shared `app.js`. Test on phone for readability and touch targets before transferring approved visuals to Flutter.
+
