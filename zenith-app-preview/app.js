@@ -436,11 +436,44 @@ shell(
 }
 
 function meal(){
-shell(subhead('Dinner',(window.location&&window.location.search&&window.location.search.includes('from=plan'))?'nutrition-plan.html?day=3':'nutrition.html')+'<div class="demo-label">INTERACTIVE SAMPLE MEAL</div><h1 class="page-title">Dinner.</h1><p class="page-intro">Rohu fish, rice and dal · scheduled for 9:00 pm</p>'+
-'<div class="summary"><div class="feature-kicker">PLANNED MEAL</div><h1 style="font-size:26px">A balanced evening plate</h1><p>Food items and approximate portions in this illustration are for demonstration only.</p><div class="summary-stats"><div class="summary-stat"><strong>620</strong><span>kcal · example</span></div><div class="summary-stat"><strong>42 g</strong><span>protein · example</span></div></div></div>'+
-'<div class="section-header"><h2>On your plate</h2></div><div class="content-card mini-list">'+
-[['Rohu fish','150 g'],['White rice','200 g'],['Moong dal','100 g'],['Bottle gourd','100 g'],['Olive oil','1 tsp']].map(function(m){return '<div class="list-item"><span class="title-small">'+m[0]+'</span><span class="sub-small">'+m[1]+'</span></div>';}).join('')+'</div>'+
-'<div class="content-card"><h2>Record your meal</h2><p>This demonstration records the planned portions as eaten. In the finished product, clients should confirm actual foods and quantities, including any substitutions, before logging.</p><div class="cta-row">'+(state.dinner?'<span class="tag good">Dinner recorded in demo</span>':'<button class="btn" data-action="log-dinner">Simulate logging dinner '+icon('check')+'</button>')+'<a class="btn secondary" href="'+((window.location&&window.location.search&&window.location.search.includes('from=plan'))?'nutrition-plan.html?day=3':'nutrition.html')+'">'+((window.location&&window.location.search&&window.location.search.includes('from=plan'))?'Back to plan':'Back to nutrition')+'</a></div></div>','nutrition');
+prepareDinnerDraft();
+const editable=!state.dinner||dinnerEditMode;
+const portions=editable?dinnerDraft:dinnerSavedPortions(),facts=dinnerNutrition(portions);
+const rows=DINNER_FOODS.map(f=>{
+const n=portions[f.id],minus=n<=0?' disabled aria-disabled="true"':'',plus=n>=f.max?' disabled aria-disabled="true"':'';
+return '<div class="meal-food-row '+(n===0?'inactive':'')+'"><span class="meal-food-avatar '+f.id+'">'+icon('meals')+'</span><div class="meal-food-name"><strong>'+f.name+'</strong><small>'+f.note+'</small></div>'+
+(editable?'<div class="meal-food-action"><button type="button" data-food-adjust="'+f.id+':minus" aria-label="Decrease '+f.name+'"'+minus+'>'+icon('minus')+'</button><span class="quantity">'+formattedQuantity(n,f.unit)+'</span><button type="button" data-food-adjust="'+f.id+':plus" aria-label="Increase '+f.name+'"'+plus+'>'+icon('plus')+'</button></div>':
+'<span class="quantity-only">'+formattedQuantity(n,f.unit)+'</span>')+'</div>';
+}).join('');
+const controls=editable?
+'<section class="meal-confirm"><h3>'+(dinnerEditMode?'Update your saved meal':'Ready to record dinner?')+'</h3>'+
+'<p>Adjust the portions to match what you ate. The estimates on this screen follow your selections.</p>'+
+'<div class="meal-confirm-summary"><span>Estimated intake</span><strong>'+facts.kcal+' kcal</strong></div>'+
+'<div class="meal-validation" role="alert" id="meal-error">'+dinnerError+'</div>'+
+'<button type="button" class="meal-main-action" data-meal-command="save" '+(facts.kcal===0?'disabled aria-disabled="true"':'')+'>'+icon('check')+(dinnerEditMode?' Save changes':' Record what I ate')+'</button>'+
+(dinnerEditMode?'<button type="button" class="meal-quiet full" data-meal-command="cancel">Cancel changes</button>':'')+'</section>':
+'<section class="meal-recorded"><div class="meal-recorded-heading"><span class="meal-recorded-mark">'+icon('check')+'</span><h3>Dinner recorded.</h3></div>'+
+'<p>The amounts you entered are saved in this browser session and reflected in the Nutrition dashboard, separately from the planned portions.</p>'+
+'<div class="meal-recorded-actions"><button type="button" class="meal-subaction" data-meal-command="edit">'+icon('arrow')+' Edit recorded portions</button>'+
+'<a class="meal-subaction" href="'+dinnerOrigin()+'">'+dinnerOriginLabel()+' '+icon('chevron')+'</a></div>'+
+'<div class="meal-remove">'+(dinnerRemoveConfirm?
+'<p>Remove your sample dinner entry? The logged totals will return to breakfast and lunch only.</p><button type="button" data-meal-command="confirm-remove" class="meal-remove-confirm">Confirm removal</button><button type="button" class="meal-quiet" data-meal-command="cancel-remove">Keep my entry</button>':
+'<button type="button" class="meal-quiet" data-meal-command="remove">Remove demo entry</button>')+'</div></section>';
+shell(
+'<div class="meal-page"><header class="meal-top"><div class="meal-top-left"><a class="back" href="'+dinnerOrigin()+'" aria-label="'+dinnerOriginLabel()+'">'+icon('back')+'</a><span class="meal-top-label"><small>ZENITH · NUTRITION</small><strong>Meal detail</strong></span></div><span class="meal-top-chip">9:00 PM · DINNER</span></header>'+
+'<section class="meal-hero"><div class="text-section"><div class="meal-overline"><span class="dot"></span>'+(state.dinner&&!dinnerEditMode?'YOUR DEMO MEAL · RECORDED':dinnerEditMode?'EDIT YOUR MEAL':'YOUR PLANNED DINNER')+'</div>'+
+'<h1>Rohu fish <span>& rice.</span></h1><p>A balanced dinner with food portions you can actually adjust before recording.</p></div>'+
+mealArt()+'<div class="meal-image-note">ILLUSTRATIVE FOOD ART · NOT A PHOTO</div></section>'+
+'<div class="meal-meta-row"><div>'+icon('clock')+' Scheduled 9:00 PM</div><div>'+icon(state.dinner&&!dinnerEditMode?'check':'meals')+' '+(state.dinner&&!dinnerEditMode?'Demo recorded':'Five ingredients')+'</div></div>'+
+'<div class="meal-heading"><h2>'+(state.dinner&&!dinnerEditMode?'Your recorded nutrition':'Your nutrition estimate')+'</h2><small>'+(editable?'Updates with portions':'Saved quantities')+'</small></div>'+
+'<section class="meal-nutrition" aria-label="Example calorie and macronutrient totals"><div class="meal-nutrition-top"><div class="meal-calories"><strong>'+facts.kcal+'</strong><span>kcal</span></div><span class="status">'+(state.dinner&&!dinnerEditMode?'Recorded':'Estimated')+'</span></div>'+
+'<div class="meal-macro-row"><div><small>Protein</small><strong>'+facts.protein+' <span>g</span></strong></div><div><small>Carbs</small><strong>'+facts.carbs+' <span>g</span></strong></div><div><small>Fat</small><strong>'+facts.fat+' <span>g</span></strong></div></div></section>'+
+'<div class="meal-heading"><h2>'+(editable?'What did you actually eat?':'Saved food quantities')+'</h2><small>5 food items</small></div>'+
+'<p class="meal-quantity-intro">'+(editable?'Tap + or − to adjust each food. Set a portion to zero if you did not eat it.':'These are the quantities in your recorded example. You can edit them below.')+'</p>'+
+'<section class="meal-food-list" aria-label="Food quantities">'+rows+'</section>'+
+'<p class="meal-estimate-note">'+icon('info')+' Nutrition amounts are illustrative food estimates, not verified database values. The original planned meal is 620 kcal, 42 g protein, 78 g carbs and 16 g fat.</p>'+
+controls+
+'<p class="meal-footnote">Concept preview only. No client records, allergies, dietary restrictions or coaching instructions are connected. <a href="'+dinnerOrigin()+'">'+dinnerOriginLabel()+'</a>.</p></div>','nutrition');
 }
 function progress(){
 shell(subhead('Progress','index.html')+'<div class="demo-label">NEXT DESIGN PASS · EXPLORATION</div><h1 class="page-title">Every step matters.</h1><p class="page-intro">Progress should include consistency and strength, not only body weight.</p>'+
