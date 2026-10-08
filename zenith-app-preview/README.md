@@ -3,7 +3,7 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan), 05 (Individual Workout Day), 06 (Nutrition Overview), and 07 (Complete Nutrition Plan) have now been redesigned for mobile review.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03 (Training Overview), 04 (Complete Workout Plan), 05 (Individual Workout Day), 06 (Nutrition Overview), and 07 (Complete Nutrition Plan), and 08 (Individual Meal Detail) have now been redesigned for mobile review.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
@@ -13,7 +13,7 @@ Build and review the client experience screen by screen, before implementing the
 - `workout-day.html?week=1&day=4` — Screen 05 Individual Workout Day: **one exercise / one set at a time** during the active session, weight + reps entry, completion confirmation, rest timer and next-set transition.
 - `nutrition.html` — Screen 06 Nutrition Overview: premium energy ring, macro progress, clear dinner action, expandable sample meal timeline, and ledger-based demo totals.
 - `nutrition-plan.html` — Screen 07 Complete Nutrition Plan: seven-day sample selector, planned energy allocation, practical portions, optional food guidance and a connected Thursday dinner detail.
-- `meal.html` — sample planned dinner and a functional demo log action.
+- `meal.html` — Screen 08 Individual Meal Detail: illustrated food plate, adjustable actual portions, dynamic nutrition estimates, save/edit/remove demo meal entry.
 - `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
 
 Training Overview uses a fixed illustrative week (Monday 5–Sunday 11 October 2026). Thursday is recovery; Friday is Upper Body; Saturday is Lower Body. The three recorded sessions, progress indicator, dates, movements and coach focus are fictional. Previewing the next session expands an inline exercise list; tapping another day updates the day details without navigation. The complete plan is implemented as Screen 04, and Screen 05 illustrates exercise prescriptions and set completion in browser-only demo state. Real workout execution, exercise videos, device integration and coaching backend are not implemented.
@@ -96,4 +96,18 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - On Thursday, Breakfast and Lunch show demonstration-recorded status consistent with Nutrition Overview. Dinner reflects the browser-only `state.dinner` log. Other days are deliberately shown as planned, with no invented past or future logging.
 - Expandable portions, clear time slots, concise optional food guidance and the original app navigation. This is **not** a published plan, live coaching recommendation, allergy-aware diet, or system of record; a real product needs coach approval, actual food intake confirmation, individualized constraints and verified nutrition figures.
 - Verification should include the day selector, back/reopen state via URL, meal expansion/collapse, Thursday dinner action, absence of invented logs on non-Thursday days, and cross-page consistency before design sign-off.
+
+
+## Screen 08 — Individual Meal Detail
+
+- Standalone `meal.html`, with `meal-detail.css` and shared `app.js`. Distinct stylized vector food artwork and ingredient icons are illustrations, not actual food photos or technique instructions.
+- The example planned Rohu fish dinner remains 620 kcal / 42 g protein / 78 g carbohydrate / 16 g fat. The five planned foods: fish 150 g, cooked rice 200 g, dal 100 g, bottle gourd 100 g and olive oil 1 teaspoon. Values are estimated illustrative allocations, not verified food-database figures.
+- Before recording, clients can change each sample portion with +/- (25 g increments for the four solid foods and 0.5 tsp for oil); quantities can reach zero, and an entirely empty meal cannot be recorded. Energy and macro estimates recalculate from the edited amounts.
+- Press “Record what I ate” to save `dinner=true` and `dinnerLog.portions` in browser session storage. This replaces the earlier yes/no-only simulated dinner logging, without affecting Flutter or production data.
+- On reopening, the meal displays **recorded** values and quantities, with “Edit recorded portions” and a confirmation-protected “Remove demo entry”. Canceling edits does not change the saved entry. Removing the dinner also clears the dependent sample after-meal walk and restores the baseline Nutrition ledger.
+- The Nutrition Overview calculates totals from breakfast + lunch + the *recorded* dinner portions: 1120 kcal before dinner and 1740 kcal for the unchanged planned serving. The meal row and dinner focus card show the saved dinner estimate. Altered portions change these figures; the weekly plan continues to show the original **planned** 620 kcal, plus an explicit label for the actual demo energy when recorded.
+- The prior `dinner=true` flag without a `dinnerLog` payload is interpreted as the unmodified planned meal for backward compatibility. Profile Reset clears the detailed dinner log.
+- Entry routes preserve origin: `meal.html?from=nutrition` returns to Nutrition, `?from=plan` returns to Thursday's complete plan, and default Home returns Home.
+- This is an interactive **design preview**, not an allergy-aware food diary, nutrient database, a diagnosis, or a published prescription. Food substitutions, barcode scanning, photo recognition and coaching/backend synchronization are not implemented.
+- Acceptance checks: planned meal → adjust → estimated totals → record → return → refresh/reopen → edit/cancel/save → remove/confirm → verify final Nutrition, Home and Plan states. Real-device screen appearance and touch interactions still require visual review.
 
