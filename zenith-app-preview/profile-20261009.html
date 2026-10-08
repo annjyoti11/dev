@@ -268,7 +268,7 @@ const PROFILE_DEMO_KEY='zenith-preview-profile-v1';
 function demoProfile(){
 const fallback={name:'Aarav Sharma',gender:'Prefer not to say',goal:'Fat loss & strength',time:'Evening'};
 try{const v=JSON.parse(sessionStorage.getItem(PROFILE_DEMO_KEY)||'null');if(!v||typeof v!=='object')return fallback;
-return {name:typeof v.name==='string'&&v.name.trim().length>=2&&v.name.trim().length<=60?v.name.trim():fallback.name,
+return {name:typeof v.name==='string'&&v.name.trim().length>=2&&v.name.trim().length<=60&&!/[<>]/.test(v.name)?v.name.trim():fallback.name,
 gender:['Male','Female','Non-binary','Prefer not to say'].includes(v.gender)?v.gender:fallback.gender,
 goal:['Fat loss & strength','Build muscle','Improve general fitness','Increase strength'].includes(v.goal)?v.goal:fallback.goal,
 time:['Morning','Afternoon','Evening','Flexible'].includes(v.time)?v.time:fallback.time};
