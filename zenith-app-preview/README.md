@@ -3,7 +3,7 @@
 Standalone mobile-first HTML/CSS/JavaScript design prototype, contained in `zenith-app-preview/`.
 
 ## Purpose
-Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03–10 are now available for mobile review, including Training, Complete Workout Plan, Live Workout Day, Nutrition, Complete Nutrition Plan, Individual Meal Detail, Progress Overview, and Personal Profile & Coaching Journey.
+Build and review the client experience screen by screen, before implementing the agreed design in Flutter. The approved Home visual direction and the Earlier Today activity model are the starting points. Screens 03–10 are now available for mobile review, including Training, Complete Workout Plan, Live Workout Day, Nutrition, Complete Nutrition Plan, Individual Meal Detail, Progress Overview, and Personal Profile & Coaching Journey. Login and Profile Edit have also been added as companion screens.
 
 ## Routes
 - `index.html` — Home; focus card, daily metrics and contextual post-meal action.
@@ -13,7 +13,7 @@ Build and review the client experience screen by screen, before implementing the
 - `workout-day.html?week=1&day=4` — Screen 05 Individual Workout Day: **one exercise / one set at a time** during the active session, weight + reps entry, completion confirmation, rest timer and next-set transition.
 - `nutrition.html` — Screen 06 Nutrition Overview: premium energy ring, macro progress, clear dinner action, expandable sample meal timeline, and ledger-based demo totals.
 - `nutrition-plan.html` — Screen 07 Complete Nutrition Plan: seven-day sample selector, planned energy allocation, practical portions, optional food guidance and a connected Thursday dinner detail.
-- `profile-20261008.html` — Screen 10 Personal Profile & Coaching Journey: fictional member identity, Transformation with included membership, current training phase, coach-reviewed milestones, connected sample achievements, privacy disclosures, and confirmation-protected demo reset. `profile.html` redirects here.
+- `profile-20261009.html` — Screen 10 Personal Profile & Coaching Journey (updated with an Edit Profile entry, editable demo name and preferences): fictional member identity, Transformation with included membership, current training phase, coach-reviewed milestones, connected sample achievements, privacy disclosures, and confirmation-protected demo reset. `profile.html` and the earlier `profile-20261008.html` redirect here.
 - `progress-20261008.html` — Screen 09 Progress Overview: weekly training evidence, dynamic sample activity and hydration, and explicitly illustrative body trends. `progress.html` redirects here.
 - `meal.html` — Screen 08 Individual Meal Detail: illustrated food plate, adjustable actual portions, dynamic nutrition estimates, save/edit/remove demo meal entry.
 - `progress.html`, `profile.html` — exploratory first-pass supporting pages; **not final approved designs**.
@@ -133,6 +133,8 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - This is **not** a data-backed coaching dashboard, a measurement tracking API, a step sensor integration or a validated nutrition tracker. Real-device visual sign-off and backend integration are separate work.
 - Acceptance checks: create initial state → navigate Training/Activity/Body → interact → log demo water/workout → refresh/reopen → confirm weekly stats, recent recorded sets and final state; verify Body never claims hypothetical values as real.
 
+- `login-20261009.html` — Premium login concept with email/mobile method selector, mock verification code and explicit no-authentication disclosures.
+- `profile-edit-20261009.html` — Connected, browser-only Profile Edit form (name, gender, personal fitness focus, preferred training time).
 ## Screen 10 — Personal Profile & Coaching Journey
 
 - Preview URL: `profile-20261008.html`. Like Meal and Progress, this cache-isolated page bundles base styles, scoped `profile.css`, and the current shared `app.js`. Legacy `profile.html` redirects here with query and fragment preserved; previous bundles continue to function through the redirect.
@@ -144,3 +146,23 @@ Review each deeper screen in sequence, replace exploratory layouts with approved
 - **Account & privacy** uses disclosures instead of inert mock action buttons. It explicitly states what identity, membership and data are unavailable. No payment, contact or personal edit UI is falsely advertised as operational.
 - **Preview controls** require a second confirmation before clearing browser-only dinner, dependent walking activity, water additions, and the full sample 15-set workout. Cancel keeps everything intact. Reset writes a compatible version-2 workout state for the Live Workout page.
 - Acceptance check: open → inspect roadmap and sample figures → log an example workout or meal → revisit Profile → confirm updated achievements → open reset dialog → cancel or confirm → reopen all affected tabs → verify final user-visible and storage states. Real-device visual testing and Flutter implementation remain separate tasks.
+
+## Companion screens — Login and Profile Edit (9 October 2026)
+
+**Login:**
+- Open `login-20261009.html`. The user may select Email or Mobile (+91), enter a syntactically valid example value, and advance to the verification design. The page states clearly that no message was sent. A sample code `246810` is displayed visibly on the page and accepts that code only for the interactive walkthrough.
+- This is deliberately **not authentication**. No email, SMS, identity provider, API call, token issuance, secure OTP delivery, or authenticated session exists. The success message says so; links then open the preview Home and coaching journey. Input identifiers are not written to persistent preview storage.
+- Entire preview is bundled as a single HTML file with inline CSS and JavaScript, preventing mixed stale versions.
+
+**Profile Edit:**
+- Open `profile-edit-20261009.html` directly or via the Edit your details action on `profile-20261009.html`. Name, Gender, Personal fitness focus and Preferred training time are editable and validated.
+- Saving records only `zenith-preview-profile-v1` in browser `sessionStorage` and navigates to the new coaching journey. The dynamic demo name also appears in Home greeting. The Profile's Personal details section reflects the selected values.
+- Cancel returns to Profile with no changes. Invalid values or unsafe name markup are rejected; rendered name fields are HTML-escaped. A profile reader rejects malformed stored names.
+- Personal focus is **a preference**, not a change to a coach-approved goal or published plan. Member ID, membership validity, billing, medical information, email and phone verification are not editable in the prototype.
+- The new `profile-20261009.html` keeps the previously approved coaching roadmap and is self-contained to avoid browser cache mismatches. Both `profile.html` and `profile-20261008.html` redirect to the new snapshot.
+- The existing demo activity Reset intentionally does **not** wipe personal demo preferences: it clears simulated food, hydration, walking and workout activity only.
+
+**Verification:**
+- Test email/mobile validation → verification → invalid/valid sample code → demo-success screen → Home.
+- Test Profile Edit invalid name → successful save → reopened Profile → Home greeting → Personal details → cancel another edit → verify saved values unchanged.
+- Both companion screens are prototype-only; production OTP, data permissions, server validation, authenticated profile updates and real-device visual sign-off remain future tasks.
