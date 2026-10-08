@@ -64,12 +64,50 @@ timelineRow('meals','Lunch','1:45 pm · Lunch','Recorded','good')+
 let week='<h2 class="group-title">WEEK AT A GLANCE</h2><div class="content-card"><h2>Consistency is built daily.</h2><p>This is an illustrative weekly summary. A real weekly report will show only activity supported by the connected data.</p><div class="chart" aria-label="Illustrative activity chart"><span style="height:44%"></span><span style="height:80%"></span><span style="height:65%"></span><span style="height:92%"></span><span style="height:59%"></span><span style="height:76%"></span><span style="height:70%"></span></div></div>';
 shell(header+(selectedTab==='today'?today:week)+'<p class="foot-note">Prototype states reset by using the Reset demo control under Profile.</p>','home');
 }
+/* Training screen: fictional, internally consistent week for UX exploration. */
+const trainingDays=[
+{day:'Mon',date:'05',title:'Full Body A',status:'Completed',kind:'done',description:'A foundation session focused on compound movements and good technique.',detail:'45 min · 5 exercises · example recorded session'},
+{day:'Tue',date:'06',title:'Conditioning',status:'Completed',kind:'done',description:'A steady conditioning session to build aerobic capacity.',detail:'30 min · example recorded session'},
+{day:'Wed',date:'07',title:'Full Body B',status:'Completed',kind:'done',description:'The second full-body session of the week, with a focus on consistent form.',detail:'45 min · 5 exercises · example recorded session'},
+{day:'Thu',date:'08',title:'Recovery day',status:'Today',kind:'today',description:'No strength session scheduled. Give yourself space to recover before your next training day.',detail:'Optional gentle movement · no workout due'},
+{day:'Fri',date:'09',title:'Upper Body Strength',status:'Up next',kind:'nextup',description:'Your next planned session builds on the strength work already completed this week.',detail:'45 min · 5 exercises · scheduled'},
+{day:'Sat',date:'10',title:'Lower Body Strength',status:'Scheduled',kind:'planned',description:'Your fifth planned session for this example week.',detail:'45 min · 5 exercises · scheduled'},
+{day:'Sun',date:'11',title:'Recovery day',status:'Recovery',kind:'rest',description:'A rest day in the sample weekly schedule.',detail:'No strength session scheduled'}
+];
+let trainingSelected=3;
+let trainingPreviewOpen=false;
+function trainingDayDetail(i){
+const d=trainingDays[i];
+const statusClass=d.kind==='done'?'completed':'';
+return '<div class="heading"><strong>'+d.title+'</strong><span class="status '+statusClass+'">'+d.status+'</span></div>'+
+'<p>'+d.description+'</p><div class="training-day-summary-info">'+icon(d.kind==='done'?'check':d.kind==='today'||d.kind==='rest'?'moon':'clock')+d.detail+'</div>';
+}
 function training(){
-shell(subhead('Training','index.html')+'<div class="demo-label">NEXT DESIGN PASS · EXPLORATION</div><h1 class="page-title">Your training journey.</h1><p class="page-intro">A quiet, clear view of your current training week. This deeper screen is an early structural preview, not the approved final design.</p>'+
-'<div class="content-card"><div class="feature-kicker">CURRENT PROGRAM</div><h2>Foundation Strength</h2><p>Week 2 of 4 · Beginner · 5 sessions each week</p><div class="track" style="margin-top:18px"><span style="width:60%"></span></div><div class="sub-small" style="margin-top:8px">3 of 5 weekly sessions recorded · illustrative</div></div>'+
-'<div class="section-header"><h2>Next session</h2><span class="tag">Tomorrow</span></div><div class="content-card"><div class="feature-kicker">DAY 4</div><h2>Upper Body Strength</h2><p>Approximately 45 minutes · 5 movements</p><div class="cta-row"><button class="btn secondary" data-action="training-details">See session summary '+icon('arrow')+'</button></div><div id="training-extra" hidden><p style="margin-top:14px">Dumbbell Bench Press · Lat Pulldown · Seated Row · Shoulder Press · Arm Work.</p></div></div>'+
-'<div class="section-header"><h2>This week</h2></div><div class="content-card mini-list">'+
-['Mon · Full Body A','Tue · Conditioning','Wed · Full Body B','Thu · Upper Body','Fri · Lower Body','Sat · Recovery','Sun · Recovery'].map(function(item,i){return '<div class="list-item"><div class="item-text"><div class="title-small">'+item+'</div><div class="sub-small">'+(i<3?'Recorded in demo':i===3?'Next planned session':'Scheduled')+'</div></div><span class="tag '+(i<3?'good':'')+'">'+(i<3?'Done':i===3?'Next':'Planned')+'</span></div>';}).join('')+'</div>','training');
+const days=trainingDays.map(function(d,i){return '<button type="button" class="'+(trainingSelected===i?'selected ':'')+d.kind+'" data-training-day="'+i+'" aria-pressed="'+(trainingSelected===i?'true':'false')+'" aria-label="'+d.day+' '+d.date+' October, '+d.status+'"><span class="day-label">'+d.day+'</span><span class="day-date">'+d.date+'</span><span class="day-mark"></span></button>';}).join('');
+const movements=[
+['Dumbbell Bench Press','Pressing strength'],
+['Lat Pulldown','Upper-body pulling'],
+['Seated Row','Back strength'],
+['Dumbbell Shoulder Press','Shoulder strength'],
+['Triceps Pushdown','Accessory work']
+].map(function(m,i){return '<div class="training-movement"><span class="index">'+String(i+1).padStart(2,'0')+'</span><div><div class="name">'+m[0]+'</div><div class="meta">'+m[1]+'</div></div></div>';}).join('');
+shell(
+'<div class="training-main">'+
+'<header class="training-header"><div class="training-identity">'+logo()+'<div class="training-identity-copy"><span>ZENITH · CLIENT APP</span><strong>Training</strong></div></div><div class="training-week-chip">WEEK 02 <span>/ 04</span></div></header>'+
+'<section class="training-intro"><div class="training-eyebrow"><span class="training-line"></span>YOUR TRAINING JOURNEY</div><h1>Build what <em>lasts.</em></h1><p>A clear plan, progress you can follow, and space to recover.</p></section>'+
+'<section class="training-recovery" aria-label="Today’s training status"><div class="training-eyebrow">THURSDAY · 8 OCTOBER</div><div class="training-recovery-badge">'+icon('moon')+' RECOVERY DAY</div><h2>Today is for recovery.</h2><p>You’ve recorded three sessions this week. Your next planned workout is tomorrow.</p></section>'+
+'<section class="training-momentum" aria-label="Weekly session progress"><div><div class="training-momentum-label">THIS WEEK’S MOMENTUM</div><div class="training-momentum-number">03 <span>/ 05</span></div><div class="training-momentum-copy">Sessions recorded</div></div><div class="training-momentum-right"><div class="training-momentum-percent">60% complete</div><div class="training-segments" aria-hidden="true"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div></div></section>'+
+'<div class="training-section-heading"><h2>Up next</h2><span class="support">Friday, 9 Oct</span></div>'+
+'<section class="training-next" aria-label="Next planned session"><div class="training-next-top"><div class="training-eyebrow">SESSION 04 / 05</div><span class="training-date-pill">Scheduled</span></div>'+
+'<div class="training-next-content"><div class="training-next-date"><b>09</b><span>FRI</span></div><div class="training-next-details"><h3>Upper Body<br>Strength</h3><p>'+icon('clock')+'45 min <span aria-hidden="true">·</span> 5 exercises</p></div></div>'+
+'<button type="button" class="training-cta" data-action="training-preview" aria-expanded="'+(trainingPreviewOpen?'true':'false')+'" aria-controls="training-preview-panel"><span class="training-preview-label">'+(trainingPreviewOpen?'Hide session preview':'Preview next session')+'</span>'+icon('arrow')+'</button>'+
+'<div class="training-preview-panel" id="training-preview-panel" '+(trainingPreviewOpen?'':'hidden')+'><h4>FRIDAY’S SESSION · EXAMPLE MOVEMENTS</h4>'+movements+'</div></section>'+
+'<div class="training-section-heading" id="training-week"><h2>Your week</h2><span class="support">5–11 Oct · Sample</span></div>'+
+'<section class="training-week-card" aria-label="Example weekly training schedule"><div class="training-week-title"><span>Tap any day for details</span><strong>5 training · 2 recovery</strong></div><div class="training-day-picker" role="group" aria-label="Select a training day">'+days+'</div>'+
+'<div class="training-day-detail" id="training-day-summary" aria-live="polite">'+trainingDayDetail(trainingSelected)+'</div></section>'+
+'<section class="training-focus" aria-label="Example weekly coach focus"><span class="training-focus-icon">'+icon('spark')+'</span><div><div class="eyebrow">SAMPLE COACH FOCUS</div><p>Use controlled repetitions and consistent form before increasing load. Keep today easy ahead of Friday’s session.</p></div></section>'+
+'<p class="training-footer">Illustrative program and dates for design review only. This preview has no live workout prescriptions, coach messages or training records.</p>'+
+'</div>','training');
 }
 function nutrition(){
 shell(subhead('Nutrition','index.html')+'<div class="demo-label">NEXT DESIGN PASS · EXPLORATION</div><h1 class="page-title">Eat with direction.</h1><p class="page-intro">Your targets and meals together, with the next practical action in focus.</p>'+
@@ -99,6 +137,8 @@ shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBE
 }
 function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='nutrition')return nutrition();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
 document.addEventListener('click',function(e){
+const dayButton=e.target.closest('[data-training-day]');
+if(dayButton){const idx=Number(dayButton.getAttribute('data-training-day'));if(Number.isInteger(idx)&&idx>=0&&idx<trainingDays.length){trainingSelected=idx;const detail=document.getElementById('training-day-summary');if(detail)detail.innerHTML=trainingDayDetail(idx);document.querySelectorAll('[data-training-day]').forEach(function(b){const selected=Number(b.getAttribute('data-training-day'))===idx;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});}return;}
 const action=e.target.closest('[data-action]');const tab=e.target.closest('[data-tab]');
 if(tab){selectedTab=tab.getAttribute('data-tab');earlier();return;}
 if(!action)return;
@@ -107,7 +147,7 @@ if(name==='log-dinner'){state.dinner=true;save();window.location.href='index.htm
 if(name==='walk'){state.walk=true;save();home();}
 if(name==='water'){state.water=Math.min(2500,state.water+250);save();progress();}
 if(name==='reset'){state={dinner:false,walk:false,water:1800};save();profile();}
-if(name==='training-details'){const box=document.getElementById('training-extra');if(box){box.hidden=!box.hidden;action.setAttribute('aria-expanded',String(!box.hidden));}}
+if(name==='training-preview'){const box=document.getElementById('training-preview-panel');if(box){trainingPreviewOpen=!trainingPreviewOpen;box.hidden=!trainingPreviewOpen;action.setAttribute('aria-expanded',String(trainingPreviewOpen));const label=action.querySelector('.training-preview-label');if(label)label.textContent=trainingPreviewOpen?'Hide session preview':'Preview next session';}}
 });
 render();
 })();
