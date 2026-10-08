@@ -1,0 +1,92 @@
+/* Screen 08 · Individual Meal Detail · premium mobile first concept */
+.meal-page{padding-bottom:30px}
+.meal-top{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #263d4b;padding:20px 1px 17px}
+.meal-top-left{display:flex;gap:12px;align-items:center}
+.meal-top .back{width:40px;height:40px;border-radius:13px;flex:none}
+.meal-top-label{display:grid;gap:3px}
+.meal-top-label small{color:#91b9c9;font-weight:740;font-size:9px;letter-spacing:.17em}
+.meal-top-label strong{font-size:15px;letter-spacing:-.2px;font-weight:745}
+.meal-top-chip{border:1px solid #40687b;color:#b6dfef;border-radius:99px;padding:8px 10px;font-size:10px;font-weight:750;background:#143141;white-space:nowrap}
+.meal-hero{background:radial-gradient(circle at 80% 15%,#28566a 0%,#17394b 45%,#0a1a26 100%);border:1px solid #426c81;border-radius:24px;overflow:hidden;position:relative;margin-top:20px;box-shadow:inset 0 1px #ffffff10,0 16px 36px #0003}
+.meal-hero .text-section{padding:22px 19px 0;position:relative;z-index:1}
+.meal-overline{font-size:10px;letter-spacing:.16em;color:#a6d7e9;font-weight:760;display:flex;align-items:center;gap:7px}
+.meal-overline .dot{width:6px;height:6px;background:#aadffa;box-shadow:0 0 13px #79c8ee;border-radius:50%}
+.meal-hero h1{font-size:37px;font-weight:765;letter-spacing:-1.35px;line-height:1.05;margin:16px 0 8px}
+.meal-hero h1 span{color:#b0e2f6}
+.meal-hero p{font-size:12px;color:#c0d5df;line-height:1.55;max-width:265px;margin:0}
+.meal-art{display:block;width:100%;height:215px;margin-top:0;overflow:hidden}
+.meal-art svg{display:block;width:100%;height:100%}
+.meal-image-note{font-size:9px;letter-spacing:.08em;color:#a7c9d8;text-align:right;padding:0 16px 15px;margin-top:-11px}
+.meal-meta-row{display:flex;gap:10px;align-items:center;margin:14px 0 0}
+.meal-meta-row>div{display:flex;align-items:center;gap:7px;background:#112a38;border:1px solid #315064;border-radius:99px;padding:8px 11px;color:#b5d4e2;font-size:11px}
+.meal-meta-row .ic{height:15px;width:15px;color:#9ccfe7}
+.meal-heading{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:27px 2px 13px}
+.meal-heading h2{font-size:17px;font-weight:745;letter-spacing:-.35px;margin:0}
+.meal-heading small{color:#9ebac9;font-size:11px}
+.meal-nutrition{background:linear-gradient(146deg,#122b3a,#0c1e2a);border:1px solid #305466;border-radius:19px;padding:18px 15px 16px}
+.meal-nutrition-top{display:flex;align-items:end;justify-content:space-between;gap:10px}
+.meal-calories{display:flex;align-items:baseline;gap:6px}
+.meal-calories strong{font-size:31px;font-weight:775;letter-spacing:-1.1px;line-height:1}
+.meal-calories span{font-size:12px;color:#b1cad6}
+.meal-nutrition-top .status{font-size:10px;color:#acd9ea;border-radius:25px;background:#1b4053;border:1px solid #386b83;padding:7px 10px;font-weight:735;white-space:nowrap}
+.meal-macro-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:19px}
+.meal-macro-row>div{border-right:1px solid #355364;padding-right:6px}
+.meal-macro-row>div:last-child{border:0}
+.meal-macro-row small{font-size:10px;color:#a1bdcc;display:block}
+.meal-macro-row strong{font-size:17px;font-weight:755;letter-spacing:-.35px;display:block;margin-top:5px}
+.meal-macro-row strong span{font-size:11px;color:#a1bbca;font-weight:590}
+.meal-quantity-intro{color:#9ebdc9;font-size:12px;line-height:1.6;margin:-2px 2px 14px}
+.meal-food-list{background:#0c1d28;border:1px solid #294855;border-radius:19px;padding:1px 14px;overflow:hidden}
+.meal-food-row{display:grid;grid-template-columns:43px minmax(0,1fr) auto;gap:11px;align-items:center;min-height:79px;border-bottom:1px solid #294351;padding:13px 0}
+.meal-food-row:last-child{border:0}
+.meal-food-avatar{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#1b3d4c;border:1px solid #3d6a80;color:#b5ddeb;flex:none}
+.meal-food-avatar .ic{width:22px;height:22px}
+.meal-food-avatar.fish{background:#183f48}
+.meal-food-avatar.rice{background:#303e48}
+.meal-food-avatar.dal{background:#564431}
+.meal-food-avatar.gourd{background:#1c423c}
+.meal-food-avatar.oil{background:#4b4130}
+.meal-food-name{min-width:0}
+.meal-food-name strong{display:block;font-size:13px;letter-spacing:-.15px;font-weight:720}
+.meal-food-name small{font-size:11px;color:#96b4c1;display:block;margin-top:5px;line-height:1.4}
+.meal-food-action{display:flex;align-items:center;gap:6px}
+.meal-food-action button{width:29px;height:29px;display:grid;place-items:center;color:#bee5f5;background:#18394a;border:1px solid #3c687f;border-radius:9px;padding:0}
+.meal-food-action button .ic{width:13px;height:13px}
+.meal-food-action button:disabled{opacity:.38;cursor:not-allowed}
+.meal-food-action .quantity{font-size:12px;font-weight:765;color:#f2fbff;min-width:44px;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums}
+.meal-food-row.inactive .meal-food-name strong{color:#92aebb}
+.meal-food-row.inactive .quantity{color:#91b4c7}
+.meal-food-row.inactive .meal-food-avatar{opacity:.55}
+.meal-food-row .quantity-only{font-size:12px;color:#e4f1f7;font-weight:745;white-space:nowrap}
+.meal-food-row .quantity-only span{color:#a3c2d1;font-weight:590}
+.meal-estimate-note{display:flex;gap:9px;border-left:2px solid #4c849e;padding:4px 0 4px 12px;margin:14px 1px 0;color:#a0bdcd;line-height:1.55;font-size:11px}
+.meal-estimate-note .ic{width:15px;height:15px;flex:none;margin-top:2px}
+.meal-confirm{margin-top:17px;border-radius:19px;padding:16px;background:linear-gradient(145deg,#122d3b,#0d212d);border:1px solid #33596c}
+.meal-confirm h3{font-size:16px;font-weight:755;margin:0 0 7px;letter-spacing:-.2px}
+.meal-confirm p{font-size:12px;color:#aec9d5;line-height:1.6;margin:0 0 14px}
+.meal-confirm-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:13px;background:#102332;border:1px solid #2d4c5a;margin-bottom:14px}
+.meal-confirm-summary span{font-size:11px;color:#aac7d4}
+.meal-confirm-summary strong{font-size:16px;font-weight:755}
+.meal-main-action{display:flex;align-items:center;justify-content:center;gap:10px;color:#092333;background:#99ddf8;border:1px solid #b6e9fe;border-radius:13px;min-height:48px;width:100%;padding:12px 14px;font-weight:780;font-size:13px}
+.meal-main-action .ic{width:17px;height:17px}
+.meal-main-action:disabled{opacity:.43;cursor:not-allowed}
+.meal-subaction{border:1px solid #3c6b82;color:#bfe1f1;border-radius:12px;background:#163b4f;min-height:42px;padding:10px 13px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:725;font-size:12px}
+.meal-subaction .ic{width:15px;height:15px}
+.meal-subaction.full{width:100%;margin-top:9px}
+.meal-quiet{border:0;background:transparent;color:#a4cbdf;display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:8px 11px;font-size:12px;font-weight:695}
+.meal-quiet.full{width:100%;margin-top:5px}
+.meal-validation{font-size:11px;color:#f5caab;line-height:1.5;margin:6px 0 10px}
+.meal-recorded{background:linear-gradient(150deg,#10362f,#102926);border:1px solid #3b8068;border-radius:19px;padding:18px 16px}
+.meal-recorded-heading{display:flex;gap:10px;align-items:center}
+.meal-recorded-mark{height:36px;width:36px;border-radius:12px;background:#1c4939;border:1px solid #4e9677;display:grid;place-items:center;color:#b3eed0}
+.meal-recorded h3{font-size:17px;margin:0;font-weight:750}
+.meal-recorded p{font-size:12px;color:#b0d6c7;line-height:1.65;margin:11px 0 16px}
+.meal-recorded .meal-subaction{border-color:#437e72;background:#1b453b;color:#d0efdf}
+.meal-recorded-actions{display:grid;gap:9px}
+.meal-remove{border-top:1px solid #446e6066;padding-top:14px;margin-top:13px}
+.meal-remove p{margin:0 0 12px}
+.meal-remove-confirm{border:1px solid #806c53;background:#302b23;color:#f0d7b8;font-size:12px;font-weight:735;border-radius:11px;min-height:41px;padding:10px 12px}
+.meal-footnote{font-size:11px;line-height:1.6;color:#849fae;margin:17px 2px 0}
+.meal-footnote a{color:#b0ddef;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:355px){.meal-hero h1{font-size:32px}.meal-art{height:187px}.meal-food-row{grid-template-columns:37px minmax(0,1fr) auto;gap:7px}.meal-food-avatar{width:37px;height:37px}.meal-food-action{gap:3px}.meal-food-action button{height:27px;width:27px}.meal-food-action .quantity{min-width:39px;font-size:11px}.meal-food-list{padding:1px 10px}.meal-food-name strong{font-size:12px}.meal-hero .text-section{padding:19px 15px 0}}
+@media(prefers-reduced-motion:reduce){.meal-main-action,.meal-subaction{transition:none!important}}
