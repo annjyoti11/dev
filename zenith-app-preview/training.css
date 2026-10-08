@@ -88,3 +88,12 @@
 .training-footer a{color:#add8ec;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:350px){.training-intro h1{font-size:31px}.training-week-card{padding:13px 9px}.training-day-picker{grid-auto-columns:46px}.training-next-details h3{font-size:21px}.training-momentum{padding:14px 12px}.training-segments span{width:14px}}
 @media(min-width:420px){.training-day-picker{grid-auto-columns:1fr}}
+
+
+/* Subordinate link from Screen 03 to Screen 04. */
+.training-plan-entry{display:flex;align-items:center;gap:12px;margin-top:14px;border:1px solid #2d5366;border-radius:16px;background:#102734;padding:14px;min-height:68px}
+.training-plan-entry-icon{flex:none;width:36px;height:36px;display:grid;place-items:center;background:#21485a;border-radius:11px;color:#a7dcef}
+.training-plan-entry-copy{flex:1;min-width:0}
+.training-plan-entry-copy strong{display:block;font-size:12px;letter-spacing:.01em}
+.training-plan-entry-copy small{display:block;margin-top:4px;font-size:11px;color:#9cbcca}
+.training-plan-entry>.ic{color:#abdff0;width:17px;height:17px}
