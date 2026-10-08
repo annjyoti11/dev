@@ -97,6 +97,7 @@ shell(
 '<section class="training-intro"><div class="training-eyebrow"><span class="training-line"></span>YOUR TRAINING JOURNEY</div><h1>Build what <em>lasts.</em></h1><p>A clear plan, progress you can follow, and space to recover.</p></section>'+
 '<section class="training-recovery" aria-label="Today’s training status"><div class="training-eyebrow">THURSDAY · 8 OCTOBER</div><div class="training-recovery-badge">'+icon('moon')+' RECOVERY DAY</div><h2>Today is for recovery.</h2><p>You’ve recorded three sessions this week. Your next planned workout is tomorrow.</p></section>'+
 '<section class="training-momentum" aria-label="Weekly session progress"><div><div class="training-momentum-label">THIS WEEK’S MOMENTUM</div><div class="training-momentum-number">03 <span>/ 05</span></div><div class="training-momentum-copy">Sessions recorded</div></div><div class="training-momentum-right"><div class="training-momentum-percent">60% complete</div><div class="training-segments" aria-hidden="true"><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span></div></div></section>'+
+'<a class="training-plan-entry" href="workout-plan.html" aria-label="Open your complete four-week Foundation Strength plan"><span class="training-plan-entry-icon">'+icon('bar')+'</span><span class="training-plan-entry-copy"><strong>Foundation Strength · Full plan</strong><small>Explore all four weeks and sessions</small></span>'+icon('chevron')+'</a>'+
 '<div class="training-section-heading"><h2>Up next</h2><span class="support">Friday, 9 Oct</span></div>'+
 '<section class="training-next" aria-label="Next planned session"><div class="training-next-top"><div class="training-eyebrow">SESSION 04 / 05</div><span class="training-date-pill">Scheduled</span></div>'+
 '<div class="training-next-content"><div class="training-next-date"><b>09</b><span>FRI</span></div><div class="training-next-details"><h3>Upper Body<br>Strength</h3><p>'+icon('clock')+'45 min <span aria-hidden="true">·</span> 5 exercises</p></div></div>'+
@@ -109,6 +110,94 @@ shell(
 '<p class="training-footer">Illustrative program and dates for design review only. This preview has no live workout prescriptions, coach messages or training records.</p>'+
 '</div>','training');
 }
+/* Screen 04 · Complete Program. Illustrative content only; no coach or member API. */
+const programWeeks=[
+{label:'WEEK 01',period:'28 Sep – 4 Oct',focus:'Learn the movement patterns',description:'Get comfortable with the routine and prioritize technique. This is a sample program structure, not a prescribed training progression.'},
+{label:'WEEK 02',period:'5–11 Oct',focus:'Build control & consistency',description:'A steady second week, balancing the five planned sessions with two recovery days.'},
+{label:'WEEK 03',period:'12–18 Oct',focus:'Practice with confidence',description:'Keep the same weekly rhythm. Adjustments would be determined by your coach using actual training feedback.'},
+{label:'WEEK 04',period:'19–25 Oct',focus:'Consolidate & review',description:'Reflect on your consistency and discuss the next block with your coach before making changes.'}
+];
+const programMovements=[
+{type:'training',duration:'45 min',count:'5 movements',note:'A balanced full-body training template.',items:['Goblet Squat','Dumbbell Bench Press','Lat Pulldown','Dumbbell Romanian Deadlift','Dead Bug']},
+{type:'training',duration:'30 min',count:'4 blocks',note:'A conditioning session with a gentle start and finish.',items:['Walking warm-up','Steady cycling','Controlled intervals','Cool down']},
+{type:'training',duration:'45 min',count:'5 movements',note:'Continue practicing steady, well-controlled repetitions.',items:['Leg Press','Seated Row','Dumbbell Shoulder Press','Glute Bridge','Side Plank']},
+{type:'recovery',duration:'Recovery',count:'No workout planned',note:'Unscheduled training is not required. Gentle movement is optional if appropriate.',items:[]},
+{type:'training',duration:'45 min',count:'5 movements',note:'The next scheduled session in the sample plan.',items:['Dumbbell Bench Press','Lat Pulldown','Seated Row','Dumbbell Shoulder Press','Triceps Pushdown']},
+{type:'training',duration:'45 min',count:'5 movements',note:'A lower-body strength session within the illustrative weekly structure.',items:['Goblet Squat','Dumbbell Romanian Deadlift','Step-Up','Leg Curl','Calf Raise']},
+{type:'recovery',duration:'Recovery',count:'No workout planned',note:'Use the day to recover before another training week.',items:[]}
+];
+let programSelectedWeek=1;
+let programExpandedDay=null;
+function programStatus(dayIndex){
+const d=trainingDays[dayIndex];
+if(d.kind==='rest'||d.kind==='today')return 'RECOVERY';
+if(programSelectedWeek!==1)return programSelectedWeek<1?'EXAMPLE':'PLANNED';
+if(d.kind==='done')return 'RECORDED';
+if(d.kind==='nextup')return 'UP NEXT';
+return 'PLANNED';
+}
+function programDayDate(dayIndex){
+const date=Number(trainingDays[dayIndex].date);
+if(programSelectedWeek===0)return ['28 SEP','29 SEP','30 SEP','01 OCT','02 OCT','03 OCT','04 OCT'][dayIndex];
+if(programSelectedWeek===1)return String(date).padStart(2,'0')+' OCT';
+return String(date+7*(programSelectedWeek-1)).padStart(2,'0')+' OCT';
+}
+function programWeekFocus(){
+const w=programWeeks[programSelectedWeek];
+return '<div class="program-week-focus-head"><span class="overline">'+w.label+(programSelectedWeek===1?' · CURRENT':' · PREVIEW')+'</span><span class="period">'+w.period+'</span></div>'+
+'<h3>'+w.focus+'</h3><p>'+w.description+'</p>';
+}
+function programDayDetail(dayIndex){
+const m=programMovements[dayIndex];
+if(m.type==='recovery')return '<div class="program-recovery-details">'+m.note+'</div>';
+return '<p class="detail-intro">'+m.note+'</p>'+
+'<ul class="program-session-movements">'+m.items.map(function(item){return '<li>'+item+'</li>';}).join('')+'</ul>'+
+'<p class="detail-note">Exercise order is illustrative; full prescriptions, loads and set logging belong in the individual session view.</p>';
+}
+function programSessionRows(){
+return trainingDays.map(function(d,i){
+const m=programMovements[i];
+const opened=programExpandedDay===i;
+const status=programStatus(i);
+const note=m.type==='recovery'?'RECOVERY · NO SESSION':m.duration.toUpperCase()+' · '+m.count.toUpperCase();
+return '<div class="program-session">'+
+'<button type="button" class="program-session-toggle" data-plan-day="'+i+'" aria-expanded="'+String(opened)+'" aria-controls="plan-session-panel-'+i+'">'+
+'<span class="number">'+String(i+1).padStart(2,'0')+'</span>'+
+'<span class="body"><span class="dayline">'+d.day.toUpperCase()+' · '+programDayDate(i)+' <span class="'+(status==='RECORDED'?'activity-pill':'')+'">'+status+'</span></span>'+
+'<span class="name">'+d.title+'</span><span class="subtitle">'+note+'</span></span>'+
+'<span class="trailing">'+icon('chevron')+'</span></button>'+
+'<div class="program-session-details" id="plan-session-panel-'+i+'" '+(opened?'':'hidden')+'>'+programDayDetail(i)+'</div></div>';
+}).join('');
+}
+function workoutPlan(){
+const weeks=programWeeks.map(function(w,i){
+return '<button type="button" data-plan-week="'+i+'" class="program-week-button '+(i===programSelectedWeek?'selected ':'')+(i<1?'past-week':'')+'" aria-label="Week '+(i+1)+', '+w.period+(i===1?', current week':'')+'" aria-pressed="'+String(programSelectedWeek===i)+'" aria-controls="program-week-focus"><span class="ordinal">WEEK</span><strong>'+String(i+1).padStart(2,'0')+'</strong></button>';
+}).join('');
+shell(
+'<div class="program-page">'+
+'<header class="program-top"><div class="program-top-left"><a class="back" href="training.html" aria-label="Back to Training">'+icon('back')+'</a><span class="program-top-label"><small>ZENITH · TRAINING</small><strong>Your complete plan</strong></span></div><span class="program-phase">WEEK 02 <em>/ 04</em></span></header>'+
+'<section class="program-hero" aria-label="Program overview"><div class="program-hero-overline">YOUR FOUR-WEEK FOUNDATION</div>'+
+'<h1>Foundation <span>Strength.</span></h1><p class="program-hero-description">A balanced weekly rhythm built around strength, movement and recovery.</p>'+
+'<div class="program-hero-progress"><small>Current program week</small><strong>02 of 04</strong></div>'+
+'<div class="program-progress-bar" aria-label="Current week 2 of 4"><span class="past"></span><span class="present"></span><span></span><span></span></div></section>'+
+'<div class="program-stats" aria-label="Program structure"><div class="program-stat"><strong>04</strong><span>Weeks</span></div><div class="program-stat"><strong>05</strong><span>Sessions / week</span></div><div class="program-stat"><strong>02</strong><span>Recovery days</span></div></div>'+
+'<div class="program-section-title"><h2>Four weeks. One direction.</h2></div>'+
+'<div class="program-week-select" role="group" aria-label="Explore program weeks">'+weeks+'</div>'+
+'<div class="program-week-focus" id="program-week-focus" aria-live="polite">'+programWeekFocus()+'</div>'+
+'<div class="program-section-title"><h2>Weekly rhythm</h2><small>7 days</small></div>'+
+'<p class="program-session-caption">Explore each training day. Your actual sets and weights belong in your approved session plan.</p>'+
+'<section class="program-session-list" id="program-session-list" aria-label="Seven-day program outline">'+programSessionRows()+'</section>'+
+'<div class="program-section-title"><h2>Coach’s approach</h2></div>'+
+'<section class="program-coach"><div class="program-coach-heading"><span class="program-coach-icon">'+icon('spark')+'</span><div><h3>Strong foundations first.</h3><p class="program-coach-subtitle">An overview, not a technical instruction sheet</p></div></div>'+
+'<p class="program-coach-brief">Build consistency, learn confident movement patterns and leave room for recovery. Your coach reviews what changes next.</p>'+
+'<details><summary>Why is the week structured this way? '+icon('chevron')+'</summary>'+
+'<ul><li>Training days alternate movement demands to give the week a manageable rhythm.</li>'+
+'<li>Recovery days are part of the plan, not missed workouts.</li>'+
+'<li>Progressions should follow your coach’s assessment and your recorded response, rather than automatic increases.</li></ul></details></section>'+
+'<p class="program-disclaimer">Sample four-week program created for this design prototype. No live coach approval, prescribed loads or client data are represented. <a href="training.html">Return to Training</a>.</p>'+
+'</div>','training');
+}
+
 function nutrition(){
 shell(subhead('Nutrition','index.html')+'<div class="demo-label">NEXT DESIGN PASS · EXPLORATION</div><h1 class="page-title">Eat with direction.</h1><p class="page-intro">Your targets and meals together, with the next practical action in focus.</p>'+
 '<div class="content-card"><div class="feature-kicker">ILLUSTRATIVE DAILY TARGET</div><h2>Balanced nutrition</h2><p>2,000 kcal · 150 g protein · 4 meals</p><div class="track" style="margin-top:16px"><span style="width:'+(state.dinner?'82':'58')+'%"></span></div><div class="sub-small" style="margin-top:8px">Illustrative calorie progress; not calculated from real consumption.</div></div>'+
@@ -135,8 +224,20 @@ shell(subhead('My Zenith','index.html')+'<div class="demo-label">FICTIONAL MEMBE
 [['Gym & membership','Membership information needs validation in the live app'],['Coaching roadmap','Personal weekly focus and reviews'],['Privacy & data','Know what your coach can access']].map(function(m){return '<div class="list-item"><span class="item-text"><span class="title-small">'+m[0]+'</span><span class="sub-small" style="display:block">'+m[1]+'</span></span>'+icon('chevron')+'</div>';}).join('')+'</div>'+
 '<div class="content-card"><h2>Preview controls</h2><p>Prototype actions are stored in this browser tab only. Reset the sample dinner, walk and hydration states to revisit the original layout.</p><div class="cta-row"><button class="btn secondary" data-action="reset">Reset sample activity</button></div></div>','profile');
 }
-function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='nutrition')return nutrition();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
+function render(){const page=document.body.getAttribute('data-page')||'home';if(page==='earlier')return earlier();if(page==='training')return training();if(page==='workout-plan')return workoutPlan();if(page==='nutrition')return nutrition();if(page==='meal')return meal();if(page==='progress')return progress();if(page==='profile')return profile();home();}
 document.addEventListener('click',function(e){
+const planWeekButton=e.target.closest('[data-plan-week]');
+if(planWeekButton){const i=Number(planWeekButton.getAttribute('data-plan-week'));if(Number.isInteger(i)&&i>=0&&i<programWeeks.length){
+programSelectedWeek=i;programExpandedDay=null;
+const focus=document.getElementById('program-week-focus');if(focus)focus.innerHTML=programWeekFocus();
+const list=document.getElementById('program-session-list');if(list)list.innerHTML=programSessionRows();
+document.querySelectorAll('[data-plan-week]').forEach(function(b){const selected=Number(b.getAttribute('data-plan-week'))===i;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});
+}return;}
+const planDayButton=e.target.closest('[data-plan-day]');
+if(planDayButton){const i=Number(planDayButton.getAttribute('data-plan-day'));if(Number.isInteger(i)&&i>=0&&i<programMovements.length){
+programExpandedDay=programExpandedDay===i?null:i;
+document.querySelectorAll('[data-plan-day]').forEach(function(b){const j=Number(b.getAttribute('data-plan-day'));const expanded=j===programExpandedDay;b.setAttribute('aria-expanded',String(expanded));const panel=document.getElementById('plan-session-panel-'+j);if(panel)panel.hidden=!expanded;});
+}return;}
 const dayButton=e.target.closest('[data-training-day]');
 if(dayButton){const idx=Number(dayButton.getAttribute('data-training-day'));if(Number.isInteger(idx)&&idx>=0&&idx<trainingDays.length){trainingSelected=idx;const detail=document.getElementById('training-day-summary');if(detail)detail.innerHTML=trainingDayDetail(idx);document.querySelectorAll('[data-training-day]').forEach(function(b){const selected=Number(b.getAttribute('data-training-day'))===idx;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});}return;}
 const action=e.target.closest('[data-action]');const tab=e.target.closest('[data-tab]');
