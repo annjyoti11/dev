@@ -112,3 +112,9 @@
 .identity-footer a{color:#b0dff3;text-decoration:underline;text-underline-offset:3px}
 @media(max-width:350px){.identity-person h1{font-size:24px}.identity-avatar{height:63px;width:63px;flex-basis:63px;border-radius:18px}.identity-intro{gap:12px}.identity-hero{padding:20px 15px}.identity-hero-stats b{font-size:17px}.identity-highlight-card{padding:13px 10px}.identity-program{padding:17px 13px}.identity-head{gap:6px}.identity-date{font-size:9px;padding:7px}}
 @media(prefers-reduced-motion:reduce){.identity-account summary>.ic,.identity-coach-card summary>.ic{transition:none!important}}
+
+/* Edit profile journey action */
+.identity-edit-link{display:inline-flex;align-items:center;gap:9px;margin-top:18px;border:1px solid #658fa4;background:#275169;color:#e0f6ff;font-size:12px;font-weight:760;border-radius:12px;min-height:43px;padding:11px 13px;text-decoration:none}
+.identity-edit-link>.ic{height:15px;width:15px}
+.identity-edit-link>.ic:last-child{margin-left:4px}
+.identity-edit-link:focus-visible{outline:2px solid #afe9ff;outline-offset:3px}
