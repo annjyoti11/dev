@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en-IN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#060b10"><meta name="robots" content="noindex,nofollow"><meta name="description" content="Interactive example profile editor; browser-only data, no real member updates."><title>Edit Profile | Zenith Preview</title><link rel="icon" type="image/svg+xml" href="../assets/zenith-favicon.svg"><style>
+/* Zenith Client App — concept only. Scoped; no host-site dependencies. */
+:root{color-scheme:dark;--bg:#060b10;--surface:#0d1922;--surface2:#10212d;--border:#223643;--border-hi:#36576b;--text:#eef5f8;--muted:#a4bac8;--faint:#7892a3;--accent:#82c9ed;--accent-strong:#5cb8e9;--success:#91d0b4;--warn:#e5bf81;--radius:18px}
+*{box-sizing:border-box}
+html{min-height:100%;background:var(--bg);scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:var(--bg);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button,a{-webkit-tap-highlight-color:transparent}
+button{font:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.app{width:100%;max-width:440px;min-height:100dvh;margin:0 auto;background:radial-gradient(ellipse 230px 290px at 103% 3%,rgba(26,70,104,.32),transparent 86%),radial-gradient(ellipse 240px 240px at -20% 48%,rgba(15,37,58,.12),transparent 87%),var(--bg);position:relative;overflow:hidden}
+.main{padding:0 21px calc(110px + env(safe-area-inset-bottom,0px))}
+.header{height:84px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(174,210,230,.12);padding:14px 1px}
+.brand-logo{display:block;width:47px;height:40px;object-fit:contain;object-position:left center}
+.step-pill{display:flex;gap:8px;align-items:center;border:1px solid #29414d;background:rgba(10,22,30,.90);border-radius:22px;height:40px;padding:0 12px;color:var(--muted);font-size:12px}
+.step-pill strong{font-size:14px;color:var(--text)}
+.ic{width:19px;height:19px;display:inline-flex;vertical-align:middle;flex:none}
+.ic svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.step-pill .ic{color:var(--accent)}
+.lead{margin:25px 2px 0}
+.eyebrow{font-size:11px;line-height:1.5;letter-spacing:.16em;color:#9ec0d2;font-weight:700}
+.lead h1,.page-title{font-size:33px;line-height:1.12;font-weight:650;letter-spacing:-1.2px;margin:9px 0 7px}
+.lead p,.subline{color:var(--muted);font-size:14px;line-height:1.55;margin:0}
+.hero{margin:23px 0 0;border:1px solid #39627a;border-radius:24px;min-height:213px;position:relative;overflow:hidden;padding:21px;background:linear-gradient(128deg,#1a3344,#132d40 53%,#081520);box-shadow:0 15px 42px rgba(0,0,0,.12),inset 0 1px rgba(223,245,255,.07)}
+.hero::before{content:"";position:absolute;inset:-70px -75px auto auto;width:270px;height:260px;background:radial-gradient(ellipse,rgba(75,164,216,.18),transparent 70%)}
+.hero>*{position:relative}
+.hero .eyebrow{display:flex;gap:8px;align-items:center;font-size:10px;color:#acd9ef}
+.glow-dot{width:6px;height:6px;border-radius:50%;background:#8dd8fb;box-shadow:0 0 12px #80c8ed}
+.hero h2{font-size:39px;font-weight:720;letter-spacing:-1.5px;margin:19px 0 5px}
+.hero .meta{font-size:14px;color:#c6d7e1;margin:0 0 8px}
+.hero .schedule{font-size:12px;color:#adc3d0;display:flex;gap:7px;align-items:center}
+.hero .buttons{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px}
+.btn{background:var(--accent);border:1px solid var(--accent);color:#08202c;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:11px 16px;border-radius:12px;font-size:13px;font-weight:750;min-height:43px;box-shadow:0 6px 18px rgba(3,10,15,.16)}
+.btn:active{transform:translateY(1px)}
+.btn.secondary{background:transparent;color:var(--accent);border-color:#37647a;box-shadow:none}
+.text-link{border:0;background:none;padding:8px 0;font-size:12px;font-weight:650;color:#c1e2f2}
+.section-header{margin:25px 2px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.section-header h2{font-size:17px;letter-spacing:-.4px;font-weight:680;margin:0}
+.section-header a,.section-header button{font-size:12px;color:#a5d3e9;background:none;border:0;font-weight:650}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.metric{background:linear-gradient(150deg,#10232e,#0b171f);border:1px solid #253c49;border-radius:16px;padding:12px 10px;min-height:111px}
+.metric .label{display:flex;gap:5px;align-items:center;color:var(--muted);font-size:11px}
+.metric .label .ic{color:#88c9e8;width:15px;height:15px}
+.metric strong{display:block;font-size:21px;letter-spacing:-.7px;font-weight:690;margin-top:12px}
+.metric small{display:block;font-size:11px;color:var(--muted);margin-top:3px}
+.track{height:4px;background:#29414f;border-radius:10px;overflow:hidden;margin-top:11px}
+.track span{display:block;height:100%;max-width:100%;background:var(--accent);border-radius:10px;transition:width .2s ease}
+.panel{border:1px solid var(--border);border-radius:17px;background:rgba(13,26,35,.92)}
+.next{padding:12px 13px;display:flex;align-items:center;gap:12px;width:100%;text-align:left}
+.tile-icon{width:40px;height:40px;flex:none;display:grid;place-items:center;background:#1b3340;border-radius:12px;color:#9cd9f3}
+.tile-icon.good{background:#17312d;color:var(--success)}
+.tile-icon.warn{background:#30291f;color:var(--warn)}
+.next .copy{flex:1;min-width:0}
+.title-small{font-size:13px;font-weight:680;color:var(--text)}
+.sub-small{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px}
+.tag{font-size:11px;font-weight:680;padding:6px 9px;border-radius:8px;background:#193442;color:#a7d9ef;white-space:nowrap}
+.tag.good{background:#1a362d;color:#a1ddbd}
+.tag.warn{background:#342b1f;color:#f0c78e}
+.bottom-nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:440px;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);background:rgba(5,11,15,.97);border-top:1px solid #253744;padding:11px 7px calc(11px + env(safe-area-inset-bottom,0px));backdrop-filter:blur(14px)}
+.bottom-nav a{display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;font-size:11px;color:#94a9b7;min-height:49px}
+.bottom-nav a.current{color:var(--accent)}
+.bottom-nav .ic{width:21px;height:21px}
+.bottom-nav .mark{height:3px;width:3px;border-radius:50%;background:transparent}
+.bottom-nav a.current .mark{background:var(--accent)}
+.subheader{display:flex;align-items:center;gap:13px;min-height:72px;padding:20px 0 8px}
+.back{width:37px;height:37px;border-radius:12px;display:grid;place-items:center;background:#111f2a;border:1px solid #25404e;color:#c5dfeb}
+.subheader .heading{font-size:15px;font-weight:730;letter-spacing:-.2px}
+.feature-kicker{font-size:11px;letter-spacing:.13em;font-weight:650;color:#91b9cd}
+.summary{margin-top:19px;background:linear-gradient(142deg,#132c3d,#0b1a25 80%);padding:20px;border-radius:20px;border:1px solid #2e5062}
+.summary h1{font-size:29px;font-weight:690;letter-spacing:-1px;margin:9px 0 6px}
+.summary p{font-size:13px;color:#b2c9d5;line-height:1.5;margin:0}
+.summary-stats{display:flex;gap:22px;margin-top:18px}
+.summary-stat strong{font-size:20px;color:var(--text);display:block}
+.summary-stat span{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.tabs{display:flex;gap:5px;margin:21px 0 0;padding:4px;border:1px solid #273e4b;border-radius:13px;background:#0e1d27}
+.tabs button{flex:1;border:0;color:#9eb8c7;background:transparent;border-radius:9px;padding:11px;font-size:12px;font-weight:700}
+.tabs button.selected{background:#1f455b;color:#d7f0fc}
+.group-title{font-size:13px;letter-spacing:.02em;color:#b1cad7;margin:25px 2px 11px;font-weight:740}
+.timeline{display:grid;gap:9px}
+.timeline-row{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid #243c49;border-radius:15px;background:#0d1b25}
+.timeline-row .info{flex:1;min-width:0}
+.timeline-row .status{font-size:11px;color:#a4d7bd;white-space:nowrap}
+.timeline-row .status.muted{color:#e4c08c}
+.timeline-row .ic{width:18px;height:18px}
+.timeline-row .detail{color:var(--muted);font-size:11px;margin-top:4px}
+.timeline-row button{border-radius:10px;border:1px solid #3b6377;background:#163648;color:#b6e5fa;padding:8px 10px;font-size:11px}
+.info-note{margin:16px 1px;border-left:2px solid #4b829e;padding:3px 0 3px 12px;color:#a7bfcc;line-height:1.55;font-size:12px}
+.page-title{font-size:31px;margin:15px 0 8px}
+.page-intro{font-size:13px;color:var(--muted);line-height:1.55;margin:0 0 19px}
+.content-card{border:1px solid #263d4b;border-radius:18px;background:linear-gradient(145deg,#10232f,#0b1923);padding:18px;margin-top:14px}
+.content-card h2{font-size:18px;margin:2px 0 7px;letter-spacing:-.35px}
+.content-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+.content-card .cta-row{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.mini-list{display:grid;gap:0;margin-top:11px}
+.mini-list .list-item{padding:14px 0;border-bottom:1px solid #223743;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mini-list .list-item:last-child{border:0;padding-bottom:3px}
+.list-item .item-text{flex:1}
+.chart{height:110px;margin-top:18px;display:flex;align-items:flex-end;justify-content:space-around;gap:10px}
+.chart span{flex:1;max-width:24px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#82c9ed,#254b62)}
+.demo-label{display:inline-flex;border:1px solid #34566a;border-radius:30px;color:#abd3e4;padding:6px 10px;font-size:10px;letter-spacing:.06em;font-weight:700;margin:16px 0 0}
+.muted{color:var(--muted)}
+.foot-note{margin:22px 0;color:#8a9faf;font-size:11px;line-height:1.5}
+.pad-bottom{height:24px}
+@media(min-width:540px){body{background:#101a21}.app{box-shadow:0 0 0 1px #355064,0 28px 80px rgba(0,0,0,.35)}}
+@media(max-width:340px){.main{padding-left:15px;padding-right:15px}.hero{padding:17px}.metric{padding:10px 7px}.metric strong{font-size:18px}.step-pill{padding:0 9px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Zenith entry experiences — login + profile edit, scoped to standalone previews */
+.entry-app{min-height:100dvh;background:radial-gradient(ellipse 255px 360px at 99% 1%,rgba(38,100,134,.31),transparent 88%),#060b10}
+.entry-app .main{padding-bottom:calc(34px + env(safe-area-inset-bottom,0px))}
+.entry-top{padding:23px 0 19px;border-bottom:1px solid rgba(155,210,240,.14);display:flex;align-items:center;justify-content:space-between;gap:9px}
+.entry-brand{display:flex;align-items:center;gap:12px}
+.entry-brand img{width:42px;height:42px;object-fit:contain}
+.entry-brand .lines{display:grid;gap:3px}
+.entry-brand .lines small{font-size:9px;letter-spacing:.16em;color:#9ecbdf;font-weight:785}
+.entry-brand .lines strong{font-size:17px;letter-spacing:.02em;font-weight:800}
+.entry-pill{white-space:nowrap;font-size:9px;font-weight:740;letter-spacing:.06em;color:#a7d6e9;background:#17394a;border:1px solid #426b80;border-radius:99px;padding:8px 10px}
+.entry-intro{margin:27px 2px 19px}
+.entry-eyebrow{color:#9bcadd;letter-spacing:.16em;font-size:10px;font-weight:775;display:flex;align-items:center;gap:8px}
+.entry-eyebrow:before{content:"";height:1px;width:20px;background:#91d1ef}
+.entry-intro h1{font-size:37px;font-weight:775;line-height:1.08;letter-spacing:-1.5px;margin:15px 0 9px}
+.entry-intro h1 span{color:#a7dbf2}
+.entry-intro p{font-size:13px;color:#a9c4d3;line-height:1.6;margin:0;max-width:330px}
+.entry-glory{height:151px;border:1px solid #325e76;border-radius:21px;background:radial-gradient(ellipse 65% 75% at 55% 48%,#214c63 0%,#142c3e 57%,#0d1f2b 100%);position:relative;overflow:hidden;margin:20px 0 17px}
+.entry-glory .circle{position:absolute;border-radius:50%;border:1px solid #9acde52d;width:215px;height:215px;top:-34px;left:50%;transform:translateX(-50%);box-shadow:0 0 0 29px #a2daee0b,0 0 0 58px #a2daee06}
+.entry-glory .glyph{position:absolute;inset:0;display:grid;place-items:center;font-size:112px;font-weight:850;font-style:italic;line-height:1;letter-spacing:-13px;padding-right:13px;color:#d1eeff;text-shadow:0 0 26px #96d2f56b;opacity:.73}
+.entry-glory .motto{position:absolute;bottom:13px;left:0;right:0;text-align:center;color:#b4dceb;font-size:9px;font-weight:730;letter-spacing:.2em}
+.entry-panel{border:1px solid #34586a;background:linear-gradient(145deg,#132b3a,#0b1e2a);border-radius:21px;padding:18px 16px 17px}
+.entry-panel-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.entry-panel-title strong{font-size:16px;letter-spacing:-.3px}
+.entry-panel-title small{font-size:10px;color:#b0d7e7}
+.entry-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:4px;border-radius:13px;background:#0b1b26;border:1px solid #2c4d5e;margin:17px 0}
+.entry-tabs button{border:0;border-radius:10px;background:none;color:#98b9c9;padding:11px 8px;font-size:12px;font-weight:770}
+.entry-tabs button.selected{background:linear-gradient(145deg,#315f76,#1c4257);color:#e7f9ff}
+.entry-field{margin:0 0 14px}
+.entry-field label{display:block;font-size:12px;color:#d7eefa;font-weight:745;margin:0 0 8px}
+.entry-field input,.entry-field select{width:100%;height:51px;border:1px solid #3a5e72;background:#132c3a;border-radius:12px;color:#f0f9ff;font:inherit;font-size:14px;padding:0 13px;outline-offset:3px;min-width:0}
+.entry-field input::placeholder{color:#7797a8}
+.entry-field input:focus,.entry-field select:focus{border-color:#8bcbe9}
+.entry-field small{display:block;color:#91b3c3;font-size:11px;line-height:1.5;margin-top:7px}
+.entry-phone{display:flex;align-items:center;border:1px solid #3a5e72;background:#132c3a;border-radius:12px;height:51px;overflow:hidden}
+.entry-phone .prefix{padding:0 12px;font-size:13px;color:#b3d5e4;border-right:1px solid #3a5e72;white-space:nowrap}
+.entry-phone input{border:0;border-radius:0;background:transparent;height:100%;outline-offset:-2px}
+.entry-primary{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:49px;border:1px solid #b8ebff;background:#a4def6;color:#092430;border-radius:13px;padding:12px 15px;font-size:13px;font-weight:790}
+.entry-primary svg{height:17px;width:17px}
+.entry-primary:disabled{opacity:.45}
+.entry-help{font-size:11px;line-height:1.6;color:#9ebcca;margin:12px 1px 0}
+.entry-error{color:#ffc7b9;font-size:11px;line-height:1.5;margin:4px 0 11px;min-height:2px}
+.entry-alt{display:flex;justify-content:center;align-items:center;gap:8px;color:#bbdff2;font-size:12px;font-weight:740;min-height:42px;margin:15px 0 0;text-decoration:none}
+.entry-footer{font-size:11px;color:#8daabd;line-height:1.6;text-align:center;margin:17px 4px 0}
+.entry-back{border:0;background:transparent;display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#bbe4f6;padding:11px 0;margin-top:12px}
+.entry-back svg{height:15px;width:15px}
+.entry-verify{border:1px solid #366277;background:radial-gradient(circle at 80% -30%,#28546b,#0e2635 77%);border-radius:20px;padding:23px 16px;text-align:center;margin:18px 0}
+.entry-shield{display:grid;place-items:center;margin:0 auto 14px;height:47px;width:47px;background:#20465a;border:1px solid #4d829b;border-radius:14px;color:#bde9fa}
+.entry-shield svg{height:26px;width:26px}
+.entry-verify strong{display:block;font-size:14px}
+.entry-verify .code{font-size:32px;letter-spacing:.21em;font-weight:800;color:#bceaff;margin:15px 0 10px;font-variant-numeric:tabular-nums}
+.entry-verify p{font-size:11px;line-height:1.6;color:#afcbd7;margin:0}
+.entry-code{font-size:21px!important;letter-spacing:.29em;text-align:center;font-weight:770;font-variant-numeric:tabular-nums}
+.entry-done{text-align:center;padding:58px 3px 24px}
+.entry-done-mark{height:68px;width:68px;border-radius:21px;background:#174a3a;color:#bdf3d9;border:1px solid #509977;display:grid;place-items:center;margin:0 auto 24px}
+.entry-done-mark svg{height:34px;width:34px}
+.entry-done h1{font-size:38px;letter-spacing:-1.4px;margin:15px 0 9px}
+.entry-done h1 span{color:#ade0f6}
+.entry-done p{font-size:13px;color:#b1ccda;line-height:1.65;margin:0 0 23px}
+.editor-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:21px 0 17px;border-bottom:1px solid #294654}
+.editor-back{height:39px;width:39px;display:grid;place-items:center;border:1px solid #40697f;background:#17394a;border-radius:12px;color:#b9e4f6;flex:none}
+.editor-back svg{height:18px;width:18px}
+.editor-top .title{flex:1;min-width:0;display:grid;gap:4px}
+.editor-top .title small{color:#99bfd0;letter-spacing:.14em;font-size:9px;font-weight:755}
+.editor-top .title strong{font-size:15px;font-weight:760}
+.editor-intro{margin:28px 1px 20px}
+.editor-intro .eyebrow{font-size:10px;color:#a3d0e2;letter-spacing:.13em;font-weight:780}
+.editor-intro h1{font-size:35px;line-height:1.1;letter-spacing:-1.35px;margin:13px 0 9px;font-weight:770}
+.editor-intro h1 span{color:#a4d9f1}
+.editor-intro p{font-size:13px;line-height:1.6;color:#a9c6d4;margin:0}
+.editor-preview{display:flex;align-items:center;gap:13px;border:1px solid #457087;background:radial-gradient(circle at 92% -20%,#285c74,#16384c 65%,#102634);border-radius:19px;padding:17px;margin-bottom:20px}
+.editor-avatar{width:54px;height:54px;border:1px solid #6b9cb4;border-radius:17px;display:grid;place-items:center;background:#2b5c74;color:#c7ecf9;flex:none}
+.editor-avatar svg{height:28px;width:28px}
+.editor-preview .name{min-width:0}
+.editor-preview .name small{font-size:9px;letter-spacing:.11em;color:#acd7e9;font-weight:770;display:block}
+.editor-preview .name strong{font-size:18px;letter-spacing:-.3px;font-weight:780;display:block;margin:5px 0;overflow-wrap:anywhere}
+.editor-preview .name span{font-size:11px;color:#b7d3df}
+.editor-form{border:1px solid #294b5d;border-radius:20px;background:linear-gradient(155deg,#102938,#0b1d29);padding:17px 15px}
+.editor-form .group-title{font-size:13px;font-weight:765;color:#e5f5ff;margin:3px 0 18px}
+.editor-form .group-title.preferences{padding-top:18px;margin-top:9px;border-top:1px solid #304f60}
+.editor-form .entry-field{margin-bottom:18px}
+.editor-form .entry-field:last-of-type{margin-bottom:8px}
+.editor-select{position:relative}
+.editor-select select{appearance:none;padding-right:40px}
+.editor-select svg{position:absolute;pointer-events:none;right:12px;top:17px;height:16px;width:16px;color:#a8cde0;transform:rotate(90deg)}
+.editor-lock{display:flex;gap:10px;padding:14px;background:#173041;border:1px solid #365b71;border-radius:15px;margin:8px 0 14px}
+.editor-lock .icon{width:30px;height:30px;display:grid;place-items:center;flex:none;color:#b4e0f3;background:#20485d;border-radius:9px}
+.editor-lock .icon svg{height:17px;width:17px}
+.editor-lock strong{display:block;font-size:12px;line-height:1.45;color:#e1f2fa}
+.editor-lock p{font-size:11px;color:#adc8d6;line-height:1.6;margin:6px 0 0}
+.editor-cancel{display:flex;justify-content:center;padding:14px;color:#b3d6e9;font-size:12px;font-weight:720}
+.editor-footer{font-size:11px;line-height:1.6;color:#8faebd;margin:16px 1px}
+@media(max-width:350px){.entry-intro h1{font-size:32px}.editor-intro h1{font-size:30px}.entry-top{gap:7px}.entry-pill{font-size:8px;padding:7px}.entry-panel{padding:15px 12px}.editor-form{padding:15px 12px}.entry-glory{height:135px}}
+
+</style></head><body><div id="app"><main style="padding:28px;background:#060b10;color:#e7f7ff">Zenith interactive preview requires JavaScript.</main></div><script>
+/* Zenith Client Profile Edit · interactive browser-only demonstration. */
+(function(){
+'use strict';
+const root=document.getElementById('app');if(!root)return;
+const KEY='zenith-preview-profile-v1';
+const DEFAULT={name:'Aarav Sharma',gender:'Prefer not to say',goal:'Fat loss & strength',time:'Evening'};
+const GENDERS=['Male','Female','Non-binary','Prefer not to say'];
+const GOALS=['Fat loss & strength','Build muscle','Improve general fitness','Increase strength'];
+const TIMES=['Morning','Afternoon','Evening','Flexible'];
+const safe=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ico=n=>'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">'+({back:'<path d="m15 18-6-6 6-6"/>',check:'<path d="m5 12 4 4L19 6"/>',user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c0-8 16-8 16 0"/>',shield:'<path d="m12 3 8 4v5c0 5-4 8-8 10-4-2-8-5-8-10V7z"/><path d="m9 12 2 2 4-4"/>',chevron:'<path d="m9 18 6-6-6-6"/>'}[n]||'')+'</svg>';
+let error='';
+function read(){try{const v=JSON.parse(sessionStorage.getItem(KEY)||'null');if(!v)return {...DEFAULT};
+return {name:typeof v.name==='string'&&v.name.trim().length>=2&&v.name.trim().length<=60?v.name.trim():DEFAULT.name,
+gender:GENDERS.includes(v.gender)?v.gender:DEFAULT.gender,goal:GOALS.includes(v.goal)?v.goal:DEFAULT.goal,time:TIMES.includes(v.time)?v.time:DEFAULT.time};
+}catch(e){return {...DEFAULT};}}
+const entry=read();
+function options(values,current){return values.map(v=>'<option value="'+safe(v)+'"'+(current===v?' selected':'')+'>'+safe(v)+'</option>').join('');}
+root.innerHTML='<div class="app entry-app"><main class="main">'+
+'<header class="editor-top"><a class="editor-back" href="profile-20261009.html" aria-label="Back to profile">'+ico('back')+'</a>'+
+'<div class="title"><small>ZENITH · CLIENT PROFILE</small><strong>Edit your details</strong></div><span class="entry-pill">SAMPLE PROFILE</span></header>'+
+'<section class="editor-intro"><div class="eyebrow">YOUR DETAILS</div><h1>Make it <span>yours.</span></h1><p>The essentials, clearly presented—so your coach can understand how you prefer to train.</p></section>'+
+'<div class="editor-preview"><div class="editor-avatar">'+ico('user')+'</div><div class="name"><small>YOUR PROFILE PREVIEW</small><strong id="editor-preview-name">'+safe(entry.name)+'</strong><span>12-Week Transformation · example member</span></div></div>'+
+'<form id="editor-form" class="editor-form" novalidate>'+
+'<div class="group-title">Personal details</div>'+
+'<div class="entry-field"><label for="editor-name">Full name</label><input id="editor-name" type="text" maxlength="60" autocomplete="name" required value="'+safe(entry.name)+'" placeholder="Your name"><small>This name appears on Home and your coaching journey.</small></div>'+
+'<div class="entry-field"><label for="editor-gender">Gender</label><div class="editor-select"><select id="editor-gender">'+options(GENDERS,entry.gender)+'</select>'+ico('chevron')+'</div></div>'+
+'<div class="group-title preferences">Training preferences</div>'+
+'<div class="entry-field"><label for="editor-goal">Personal fitness focus</label><div class="editor-select"><select id="editor-goal">'+options(GOALS,entry.goal)+'</select>'+ico('chevron')+'</div><small>This does not modify a coach-approved training or nutrition program.</small></div>'+
+'<div class="entry-field"><label for="editor-time">Preferred training time</label><div class="editor-select"><select id="editor-time">'+options(TIMES,entry.time)+'</select>'+ico('chevron')+'</div></div>'+
+'<div class="editor-lock"><div class="icon">'+ico('shield')+'</div><div><strong>Coaching and account data stay protected.</strong><p>Membership, program assignments, medical information, email and phone verification are not editable here.</p></div></div>'+
+'<p id="editor-error" class="entry-error" role="alert"></p>'+
+'<button type="submit" class="entry-primary">Save sample profile '+ico('check')+'</button>'+
+'<a href="profile-20261009.html" class="editor-cancel">Cancel and return to Profile</a></form>'+
+'<p class="editor-footer">This is an interactive design prototype. Changes are saved only in this browser tab, not to a real member account.</p>'+
+'</main></div>';
+root.addEventListener('input',e=>{
+if(e.target.id==='editor-name'){const label=root.querySelector('#editor-preview-name');if(label)label.textContent=e.target.value||'Your name';}
+});
+root.addEventListener('submit',e=>{
+if(e.target.id!=='editor-form')return;e.preventDefault();
+const value=id=>root.querySelector('#'+id)?.value||'';
+const name=value('editor-name').trim().replace(/\s+/g,' ');
+const gender=value('editor-gender'),goal=value('editor-goal'),time=value('editor-time');
+if(name.length<2||name.length>60||/[<>]/.test(name)||!GENDERS.includes(gender)||!GOALS.includes(goal)||!TIMES.includes(time)){
+error='Please enter a name between 2 and 60 characters and choose valid options.';
+root.querySelector('#editor-error').textContent=error;return;
+}
+try{sessionStorage.setItem(KEY,JSON.stringify({name,gender,goal,time}));}
+catch(e){error='Your browser did not save the sample changes. Session storage may be unavailable.';root.querySelector('#editor-error').textContent=error;return;}
+window.location.href='profile-20261009.html';
+});
+})();
+</script></body></html>
