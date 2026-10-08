@@ -133,7 +133,7 @@
 .focus-input-control button{background:#1a3b4d;color:#bde5f8;border:0;min-width:34px;display:grid;place-items:center}
 .focus-input-control button .ic{width:16px;height:16px}
 .focus-input-control button:active{background:#2a596e}
-.focus-input-control input{min-width:0;width:100%;background:none;border:0;color:#f4fbff;text-align:center;font:750 19px/1.1 inherit;font-family:inherit;font-size:19px;font-weight:750;outline-offset:-3px;padding:4px 0;-moz-appearance:textfield}
+.focus-input-control input{min-width:0;width:100%;background:none;border:0;color:#f4fbff;text-align:center;font-family:inherit;font-size:19px;font-weight:750;line-height:1.1;outline-offset:-3px;padding:4px 0;-moz-appearance:textfield}
 .focus-input-control input::-webkit-inner-spin-button,.focus-input-control input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 .focus-input-control input::placeholder{color:#668b9c}
 .focus-error{min-height:17px;font-size:11px;line-height:1.4;color:#ffd4ac;margin:8px 0 4px}
