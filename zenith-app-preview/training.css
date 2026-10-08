@@ -1,0 +1,90 @@
+/* Screen 03 — Training Overview
+   Scoped stylesheet. Optimized for real 320–440px mobile widths; no external resources. */
+.training-main{padding-bottom:9px}
+.training-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:25px 1px 20px;border-bottom:1px solid rgba(169,205,225,.13)}
+.training-identity{display:flex;align-items:center;gap:12px;min-width:0}
+.training-identity .brand-logo{width:39px;height:39px}
+.training-identity-copy{display:grid;gap:3px}
+.training-identity-copy span{font-size:9px;letter-spacing:.18em;font-weight:700;color:#8baebf}
+.training-identity-copy strong{font-size:19px;letter-spacing:-.5px;font-weight:680}
+.training-week-chip{border:1px solid #3a6172;background:#132b39;border-radius:99px;padding:9px 12px;white-space:nowrap;color:#bde5f9;font-size:10px;letter-spacing:.08em;font-weight:750}
+.training-week-chip span{color:#779eaf}
+.training-intro{margin:30px 1px 23px}
+.training-eyebrow{display:flex;align-items:center;gap:8px;letter-spacing:.16em;font-weight:730;font-size:10px;color:#91b9c9}
+.training-eyebrow .training-line{display:inline-block;width:22px;height:1px;background:#79bbde}
+.training-intro h1{font-size:34px;line-height:1.08;letter-spacing:-1.55px;font-weight:730;margin:12px 0 11px;max-width:310px}
+.training-intro h1 em{font-style:normal;color:#8ccbea}
+.training-intro p{color:#a7beca;line-height:1.55;font-size:13px;margin:0;max-width:335px}
+.training-recovery{position:relative;isolation:isolate;overflow:hidden;border:1px solid #2f5367;background:linear-gradient(130deg,#183c50 0%,#132b3b 55%,#101f2a 100%);border-radius:22px;padding:21px 20px 20px;box-shadow:0 12px 28px #02080d44}
+.training-recovery::before{content:"";position:absolute;width:215px;height:215px;border:1px solid #76bde91d;border-radius:50%;top:-117px;right:-91px;z-index:-1;box-shadow:0 0 0 35px #76bde909,0 0 0 73px #76bde907}
+.training-recovery .training-eyebrow{color:#a6d6ec;letter-spacing:.11em;font-size:10px}
+.training-recovery-badge{display:inline-flex;align-items:center;gap:7px;margin-top:24px;padding:6px 10px;background:#21475a;border:1px solid #3a6c82;border-radius:99px;color:#d4effa;font-size:10px;letter-spacing:.03em;font-weight:720}
+.training-recovery-badge .ic{width:14px;height:14px}
+.training-recovery h2{margin:11px 0 8px;font-size:25px;line-height:1.17;letter-spacing:-.9px;font-weight:720;max-width:295px}
+.training-recovery p{margin:0;font-size:12px;line-height:1.6;color:#c3d5df;max-width:276px}
+.training-momentum{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:13px;padding:16px 17px;border:1px solid #263e4c;border-radius:18px;background:linear-gradient(138deg,#101e28,#0c1820)}
+.training-momentum-label{color:#a2bdcb;font-size:10px;letter-spacing:.12em;font-weight:740}
+.training-momentum-number{font-weight:700;font-size:31px;line-height:1.22;letter-spacing:-1.4px;margin-top:4px}
+.training-momentum-number span{color:#7c98a7;font-weight:500;font-size:19px;letter-spacing:-.6px}
+.training-momentum-copy{color:#9fb6c3;font-size:11px;margin-top:2px}
+.training-momentum-right{display:flex;flex-direction:column;align-items:flex-end;gap:12px;min-width:115px}
+.training-momentum-percent{font-size:12px;font-weight:750;color:#b1dfef}
+.training-segments{display:flex;align-items:center;gap:5px}
+.training-segments span{display:block;width:17px;height:6px;background:#2b4351;border-radius:5px}
+.training-segments span.filled{background:#7bc6e8;box-shadow:0 0 9px #61b2dc40}
+.training-section-heading{margin:28px 2px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.training-section-heading h2{margin:0;font-size:17px;line-height:1.25;letter-spacing:-.45px;font-weight:710}
+.training-section-heading .support{color:#91b8ca;font-size:11px}
+.training-next{border:1px solid #345e73;border-radius:21px;background:radial-gradient(circle at 100% 0%,#1d455a 0%,#112c3b 42%,#0e1d29 100%);padding:20px 17px 16px;box-shadow:inset 0 1px #6aa5c01f;position:relative}
+.training-next-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.training-next-top .training-eyebrow{font-size:10px;letter-spacing:.12em;color:#a7d5e9}
+.training-date-pill{font-size:10px;color:#c3e6f6;font-weight:700;padding:5px 9px;border-radius:99px;border:1px solid #3e7189;background:#1b3e51}
+.training-next-content{display:grid;grid-template-columns:49px 1fr;gap:15px;margin:23px 0 18px;align-items:center}
+.training-next-date{border-right:1px solid #4e7a8e;padding-right:12px;text-align:center}
+.training-next-date b{display:block;font-size:30px;letter-spacing:-1.2px;line-height:1;font-weight:750}
+.training-next-date span{display:block;font-size:10px;letter-spacing:.15em;font-weight:750;color:#a2c7d7;margin-top:7px}
+.training-next-details h3{font-size:24px;line-height:1.13;margin:0 0 9px;letter-spacing:-.8px;font-weight:730}
+.training-next-details p{font-size:12px;color:#b8cedb;display:flex;align-items:center;gap:6px;margin:0;flex-wrap:wrap;line-height:1.4}
+.training-next-details p .ic{width:14px;height:14px;color:#99d8f4}
+.training-cta{background:#85ceeF;color:#071925;border:0;border-radius:12px;min-height:47px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 15px;font-size:13px;font-weight:760}
+.training-cta .ic{width:19px;height:19px}
+.training-cta:active{transform:translateY(1px)}
+.training-preview-panel{margin:13px 0 0;padding:16px 15px 6px;background:#071721;border:1px solid #315369;border-radius:14px}
+.training-preview-panel[hidden]{display:none!important}
+.training-preview-panel h4{margin:0 0 11px;font-size:12px;letter-spacing:.07em;color:#a8d9ec}
+.training-preview-panel .training-movement{display:flex;align-items:center;gap:11px;border-top:1px solid #254355;padding:11px 0}
+.training-preview-panel .training-movement .index{height:26px;width:26px;flex:none;background:#173649;color:#91cbe6;border:1px solid #2d5266;border-radius:9px;display:grid;place-items:center;font-size:11px;font-weight:730}
+.training-preview-panel .training-movement .name{font-size:12px;font-weight:640;line-height:1.4}
+.training-preview-panel .training-movement .meta{font-size:11px;color:#94b0bf;margin-top:2px}
+.training-section-heading#training-week{scroll-margin-top:18px}
+.training-week-card{border:1px solid #293f4d;background:#0c1922;border-radius:19px;padding:16px 14px 15px}
+.training-week-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 2px 15px}
+.training-week-title span{font-size:11px;color:#8eabbc}
+.training-week-title strong{font-size:11px;font-weight:720;color:#b6d4e4}
+.training-day-picker{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(43px,1fr);gap:5px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;scrollbar-width:none;margin:0 -3px;padding:3px 3px 9px}
+.training-day-picker::-webkit-scrollbar{display:none}
+.training-day-picker button{border:1px solid transparent;border-radius:13px;background:#132633;color:#96adbb;min-height:81px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;padding:10px 5px 9px;scroll-snap-align:start;min-width:43px}
+.training-day-picker button.selected{border-color:#6bbadd;background:linear-gradient(180deg,#20485e,#173143);color:#e4f4fb}
+.training-day-picker .day-label{font-size:10px;font-weight:650}
+.training-day-picker .day-date{font-size:15px;font-weight:740;letter-spacing:-.4px}
+.training-day-picker .day-mark{height:5px;width:5px;border-radius:50%;background:#536e80}
+.training-day-picker .done .day-mark{background:#83d5ae}
+.training-day-picker .nextup .day-mark{background:#81c7ed}
+.training-day-picker .today .day-mark{width:13px;border-radius:5px;background:#82c9ed}
+.training-day-detail{border-top:1px solid #263e4b;padding:15px 3px 0;margin-top:3px;min-height:128px}
+.training-day-detail .heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.training-day-detail .heading strong{font-size:14px;letter-spacing:-.15px}
+.training-day-detail .status{color:#b7d9e8;font-size:10px;background:#1e3949;border-radius:99px;padding:6px 9px;white-space:nowrap}
+.training-day-detail .status.completed{color:#ace1c4;background:#193629}
+.training-day-detail p{font-size:12px;line-height:1.55;color:#adc2ce;margin:10px 0 0}
+.training-day-detail .training-day-summary-info{display:flex;gap:9px;align-items:center;flex-wrap:wrap;font-size:11px;color:#95b9cb;margin-top:11px}
+.training-day-detail .training-day-summary-info .ic{width:14px;height:14px}
+.training-focus{margin:14px 0 0;border:1px solid #2b4150;border-radius:17px;padding:16px;background:linear-gradient(140deg,#101e2a,#0b151d);display:grid;grid-template-columns:32px minmax(0,1fr);gap:11px}
+.training-focus-icon{display:grid;place-items:center;height:31px;width:31px;background:#1c3b4b;color:#a4d7ec;border-radius:10px}
+.training-focus-icon .ic{width:18px;height:18px}
+.training-focus .eyebrow{font-size:10px;letter-spacing:.1em;font-weight:730;color:#9fcbdb}
+.training-focus p{font-size:12px;line-height:1.6;color:#c0d1d9;margin:7px 0 0}
+.training-footer{font-size:11px;color:#869fae;line-height:1.55;margin:18px 2px 0}
+.training-footer a{color:#add8ec;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:350px){.training-intro h1{font-size:31px}.training-week-card{padding:13px 9px}.training-day-picker{grid-auto-columns:46px}.training-next-details h3{font-size:21px}.training-momentum{padding:14px 12px}.training-segments span{width:14px}}
+@media(min-width:420px){.training-day-picker{grid-auto-columns:1fr}}
