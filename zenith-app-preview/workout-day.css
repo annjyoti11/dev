@@ -1,0 +1,91 @@
+/* Screen 05 — individual workout session. Standalone scoped styles. */
+.session-page{padding-bottom:22px}
+.session-top{display:flex;gap:12px;align-items:center;justify-content:space-between;border-bottom:1px solid #243b49;padding:20px 0 18px}
+.session-top .back{width:42px;height:42px;flex:none;border-radius:13px}
+.session-top-text{flex:1;min-width:0;display:grid;gap:4px}
+.session-top-text small{font-size:10px;letter-spacing:.17em;color:#8eafc1;font-weight:750}
+.session-top-text strong{font-size:15px;font-weight:730;letter-spacing:-.3px}
+.session-top-tag{border:1px solid #3b657a;border-radius:99px;padding:7px 10px;white-space:nowrap;font-size:10px;font-weight:760;color:#badfec;background:#152d3b}
+.session-hero{position:relative;isolation:isolate;overflow:hidden;margin:23px 0 12px;border:1px solid #4a7890;border-radius:23px;background:linear-gradient(133deg,#194157 0%,#122c3b 59%,#0c1b27 100%);padding:22px 20px 20px;box-shadow:0 20px 36px #0004,inset 0 1px #fff1}
+.session-hero:before{content:"";position:absolute;z-index:-1;right:-111px;top:-112px;width:305px;height:305px;border-radius:50%;border:1px solid #9cd5f01e;box-shadow:0 0 0 40px #9cd5f00c,0 0 0 81px #9cd5f008}
+.session-hero:after{content:"";position:absolute;z-index:-1;right:-18px;bottom:-69px;width:145px;height:145px;opacity:.06;background:url("../assets/zenith-symbol-white.svg") no-repeat center/contain;transform:rotate(-9deg)}
+.session-overline{display:flex;gap:8px;align-items:center;color:#9fd1e9;font-size:10px;font-weight:730;letter-spacing:.17em}
+.session-overline:before{content:"";width:6px;height:6px;border-radius:50%;background:#a2deff;box-shadow:0 0 15px #79c7ef}
+.session-hero h1{margin:21px 0 9px;line-height:1.02;letter-spacing:-1.65px;font-size:38px;font-weight:750}
+.session-hero h1 span{color:#afe5f9;display:block}
+.session-hero p{font-size:13px;color:#bcd6e3;line-height:1.6;max-width:286px;margin:0 0 22px}
+.session-hero-facts{display:flex;gap:0;border-top:1px solid #59839856;padding-top:16px}
+.session-hero-facts>div{flex:1;padding:0 8px;text-align:center;border-right:1px solid #48708469}
+.session-hero-facts>div:first-child{padding-left:0;text-align:left}
+.session-hero-facts>div:last-child{border:0;text-align:right;padding-right:0}
+.session-hero-facts b{display:block;font-size:16px;font-weight:760}
+.session-hero-facts small{font-size:10px;color:#aecbd9;display:block;margin-top:4px}
+.session-alert{font-size:11px;line-height:1.55;color:#a4bdca;border:1px solid #2c4958;background:#0f2531;border-radius:12px;padding:11px 12px;margin:12px 0}
+.session-alert strong{color:#cdeaf7}
+.session-progress{margin-top:13px;border:1px solid #2e4b5b;background:#0d202b;border-radius:19px;padding:17px}
+.session-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.session-progress-head>div{display:grid;gap:3px}
+.session-progress-head small{color:#9cbbca;font-size:10px;letter-spacing:.11em;font-weight:750}
+.session-progress-head strong{font-size:25px;line-height:1.2;font-weight:760;letter-spacing:-.65px}
+.session-progress-head strong span{font-size:15px;font-weight:500;color:#93acba}
+.session-progress-head .phase{font-size:10px;color:#a9d8ee;padding:7px 9px;border-radius:99px;border:1px solid #356075;background:#1a394a;font-weight:700;white-space:nowrap}
+.session-progress-track{background:#294855;height:6px;border-radius:8px;overflow:hidden;margin:14px 0 10px}
+.session-progress-track span{display:block;height:100%;background:linear-gradient(90deg,#4f99bf,#a7e2fa);border-radius:8px;transition:width .16s ease}
+.session-progress-note{font-size:11px;color:#aac4d0;line-height:1.5;margin:0}
+.session-control{margin:13px 0 0;display:grid;gap:9px}
+.session-primary{width:100%;min-height:49px;border-radius:13px;border:1px solid #99d7f4;background:#92d3ef;color:#082433;font-size:13px;font-weight:780;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 14px}
+.session-primary .ic{width:17px;height:17px}
+.session-primary:disabled{opacity:.47;cursor:not-allowed}
+.session-secondary{width:100%;min-height:43px;background:#122b39;border:1px solid #315468;color:#add9ee;border-radius:12px;font-size:12px;font-weight:730;padding:11px 13px}
+.session-primary:active,.session-secondary:active{transform:translateY(1px)}
+.session-section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:27px 1px 12px}
+.session-section-heading h2{font-size:17px;letter-spacing:-.4px;margin:0;font-weight:740}
+.session-section-heading small{font-size:11px;color:#91b5c6}
+.session-list{display:grid;gap:10px}
+.session-exercise{background:linear-gradient(145deg,#102430,#0b1922);border:1px solid #2b4958;border-radius:18px;overflow:hidden}
+.session-exercise.active{border-color:#4a839e;background:linear-gradient(145deg,#142f41,#0c1b26)}
+.session-exercise.completed{border-color:#31594f;background:linear-gradient(140deg,#102c2b,#0a1c20)}
+.session-exercise-button{width:100%;color:inherit;background:none;border:0;text-align:left;display:flex;gap:12px;align-items:center;padding:14px 12px;min-height:105px}
+.session-movement-art{width:63px;height:72px;flex:none;border-radius:13px;background:radial-gradient(ellipse at 50% 5%,#2b5f78,#193645 65%,#132d3a);border:1px solid #3f6c7e;display:flex;align-items:center;justify-content:center;position:relative;color:#b6e1f2}
+.session-movement-art svg{width:48px;height:48px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.session-movement-art .ordinal{position:absolute;top:5px;left:8px;font-size:9px;color:#a3cee1;font-weight:740;letter-spacing:.08em}
+.session-exercise-info{flex:1;min-width:0}
+.session-exercise-info .muscle{font-size:10px;color:#9bbdce;font-weight:680;letter-spacing:.04em;margin:0 0 5px}
+.session-exercise-info h3{font-size:15px;letter-spacing:-.3px;line-height:1.35;font-weight:750;margin:0 0 7px}
+.session-exercise-info .prescription{font-size:11px;color:#b6cad4;line-height:1.5}
+.session-exercise-info .hint{font-size:10px;color:#8fb4c7;margin-top:5px}
+.session-toggle-icon{width:25px;height:25px;flex:none;display:grid;place-items:center;border:1px solid #3a6173;border-radius:8px;color:#a3d1e5}
+.session-toggle-icon .ic{width:15px;height:15px}
+.session-exercise-button[aria-expanded="true"] .session-toggle-icon{background:#2a5063;transform:rotate(90deg)}
+.session-exercise-details{border-top:1px solid #335364;padding:15px 15px 17px}
+.session-exercise-details[hidden]{display:none!important}
+.session-detail-label{color:#9ecce1;font-size:10px;font-weight:740;letter-spacing:.13em;margin:0 0 9px}
+.session-cue{font-size:12px;line-height:1.6;color:#bbd1dd;margin:0 0 13px}
+.session-spec{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:13px}
+.session-spec>div{background:#142e3c;border:1px solid #2b4a59;border-radius:11px;padding:10px 7px;text-align:center}
+.session-spec strong{font-size:13px;display:block;font-weight:740}
+.session-spec small{font-size:10px;color:#9fbdcc;display:block;margin-top:4px}
+.session-set-head{display:flex;align-items:center;justify-content:space-between;margin:14px 0 9px;gap:12px}
+.session-set-head strong{font-size:12px;font-weight:750}
+.session-set-head span{font-size:11px;color:#96b7c8}
+.session-sets{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.session-set{min-height:47px;border:1px solid #386077;background:#122f41;border-radius:11px;color:#bcdcea;font-size:12px;font-weight:740;display:flex;align-items:center;justify-content:center;gap:6px}
+.session-set .ic{width:14px;height:14px}
+.session-set[aria-pressed="true"]{background:#1c463c;border-color:#438d73;color:#d6f5e7}
+.session-set:disabled{cursor:not-allowed;opacity:.58}
+.session-exercise-foot{font-size:11px;line-height:1.55;color:#91b1c1;margin:11px 0 0}
+.session-flow-footer{border:1px solid #294956;border-radius:17px;background:#0c1d28;padding:16px;margin-top:15px}
+.session-flow-footer strong{font-size:13px}
+.session-flow-footer p{font-size:12px;color:#9ebdc9;line-height:1.55;margin:7px 0 13px}
+.session-summary{border:1px solid #3d806b;border-radius:18px;background:linear-gradient(145deg,#13382f,#102923 70%,#0c1e1d);padding:20px;margin:14px 0;color:#d8f4e7}
+.session-summary .ic{width:28px;height:28px}
+.session-summary h2{font-size:23px;line-height:1.17;letter-spacing:-.7px;margin:12px 0 8px}
+.session-summary p{font-size:12px;color:#bbd9ce;line-height:1.6;margin:0 0 15px}
+.session-summary .session-secondary{border-color:#558d7c;background:#193e34;color:#d0f0e2}
+.session-footnote{font-size:11px;color:#819cab;line-height:1.55;margin:18px 2px 0}
+.session-empty{padding:45px 10px;text-align:center}
+.session-empty h1{font-size:27px;letter-spacing:-.7px}
+.session-empty p{font-size:13px;color:#a2bccb;line-height:1.5}
+.session-empty .session-secondary{margin-top:18px}
+@media(max-width:350px){.session-hero h1{font-size:34px}.session-exercise-button{gap:8px;padding:12px 10px}.session-movement-art{width:55px;height:65px}.session-exercise-info h3{font-size:14px}.session-exercise-info .prescription{font-size:10px}.session-sets{gap:5px}.session-set{font-size:11px}.session-spec{gap:4px}.session-top-tag{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.session-progress-track span,.session-exercise-button .session-toggle-icon{transition:none!important}}
