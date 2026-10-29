@@ -1,10 +1,56 @@
-
-:root{color-scheme:dark;--bg:#070a0f;--panel:#101720;--panel2:#151e29;--muted:#a5b1c1;--blue:#4a9bff;--line:#273646;--white:#f4f7fc}*{box-sizing:border-box}html{scroll-behavior:smooth}body.guide-page{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.7}a{color:inherit}a:focus-visible,button:focus-visible{outline:3px solid #93beff;outline-offset:4px}.wg-container{max-width:1120px;margin:auto;padding:0 25px}.wg-sitebar{border-bottom:1px solid var(--line);background:#080c12;position:sticky;top:0;z-index:5}.wg-nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.wg-nav img{width:142px;max-height:56px;object-fit:contain}.wg-nav-links{display:flex;gap:24px;align-items:center;font-size:13px;text-transform:uppercase;letter-spacing:.11em}.wg-nav-links a{text-decoration:none;color:#dce5ef}.wg-nav-links a:hover,.wg-nav-links .wg-current{color:var(--blue)}.wg-hero{background:radial-gradient(ellipse at 83% 23%,#173e66 0,transparent 40%),linear-gradient(125deg,#0d141e,#070a0f 72%);padding:100px 0 94px;border-bottom:1px solid var(--line)}.wg-kicker{font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:800;color:#7db8ff;margin:0 0 19px}.wg-hero h1{font-family:Arial,Helvetica,sans-serif;font-size:clamp(44px,6.8vw,83px);line-height:1.06;letter-spacing:-.04em;margin:0;max-width:840px}.wg-hero h1 em{color:#66aafa;font-style:normal}.wg-lead{font-size:19px;color:#c2cedb;max-width:710px;margin:26px 0}.wg-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px}.wg-btn{display:inline-block;text-decoration:none;padding:13px 22px;border-radius:7px;font-weight:800;font-size:13px;letter-spacing:.04em;background:var(--blue);color:#051321}.wg-btn.wg-secondary{background:transparent;border:1px solid #617288;color:#eef5fb}.wg-safety{padding:18px 22px;border-left:3px solid #92bffc;background:#122031;margin-top:38px;color:#d5e1ec;max-width:860px}.wg-section{padding:76px 0;border-bottom:1px solid #1a2734}.wg-eyebrow{font-size:12px;letter-spacing:.2em;color:#79b8ff;text-transform:uppercase;font-weight:800}.wg-section h2{font-family:Arial,Helvetica,sans-serif;font-size:clamp(32px,4vw,49px);line-height:1.15;letter-spacing:-.03em;margin:12px 0 14px}.wg-intro{max-width:790px;color:#b9c5d4;font-size:16px;margin:0 0 30px}.wg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.wg-card{background:linear-gradient(145deg,#121d29,#0e151e);border:1px solid #263747;border-radius:12px;padding:26px;min-width:0}.wg-card h3{font-size:21px;margin:0 0 12px}.wg-card p,.wg-card li{color:#bbcad8;font-size:15px}.wg-card ul{padding-left:19px;margin:9px 0}.wg-tag{display:inline-block;color:#88beff;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-bottom:14px}.wg-two{display:grid;grid-template-columns:1fr 1fr;gap:20px}.wg-panel{background:#101821;border:1px solid var(--line);padding:27px;border-radius:10px}.wg-panel h3{margin-top:0;font-size:23px}.wg-panel ul{padding-left:19px;color:#c6d1dc}.wg-subnote{color:#adbccc;font-size:14px}.wg-twrap{overflow-x:auto;border:1px solid var(--line);border-radius:11px}table{border-collapse:collapse;width:100%;min-width:650px;background:#101721}th,td{padding:16px 17px;text-align:left;vertical-align:top;border-bottom:1px solid #263342;font-size:14px}th{background:#172537;color:#9dcaff;font-size:12px;text-transform:uppercase;letter-spacing:.08em}td{color:#d1dbe5}tr:last-child td{border-bottom:none}.wg-mealtable{min-width:730px}.wg-tip{padding:22px;background:#132133;border-radius:9px;border-left:3px solid var(--blue);color:#d6e4f2;margin-top:22px}.wg-day{font-weight:800;color:#9ec9fc}.wg-source a{color:#a9d0ff}.wg-source{padding:15px 0;border-bottom:1px solid var(--line)}.wg-footer{padding:42px 0;color:#8b99a9;font-size:13px}.wg-footer a{color:#bcd7ff}.wg-small{font-size:13px;color:#a5b4c5}.wg-pill{display:inline-block;margin-right:7px;padding:3px 10px;border:1px solid #375373;border-radius:30px;font-size:12px;color:#afceef}.wg-featureline{display:flex;gap:24px;flex-wrap:wrap;color:#a7bacb;font-size:13px;margin-top:32px}.wg-featureline span{border-top:1px solid #375270;padding-top:12px}.wg-callout{background:linear-gradient(115deg,#123354,#10202f);padding:34px;border:1px solid #335477;border-radius:13px}.wg-callout h3{font-family:Arial,Helvetica,sans-serif;font-size:31px;line-height:1.2;margin:0 0 14px}.wg-jump{display:flex;gap:12px;flex-wrap:wrap;margin-top:23px}.wg-jump a{padding:7px 14px;border:1px solid #34485b;border-radius:20px;font-size:13px;color:#cdd9e6;text-decoration:none}@media(max-width:780px){.wg-grid,.wg-two{grid-template-columns:1fr}.wg-hero{padding:66px 0}.wg-section{padding:55px 0}.wg-nav{height:70px}.wg-nav img{width:115px}.wg-nav-links{gap:13px;font-size:11px}.wg-nav-links a:nth-child(2){display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
-/* Align this article layout with the existing live-site fixed navigation. */
-body.guide-page main{padding-top:88px;display:block;min-height:100vh}
-body.guide-page .wg-hero{padding-top:clamp(64px,9vw,110px)}
-body.guide-page .wg-hero h1,body.guide-page .wg-section h2{font-weight:800;letter-spacing:-.045em}
-body.guide-page .wg-btn{min-height:44px}
-body.guide-page .wg-wellness-footer{padding-bottom:env(safe-area-inset-bottom)}
-@media(max-width:780px){body.guide-page main{padding-top:72px}.wg-hero{padding-top:56px}.wg-section{padding-block:52px}}
+/* PCOS and thyroid education: deliberately follows the sample-workouts design language. */
+.guide-page{background:#05080b;color:#f5f7fa;font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+.guide-page .topbar{position:absolute}
+.guide-page main{display:block;min-height:100vh;padding:0}
+.guide-page .wg-container{width:min(100% - 44px,1100px);max-width:none;margin:0 auto;padding:0}
+.guide-page .wg-hero{position:relative;display:flex;align-items:center;min-height:min(780px,100svh);padding:130px 0 90px;background:radial-gradient(ellipse at 83% 34%,#12304a 0,#09121b 28%,#05080b 65%);overflow:hidden}
+.guide-page .wg-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#05080b 4%,rgba(5,8,11,.86) 45%,rgba(5,8,11,.2)),linear-gradient(0deg,#05080b,transparent 45%);pointer-events:none}
+.guide-page .wg-hero>.wg-container{position:relative;z-index:1}
+.guide-page .wg-kicker,.guide-page .wg-eyebrow{font-size:10px;letter-spacing:.28em;color:#1680ff;font-weight:800;text-transform:uppercase;margin:0 0 18px}
+.guide-page .wg-hero h1,.guide-page .wg-section h2{font-size:clamp(44px,10vw,84px);line-height:.93;letter-spacing:-.05em;font-weight:900;margin:0 0 22px;max-width:950px}
+.guide-page .wg-hero h1{font-size:clamp(54px,11vw,112px);max-width:920px}
+.guide-page h1 em,.guide-page h2 em{font-style:normal;color:#1680ff}
+.guide-page .wg-section h2{font-size:clamp(40px,8vw,76px)}
+.guide-page .wg-lead,.guide-page .wg-intro{font-size:15px;line-height:1.7;color:#aeb8c2;max-width:620px;margin:0 0 30px}
+.guide-page .wg-lead{font-size:16px;max-width:580px}
+.guide-page .wg-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:30px}
+.guide-page .wg-btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;border-radius:2px;background:#0878ff;padding:16px 19px;font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:800;text-decoration:none;color:#fff}
+.guide-page .wg-btn.wg-secondary{background:transparent;border:1px solid #526477;color:#e8edf2}
+.guide-page .wg-btn:hover{background:#2469c4}.guide-page .wg-btn.wg-secondary:hover{background:#182a3a}
+.guide-page .wg-featureline{display:flex;gap:20px;flex-wrap:wrap;margin-top:36px;font-size:11px;color:#9ba7b2}
+.guide-page .wg-featureline span{border-top:1px solid #324252;padding-top:10px}
+.guide-page .wg-safety,.guide-page .wg-tip{max-width:1000px;padding:20px 22px;border-left:2px solid #1680ff;background:#0d1720;color:#c7d2dc;line-height:1.65;font-size:13px;margin:29px 0 0}
+.guide-page .wg-jump{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}
+.guide-page .wg-jump a{font-size:10px;color:#c3d2df;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;padding:8px 12px;border:1px solid #304252}
+.guide-page .wg-section{padding:86px max(22px,calc((100vw - 1100px)/2)) 90px;border-bottom:1px solid #1c2934;background:linear-gradient(180deg,#090f15,#070b0f)}
+.guide-page .wg-section:nth-of-type(2n+1){background:#080e14}
+.guide-page .wg-section>.wg-container{width:100%}
+.guide-page .wg-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.guide-page .wg-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.guide-page .wg-card,.guide-page .wg-panel{background:linear-gradient(145deg,#111a23,#0b1016);border:1px solid #293743;border-radius:3px;padding:25px 22px;min-width:0}
+.guide-page .wg-card h3,.guide-page .wg-panel h3{font-size:20px;line-height:1.25;margin:0 0 12px;font-weight:800}
+.guide-page .wg-card p,.guide-page .wg-card li,.guide-page .wg-panel p,.guide-page .wg-panel li{color:#b8c4ce;font-size:13px;line-height:1.7}
+.guide-page .wg-card strong{font-size:13px}
+.guide-page .wg-card ul,.guide-page .wg-panel ul{padding-left:18px}
+.guide-page .wg-tag{display:block;color:#1680ff;font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:800;margin-bottom:17px}
+.guide-page .wg-twrap{max-width:100%;overflow-x:auto;border:1px solid #293743;border-radius:3px;background:#0c141c;-webkit-overflow-scrolling:touch}
+.guide-page .wg-twrap table{border-collapse:collapse;width:100%;min-width:680px;background:transparent}
+.guide-page .wg-twrap .wg-mealtable{min-width:760px}
+.guide-page .wg-twrap th,.guide-page .wg-twrap td{padding:17px 16px;border-bottom:1px solid #293743;text-align:left;vertical-align:top;font-size:12px;line-height:1.5;color:#c7d2dc}
+.guide-page .wg-twrap th{background:#101c28;color:#8abaff;font-size:10px;text-transform:uppercase;letter-spacing:.1em}
+.guide-page .wg-twrap tr:last-child td{border-bottom:0}
+.guide-page .wg-day{color:#8abaff;font-weight:800}
+.guide-page .wg-pill{display:inline-block;margin:0 6px 8px 0;border:1px solid #344c61;border-radius:2px;padding:5px 9px;color:#bcd2e5;font-size:11px}
+.guide-page .wg-subnote,.guide-page .wg-small{font-size:12px;line-height:1.7;color:#93a3b1}
+.guide-page .wg-callout{border:1px solid #2b4053;border-radius:3px;padding:30px;background:linear-gradient(120deg,#111f2c,#0b141d)}
+.guide-page .wg-callout h3{font-size:clamp(25px,4vw,38px);line-height:1.1;letter-spacing:-.04em;margin:0 0 15px;font-weight:900}
+.guide-page .wg-callout p{font-size:13px;color:#b9c7d4}
+.guide-page .wg-source{border-bottom:1px solid #293743;padding:14px 0;font-size:12px;color:#c7d2dc}
+.guide-page .wg-source a{color:#78b6ff;text-decoration:underline;text-underline-offset:3px}
+.guide-page .wg-footer{background:#05080b;border-top:1px solid #293743;padding:35px 22px 45px;color:#9ba7b2;font-size:11px}
+.guide-page .wg-footer a{color:#b0cfff;text-decoration:underline}
+.guide-page a:focus-visible{outline:2px solid #1680ff;outline-offset:4px}
+@media(min-width:1024px){.guide-page .wg-hero>.wg-container{width:min(calc(100% - 120px),1280px)}.guide-page .wg-section{padding-left:clamp(60px,8vw,140px);padding-right:clamp(60px,8vw,140px)}.guide-page .wg-section>.wg-container{max-width:1180px}}
+@media(max-width:780px){.guide-page .wg-hero{min-height:auto;padding:140px 0 75px}.guide-page .wg-grid,.guide-page .wg-two{grid-template-columns:1fr}.guide-page .wg-section{padding:65px 22px 70px}.guide-page .wg-card,.guide-page .wg-panel{padding:22px 18px}.guide-page .wg-hero h1{font-size:clamp(47px,11vw,72px)}.guide-page .wg-section h2{font-size:clamp(39px,9vw,62px)}.guide-page .wg-actions{align-items:stretch}.guide-page .wg-btn{min-width:0}.guide-page .wg-featureline{gap:10px}.guide-page .wg-featureline span{flex-basis:42%}}
+@media(max-width:380px){.guide-page .wg-hero{padding-top:125px}.guide-page .wg-hero h1{font-size:44px}.guide-page .wg-actions{flex-direction:column;align-items:stretch}.guide-page .wg-card{padding:20px 16px}}
+@media(prefers-reduced-motion:reduce){.guide-page *{scroll-behavior:auto}}
