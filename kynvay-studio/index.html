@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#111b2a">
+  <title>KYNVAY Studio | Design QA</title>
+  <link rel="stylesheet" href="./studio.css">
+</head>
+<body>
+  <header class="studio-header">
+    <div class="studio-mark"><span class="mark">K</span><span><strong>KYNVAY</strong><small>DESIGN STUDIO</small></span></div>
+    <div class="studio-actions"><span class="studio-pill">DESIGN-ONLY · DEMO DATA</span><a target="_blank" rel="noopener noreferrer" href="https://preview.zenithfitnesshub.in/">View protected Flutter baseline ↗</a></div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Design workspace navigation">
+      <p class="overline">01 / SCREEN REVIEW</p>
+      <h1>Correct once.<br>Apply to Flutter.</h1>
+      <p class="sidebar-copy">Editable HTML/CSS prototypes for visual sign-off. They do not authenticate, read member records, or replace the Flutter codebase.</p>
+      <nav class="screen-nav" aria-label="Screen selector">
+        <button type="button" data-target="login" class="active"><span>01</span> Login <em>Current reference</em></button>
+        <button type="button" data-target="home"><span>02</span> Home <em>Draft</em></button>
+        <button type="button" data-target="plan"><span>03</span> My Plan <em>Draft</em></button>
+        <button type="button" data-target="workout"><span>04</span> Workout <em>Draft</em></button>
+        <button type="button" data-target="nutrition"><span>05</span> Nutrition <em>Draft</em></button>
+      </nav>
+      <div class="sidebar-foot"><strong>Workflow</strong><p>Review a screen → note exact corrections in <a href="./CHANGES.md">CHANGES.md</a> → approve → apply the same batch to Flutter → run CI.</p><a class="text-link" href="https://github.com/annjyoti11/dev/tree/feature/kynvay-design-studio-20261115/kynvay-studio" target="_blank" rel="noopener">Edit source on GitHub ↗</a></div>
+    </aside>
+    <section class="review-panel">
+      <div class="review-toolbar">
+        <div><p class="overline">INTERACTIVE DESIGN REFERENCE</p><h2 id="active-title">Login screen</h2><p class="review-caption">Not a live Flutter build · all names and plans are fictional</p></div>
+        <div class="controls">
+          <label>Appearance <select id="appearance"><option value="bright">Bright</option><option value="morning">Warm morning</option><option value="evening">Dark evening</option></select></label>
+          <label>Account <select id="account"><option value="premium">Premium</option><option value="regular">Regular</option></select></label>
+          <button id="viewport" type="button" aria-pressed="false">Desktop width</button>
+        </div>
+      </div>
+      <div class="preview-area">
+        <div class="phone" id="phone">
+          <div class="app" id="app" data-theme="bright" data-account="premium">
+            <section class="screen active" data-screen="login" aria-label="Login screen prototype">
+              <div class="login-brand"><div class="brand-text"><strong>KYNVAY</strong><span>BY TEYRIN</span></div></div>
+              <h2 class="welcome">Welcome back.</h2>
+              <p class="muted login-subhead">Sign in to your KYNVAY account.</p>
+              <div class="login-panel">
+                <p class="field-label">Sign in with</p>
+                <div class="segmented"><button type="button" class="selected" data-login="Email">Email</button><button type="button" data-login="Mobile">Mobile</button></div>
+                <label class="sr-only" for="identity">Account identity</label><input id="identity" type="text" placeholder="Email address" autocomplete="off">
+                <div class="password-field"><label class="sr-only" for="demo-password">Password</label><input id="demo-password" type="password" placeholder="Password" autocomplete="off"><button type="button" id="toggle-password" aria-label="Show password">Show</button></div>
+                <button type="button" class="primary wide" id="demo-signin">Sign in <span aria-hidden="true">→</span></button>
+              </div>
+              <p class="login-help">Use your existing account password. Newly activated gym members can follow the email sent by Zenith Fitness Hub.</p>
+              <p class="login-bottom">COACHING INTELLIGENCE BY ANVAYA</p>
+            </section>
+            <section class="screen" data-screen="home" aria-label="Home screen design draft">
+              <header class="app-header"><div class="brand-small"><strong>KYNVAY</strong><small>BY TEYRIN</small></div><div class="header-right"><span class="counter-chip">7,200 steps</span><span class="avatar">D</span></div></header>
+              <p class="eyebrow">YOUR DAY · SAMPLE DATA</p><h2 class="app-heading">Good morning,<br>Demo Member.</h2><p class="muted">A steady day starts with one good session.</p>
+              <article class="feature-card"><div class="card-top"><span>01 · TODAY'S WORKOUT</span><span class="tag">Planned</span></div><h3>Full Body · Session A</h3><p>6 movements · approx. 45 minutes</p><button type="button" class="primary" data-go="workout">View workout <span>→</span></button></article>
+              <div class="two-col"><article class="mini-card"><span class="eyebrow">SCHEDULED MEAL</span><h3>Lunch</h3><p>Rice · protein · vegetables</p><button type="button" class="quiet" data-go="nutrition">View meal →</button></article><article class="mini-card"><span class="eyebrow">WEEKLY MOMENTUM</span><h3>3 of 4</h3><p>Sessions this week</p><div class="progress"><span style="width:75%"></span></div></article></div>
+              <article class="line-card"><div><span class="eyebrow">NEXT SESSION</span><h3>Wednesday · Strength</h3></div><span>→</span></article>
+              <article class="line-card premium-only"><div><span class="eyebrow">COACH NOTES</span><h3>Focus on controlled technique</h3><p>Demonstration content only</p></div><span>→</span></article>
+              <article class="line-card"><div><span class="eyebrow">NIGHT RECAP</span><h3>Reflection and recovery</h3></div><span>→</span></article>
+              <footer class="app-nav"><button data-go="home" class="active">Home</button><button data-go="plan">My Plan</button><button data-go="workout">Training</button><button data-go="nutrition">Nutrition</button></footer>
+            </section>
+            <section class="screen" data-screen="plan" aria-label="My Plan design draft">
+              <header class="app-header"><div class="brand-small"><strong>KYNVAY</strong><small>BY TEYRIN</small></div><span class="avatar">D</span></header>
+              <p class="eyebrow">COACHING PROGRAMME · SAMPLE DATA</p><h2 class="app-heading">My Plan</h2><p class="muted">Your current training and nutrition programme.</p>
+              <article class="feature-card"><div class="card-top"><span>ACTIVE PROGRAMME</span><span class="tag">Current</span></div><h3>Strength Foundation</h3><p>Coach-assigned programme · continues until replaced by an approved revision.</p><div class="mini-stats"><div><strong>3</strong><span>days/week</span></div><div><strong>Full Body</strong><span>training split</span></div></div></article>
+              <div class="section-heading"><h3>Weekly overview</h3><span>Week view</span></div><div class="week-strip"><span>M<strong>01</strong></span><span>T<strong>02</strong></span><span class="on">W<strong>03</strong></span><span>T<strong>04</strong></span><span>F<strong>05</strong></span><span>S<strong>06</strong></span><span>S<strong>07</strong></span></div>
+              <article class="line-card"><div><span class="eyebrow">SESSION A</span><h3>Full Body · Strength</h3><p>Squat · press · pull · hinge</p></div><button class="quiet" type="button" data-go="workout">Open →</button></article>
+              <article class="line-card"><div><span class="eyebrow">NUTRITION PROGRAMME</span><h3>Daily meal structure</h3></div><button class="quiet" type="button" data-go="nutrition">Open →</button></article>
+              <div class="section-heading lower-feedback premium-only"><h3>Plan feedback</h3><span>Below programme overview</span></div><article class="mini-card premium-only"><p>Request a coach-reviewed change with a reason. Current assignments remain visible until revised.</p><button type="button" class="secondary" id="feedback-demo">Request revision</button></article>
+              <footer class="app-nav"><button data-go="home">Home</button><button data-go="plan" class="active">My Plan</button><button data-go="workout">Training</button><button data-go="nutrition">Nutrition</button></footer>
+            </section>
+            <section class="screen" data-screen="workout" aria-label="Training design draft">
+              <header class="app-header"><div class="brand-small"><strong>KYNVAY</strong><small>BY TEYRIN</small></div><span class="avatar">D</span></header>
+              <p class="eyebrow">TRAINING · SAMPLE DATA</p><h2 class="app-heading">Today's Workout</h2><p class="muted">Session A · 6 movements · 45 minutes</p>
+              <article class="feature-card"><div class="card-top"><span>FULL BODY</span><span class="tag">Scheduled</span></div><h3>Build with control.</h3><p>Prepare with an easy warm-up and practise technique before adding load.</p><button class="primary" type="button" id="start-demo">Start workout <span>→</span></button></article>
+              <div class="section-heading"><h3>Exercises</h3><span>Sample only</span></div>
+              <article class="exercise"><span class="exercise-number">01</span><div><h3>Goblet Squat</h3><p>2 × 8–10 · controlled depth</p></div><span>›</span></article>
+              <article class="exercise"><span class="exercise-number">02</span><div><h3>Machine Chest Press</h3><p>2 × 8–12 · stable setup</p></div><span>›</span></article>
+              <article class="exercise"><span class="exercise-number">03</span><div><h3>Seated Cable Row</h3><p>2 × 8–12 · steady torso</p></div><span>›</span></article>
+              <article class="exercise"><span class="exercise-number">04</span><div><h3>Romanian Deadlift</h3><p>2 × 8–10 · practise hinge</p></div><span>›</span></article>
+              <article class="mini-card"><span class="eyebrow">SESSION FEEDBACK</span><h3>Technique · Effort · Pain</h3><p>RPE and pain checks belong in the real Flutter workflow.</p></article>
+              <footer class="app-nav"><button data-go="home">Home</button><button data-go="plan">My Plan</button><button data-go="workout" class="active">Training</button><button data-go="nutrition">Nutrition</button></footer>
+            </section>
+            <section class="screen" data-screen="nutrition" aria-label="Nutrition design draft">
+              <header class="app-header"><div class="brand-small"><strong>KYNVAY</strong><small>BY TEYRIN</small></div><span class="avatar">D</span></header>
+              <p class="eyebrow">NUTRITION · SAMPLE DATA</p><h2 class="app-heading">Your Nutrition</h2><p class="muted">Structured meals for a consistent day.</p>
+              <article class="feature-card"><div class="card-top"><span>DAILY PLAN</span><span class="tag">Sample</span></div><h3>Simple, repeatable meals.</h3><p>These are placeholders for reviewing typography, hierarchy and spacing. No personal calorie targets are shown.</p></article>
+              <div class="section-heading"><h3>Meal schedule</h3><span>Illustrative only</span></div>
+              <article class="meal"><div class="meal-time">08:00</div><div><span class="eyebrow">BREAKFAST</span><h3>Oats and eggs</h3><p>Example meal · not personalized</p></div></article>
+              <article class="meal"><div class="meal-time">13:00</div><div><span class="eyebrow">LUNCH</span><h3>Rice, protein, vegetables</h3><p>Example meal · not personalized</p></div></article>
+              <article class="meal"><div class="meal-time">19:30</div><div><span class="eyebrow">DINNER</span><h3>Protein and vegetables</h3><p>Example meal · not personalized</p></div></article>
+              <article class="mini-card premium-only"><span class="eyebrow">COACH-APPROVED NUTRITION</span><h3>Plan revision</h3><p>The current assigned plan remains visible until a new plan is approved.</p></article>
+              <footer class="app-nav"><button data-go="home">Home</button><button data-go="plan">My Plan</button><button data-go="workout">Training</button><button data-go="nutrition" class="active">Nutrition</button></footer>
+            </section>
+          </div>
+        </div>
+      </div>
+      <div class="review-foot"><span id="demo-notice" role="status">Draft visual references — no real API calls or account data.</span><a href="./CHANGES.md">Review changes log ↗</a></div>
+    </section>
+  </main>
+  <script src="./studio.js" defer></script>
+</body>
+</html>
