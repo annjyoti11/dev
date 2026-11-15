@@ -1,25 +1,27 @@
-# KYNVAY Studio
+# KYNVAY Client — Approved-Screen HTML Reconstruction
 
-This subfolder contains an **editable browser-based design-review prototype**, not another deployed fitness app. It is intentionally isolated from the existing `zenithfitnesshub.in` website. It is public, uses illustrative content only, stores nothing, and makes no network requests to Laravel/TEYRIN.
+**Source:** 23 owner-supplied PNG design boards in `clientapp.zip` (15 November 2026). These boards are the reference; the current HTML is a first-pass editable reconstruction and must be visually compared before approval.
 
-## URLs
+**Public review path (when this branch is merged):** https://zenithfitnesshub.in/kynvay-studio/
 
-- Public review workspace after publishing master: `https://zenithfitnesshub.in/kynvay-studio/`
-- Current actual Flutter Web baseline (separately password-protected): `https://preview.zenithfitnesshub.in/`
-- Ledger: `CHANGES.md`
+## Why this exists
 
-## Development method
+Review the approved Zenith/KYNVAY mobile screen hierarchy quickly in HTML/CSS without rebuilding Flutter on every visual change. The original generic design dashboard was rejected. The replacement places an actual mobile app preview at the centre, retaining the Zenith logo style, bright white/blue mobile components, bottom five-tab navigation, Home light/day/dark variants and major interaction flows visible in the supplied boards.
 
-1. Compare each sample HTML view with the previously approved KYNVAY design and current protected Flutter browser rendering.
-2. Edit `index.html` and `studio.css` for fast visual work. Use `studio.js` only for simple design interaction.
-3. Note every approved difference in `CHANGES.md` and record precise screen and source paths.
-4. Batch approved changes into the **existing Flutter Client** repository.
-5. Run Flutter CI once per approved batch, verify actual Flutter Web and mobile screens. Do not mistake visual mock approval for implementation.
+- `index.html`: compact screen/appearance selector and mobile preview container.
+- `studio.css`: editable responsive styling tokens and mobile component hierarchy.
+- `studio.js`: 19 navigable sample screens and static demo interactions; no HTTP requests or member data.
+- `CHANGES.md`: board mapping, implementation caveats, and the acceptance ledger.
 
-The login screen follows the current Safari/Chrome screenshot structure but does not use the original proprietary image asset yet; the other views are **first-pass design drafts** built from the approved feature hierarchy, not claims of pixel parity.
+The original screenshots are *not* hosted here, because the website repository is public and the supplied archive has not been imported as public web assets. Existing public Zenith website training imagery may be used for mock-up placeholders. Do not confuse these placeholders with the specific photos in the source boards.
 
-## Security and publishing
+## Approval workflow
 
-The source website repository `annjyoti11/dev` is public. Do not place compiled private Flutter code, private GitHub artifacts, tokens, credentials or genuine member records here without a deliberate separate disclosure/security review. The existing compiled Flutter build stays at the protected VPS preview for comparison.
+1. Compare each HTML route with the matching approved board at the same mobile viewport and note exact differences.
+2. Correct HTML/CSS until the owner approves that screen; record it in `CHANGES.md`.
+3. Apply the accepted batch to the **existing Flutter** widget files.
+4. Run Flutter CI and review the resulting **actual Flutter app** (browser and mobile). Update the ledger only after confirming parity.
 
-GitHub Pages may briefly cache a newly published folder; no DNS or changes to root `index.html`, `CNAME`, or existing Zenith assets are needed.
+This site is **not the Flutter app**, not a replacement React app, and not an authenticated client portal. Its UI is illustrative, with no real workout logging, upload, notification, account, nutrition API or coaching actions. The separately protected Flutter build stays at https://preview.zenithfitnesshub.in/.
+
+No changes to site root, DNS, Laravel, TEYRIN or existing Zenith pages are required.
