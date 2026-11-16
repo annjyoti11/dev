@@ -1,7 +1,9 @@
 /* KYNVAY approved-board visual prototype — fictional data, no backend calls. */
 (function(){
 "use strict";
-const q=document.getElementById("screen-root"), picker=document.getElementById("screen-picker"), themePicker=document.getElementById("theme-picker"), stageTitle=document.getElementById("stage-title");
+const q=document.getElementById("screen-root");
+function homeAppearance(){const h=new Date().getHours();return h>=5&&h<10?"morning":h>=10&&h<18?"day":"evening";}
+function greeting(){const h=new Date().getHours();return h>=5&&h<12?"morning":h>=12&&h<18?"afternoon":"evening";}
 const paths={
 home:'<path d="M3 10.5 12 3l9 7.5v10H14v-6h-4v6H3z"/>',
 training:'<path d="M4 4v16m16-16v16M1 8h6v8H1m16-8h6v8h-6M7 12h10"/>',
@@ -21,7 +23,7 @@ plus:'<path d="M12 5v14M5 12h14"/>',
 water:'<path d="M12 2S5 10 5 15a7 7 0 0 0 14 0c0-5-7-13-7-13Z"/>'
 };
 const i=(name,cls="svgicon")=>'<svg class="'+cls+'" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">'+(paths[name]||paths.next)+'</svg>';
-const status=()=>'<div class="app-status"><span>9:41</span><span class="notch" aria-hidden="true"></span><span class="status-right">▮▮▮ ◕ ▰</span></div>';
+
 const logo=()=>'<div class="zenith-logo"><strong>ZENITH</strong><small>FITNESS HUB</small></div>';
 const head=()=>'<header class="top-brand">'+logo()+'<div class="top-right"><button class="bell-btn" data-go="notifications" aria-label="Notifications">'+i("bell")+'</button><button class="avatar" data-go="profile" aria-label="Profile">AS</button></div></header>';
 const back=(title,target="home")=>'<header class="back-header"><button class="back-btn" aria-label="Go back" data-go="'+target+'">‹</button><strong>'+title+'</strong><div></div></header>';
@@ -33,7 +35,7 @@ const nrow=(em,title,sub,time)=>'<div class="update-row"><span class="iconbox">'
 const food=(name,kcal,time)=>'<div class="line-item"><div class="food-art sm">🍽</div><div><strong>'+name+'</strong><p>'+kcal+' kcal · '+time+'</p></div><button class="plain-icon" data-go="food" aria-label="Food details">＋</button></div>';
 function home(){
 return {title:"Home",tab:"home",home:true,html:head()+
-'<div class="home-greeting"><h1>Good '+(themePicker.value==="evening"?"evening":"morning")+',<br>Alex</h1><p>Your plan is ready. Keep going! 💪</p></div>'+
+'<div class="home-greeting"><h1>Good '+greeting()+',<br>Alex</h1><p>Your plan is ready. Keep going! 💪</p></div>'+
 '<div class="card coach-card"><span class="coach-face">👨🏻</span><div><small>Your Coach</small><strong>Anup Jyoti Das</strong><p>Here to support your journey</p></div><button class="chip-action" data-go="messages">♧ Message</button></div>'+
 sect("Today's Plan","week","View Full Plan")+
 '<div class="plan-grid"><button class="plan-tile workout" data-go="training"><span class="tile-icon">🏋</span><strong>Workout</strong><p>Upper Body<br>Strength<br>5 exercises</p><span class="tile-cta">Start Workout</span></button><button class="plan-tile nutrition" data-go="nutrition"><span class="tile-icon">🍴</span><strong>Nutrition</strong><p>Meal 2 · Lunch<br>Grilled Chicken<br>+ Brown Rice</p><span class="tile-cta">View Meal</span></button><button class="plan-tile activity" data-go="review"><span class="tile-icon">👟</span><strong>Activity</strong><p>Post-lunch Walk<br>15 minutes</p><span class="tile-cta">Start Walk</span></button></div>'+
@@ -200,9 +202,9 @@ let current="home";let weekOffset=0;
 function route(to,updateHash=true){
  if(!Object.prototype.hasOwnProperty.call(pages,to))to="home";
  current=to;const result=pages[to]();
- q.className="client-app theme-"+(to==="home"?themePicker.value:"day");
- q.innerHTML=status()+'<div class="view-scroll '+(result.home?"home-view":"")+'">'+result.html+'</div>'+nav(result.tab||tabs[to]);
- picker.value=to;stageTitle.textContent=result.title;
+ q.className="client-app theme-"+(to==="home"?homeAppearance():"day");
+ q.innerHTML='<div class="view-scroll '+(result.home?"home-view":"")+'">'+result.html+'</div>'+nav(result.tab||tabs[to]);
+ 
  if(updateHash&&location.hash.slice(1)!==to)history.replaceState(null,"","#"+to);
  const scroll=q.querySelector(".view-scroll");if(scroll)scroll.scrollTop=0;
 }
@@ -216,8 +218,7 @@ document.addEventListener("click",e=>{
  if(action==="demo-message"){const input=document.getElementById("demo-message");if(input)input.value="";alert("Design preview only. No message was sent.");return}
  if(control.matches(".inline-tabs button,.tabstrip button,.filter-row button,.portions button")){const group=control.parentElement;group.querySelectorAll("button").forEach(b=>b.classList.toggle("active",b===control))}
 });
-picker.addEventListener("change",e=>route(e.target.value));
-themePicker.addEventListener("change",()=>route(current,false));
+
 window.addEventListener("hashchange",()=>route(location.hash.slice(1),false));
 route(location.hash.slice(1)||"home",false);
 })();
